@@ -1,5 +1,10 @@
+body {
+	background-color: #fbf1c7
+}
+
 h1 {
 	text-align: center;
+	color: #282828;
 }
 
 p {
@@ -18,21 +23,24 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
+	background-color: #928374;
 }
 li {
 	float: right;
+	background-color: #3c3836;
+	list-style-type: none;
 }
 
 li a { 
 	display: block;
-	color: white;
+	color: #fbf1c7;
 	text-align: center;
 	padding: 16px;
-	background-color: #282828;
 	text-decoration: none;
 }
 
 li a:hover {
-	background-color: #d79921
+	background-color: #282828;
 }
 
