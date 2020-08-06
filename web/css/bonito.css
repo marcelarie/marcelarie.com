@@ -1,4 +1,10 @@
 
+@font-face {
+	   font-family: FiraCode;
+	      src: url(/fonts/FiraCode-Regular.ttf);
+      }
+
+
 .center {
 	display: block;
 	margin-left: auto;
@@ -12,11 +18,13 @@ body {
 
 h1 {
 	text-align: center;
+	font-family: FiraCode;
 	color: #282828;
 }
 
 p {
 	text-align: center;
+	font-family: FiraCode;
 }
 
 
@@ -27,11 +35,13 @@ ul {
 	padding: 0;
 	overflow: hidden;
 	background-color: #928374;
+	font-family: FiraCode;
 }
 li {
 	float: right;
 	background-color: #fbf1c7;
 	list-style-type: none;
+	font-family: FiraCode;
 }
 
 li a { 
