@@ -11,12 +11,6 @@ p {
 	text-align: center;
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
 
 <!--Navigation bar list--!>
 ul {
@@ -28,19 +22,20 @@ ul {
 }
 li {
 	float: right;
-	background-color: #3c3836;
+	background-color: #fbf1c7;
 	list-style-type: none;
 }
 
 li a { 
 	display: block;
-	color: #fbf1c7;
+	color: #282828;
 	text-align: center;
 	padding: 16px;
 	text-decoration: none;
 }
 
 li a:hover {
-	background-color: #282828;
+	background-color: #ebdbb2;
+	color: #282828;
 }
 
