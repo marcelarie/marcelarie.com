@@ -70,12 +70,10 @@ p {
 }
 
 .image {
-	display: inline-block;
-	margin: auto;
-	position: relative;
-	
+	text-align: center;
 }
 
 .image img {
-	float: auto;	
+	float: center;	
+	
 }
