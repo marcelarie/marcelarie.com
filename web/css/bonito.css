@@ -34,12 +34,18 @@ p {
 
 
 <!--Navigation bar list--!>
+#logo {
+	float: left;
+	display: inline-block;
+}
+.clear {
+	clear: both;
+}
 #navibar {
 	width: 100%;
-	float: left;
+	float: right;
 	margin: 0 0 1em 0;
 	padding: 0;
-	background-color: #928374;
 }
 
 #navibar ul {
