@@ -34,20 +34,10 @@ p {
 
 
 <!--Navigation bar list--!>
-<<<<<<< HEAD
 #navibar {
 	width: 100%;
 	float: left;
 	margin: 0 0 1em 0;
-||||||| 06b187d
-ul {
-	list-style-type: none;
-	margin: 100px;
-=======
-#navibar ul {
-	list-style-type: none;
-	margin: 100px;
->>>>>>> 1d77ec4a61f529cc76f85b2c9e6dab3aa96dae7f
 	padding: 0;
 	background-color: #928374;
 }
@@ -58,27 +48,15 @@ ul {
 	overflow: hidden;
 	font-family: FiraCode;
 }
-<<<<<<< HEAD
 
 #navibar ul li {
-||||||| 06b187d
-li {
-=======
-ul li {
->>>>>>> 1d77ec4a61f529cc76f85b2c9e6dab3aa96dae7f
 	float: right;
 	background-color: #fbf1c7;
 	list-style-type: none;
 	font-family: FiraCode;
 }
 
-<<<<<<< HEAD
 #navibar ul li a { 
-||||||| 06b187d
-li a { 
-=======
-ul li a { 
->>>>>>> 1d77ec4a61f529cc76f85b2c9e6dab3aa96dae7f
 	display: block;
 	color: #282828;
 	text-align: center;
@@ -86,18 +64,11 @@ ul li a {
 	text-decoration: none;
 }
 
-<<<<<<< HEAD
 #navibar ul li a:hover {
-||||||| 06b187d
-li a:hover {
-=======
-ul li a:hover {
->>>>>>> 1d77ec4a61f529cc76f85b2c9e6dab3aa96dae7f
 	background-color: #ebdbb2;
 	color: #282828;
 }
 
-<<<<<<< HEAD
 .image {
 	display: inline-block;
 	margin: auto;
@@ -108,13 +79,3 @@ ul li a:hover {
 .image img {
 	float: auto;	
 }
-||||||| 06b187d
-=======
-img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 70px 0;
-}
-
->>>>>>> 1d77ec4a61f529cc76f85b2c9e6dab3aa96dae7f
