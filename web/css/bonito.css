@@ -7,8 +7,7 @@
 
 .center {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	width: 50%;
 }
 
@@ -16,6 +15,12 @@ body {
 	background-color: #fbf1c7
 }
 
+#wrapper {
+
+	width: 63em;
+	max-width: 100%;
+	margin: 0 auto;	
+}
 h1 {
 	text-align: center;
 	font-family: FiraCode;
@@ -29,7 +34,7 @@ p {
 
 
 <!--Navigation bar list--!>
-ul {
+#navibar ul {
 	list-style-type: none;
 	margin: 100px;
 	padding: 0;
@@ -37,14 +42,14 @@ ul {
 	background-color: #928374;
 	font-family: FiraCode;
 }
-li {
+ul li {
 	float: right;
 	background-color: #fbf1c7;
 	list-style-type: none;
 	font-family: FiraCode;
 }
 
-li a { 
+ul li a { 
 	display: block;
 	color: #282828;
 	text-align: center;
@@ -52,8 +57,15 @@ li a {
 	text-decoration: none;
 }
 
-li a:hover {
+ul li a:hover {
 	background-color: #ebdbb2;
 	color: #282828;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 70px 0;
 }
 
