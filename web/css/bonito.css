@@ -34,23 +34,29 @@ p {
 
 
 <!--Navigation bar list--!>
+#navibar {
+	width: 100%;
+	float: left;
+	margin: 0 0 1em 0;
+	padding: 0;
+	background-color: #928374;
+}
+
 #navibar ul {
 	list-style-type: none;
-	margin: 100px;
-	padding: 0;
+	padding: none;
 	overflow: hidden;
-	background-color: #928374;
-	position: sticky;
 	font-family: FiraCode;
 }
-ul li {
+
+#navibar ul li {
 	float: right;
 	background-color: #fbf1c7;
 	list-style-type: none;
 	font-family: FiraCode;
 }
 
-ul li a { 
+#navibar ul li a { 
 	display: block;
 	color: #282828;
 	text-align: center;
@@ -58,14 +64,18 @@ ul li a {
 	text-decoration: none;
 }
 
-ul li a:hover {
+#navibar ul li a:hover {
 	background-color: #ebdbb2;
 	color: #282828;
 }
 
-img {
-	display: block;
+.image {
+	display: inline-block;
 	margin: auto;
-	padding: 70px 0;
+	position: relative;
+	
 }
 
+.image img {
+	
+}
