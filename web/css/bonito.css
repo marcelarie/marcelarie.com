@@ -34,9 +34,10 @@ p {
 
 
 <!--Navigation bar list--!>
-#logo {
-	float: left;
-	display: inline-block;
+.img-logo {
+	float: left;	
+	margin: 10px 15px 15px 10px;
+	position: relative;
 }
 .clear {
 	clear: both;
@@ -46,6 +47,7 @@ p {
 	float: right;
 	margin: 0 0 1em 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 #navibar ul {
