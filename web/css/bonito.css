@@ -9,6 +9,7 @@
 	display: block;
 	margin: auto;
 	width: 50%;
+	text-decoration: none;
 }
 
 body {
@@ -83,5 +84,5 @@ p {
 
 .image img {
 	float: center;	
-	
 }
+
