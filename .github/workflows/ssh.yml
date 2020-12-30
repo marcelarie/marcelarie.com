@@ -13,5 +13,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cd /var/www/marcelarie/ 
-        script: git pull
+        script: ./gitpull.sh
