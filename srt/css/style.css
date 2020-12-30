@@ -70,10 +70,17 @@ main {
     margin-top: 2rem;
     height: 680px;
 }
+main a {
+    text-decoration: underline;
+}
+main a:hover {
+    color: var(--gbox-g);
+}
 .welcome, .contact {
     font-size: 1.3em;
     line-height: 1.55;
     margin: 1em 1em;
+    text-align: justify;
 }
 .contact {
     display: flex;
@@ -82,5 +89,4 @@ main {
 }
 .contact a {
     margin: 0 0.2em;
-    text-decoration: underline;
 }
