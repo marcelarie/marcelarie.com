@@ -1,7 +1,7 @@
 name: remote ssh command
 on: [push]
-jobs:
 
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -13,4 +13,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: touch ~/TEST
