@@ -1,0 +1,86 @@
+:root { 
+    --gbox-b: #282828;
+    --gbox-g: #928374;
+    --gbox-w: #ebdbb2;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+/* general */
+* {
+    margin: unset;
+    padding: unset;
+    box-sizing: border-box;
+    text-decoration: unset;
+    color: unset;
+}
+body {
+    font-family: 'Fira Code', monospace;
+    background-color: antiquewhite;
+}
+.main-container {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+/* navigation bar */
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: var(--gbox-b);
+    margin-top: 0.5rem;
+}
+.nav-logo h1 {
+    font-size: 4em;
+    margin-right: 1em;
+}
+.nav-logo p {
+    font-size: 0.95em;
+    color: var(--gbox-g);
+}
+.nav-links {
+    font-size: 1.8em;
+    margin: auto 0;
+}
+.nav-links a {
+    margin: 0 0.5em;
+}
+
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+}
+.donate-links {
+    margin: 0 auto;
+}
+.donate-links a {
+    position: relative;
+    margin: 0.5em;
+}
+
+/* main */
+main {
+    margin-top: 2rem;
+    height: 680px;
+}
+.welcome, .contact {
+    font-size: 1.3em;
+    line-height: 1.55;
+    margin: 1em 1em;
+}
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.contact a {
+    margin: 0 0.2em;
+    text-decoration: underline;
+}
