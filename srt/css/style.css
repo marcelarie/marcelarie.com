@@ -1,7 +1,7 @@
 :root { 
     --gbox-b: #282828;
     --gbox-g: #928374;
-    --gbox-w: #ebdbb2;
+    --gbox-w: #fbf1c7;
 }
 
 /* fonts */
@@ -17,7 +17,7 @@
 }
 body {
     font-family: 'Fira Code', monospace;
-    background-color: antiquewhite;
+    background-color: var(--gbox-w);
 }
 .main-container {
     max-width: 920px;
@@ -47,6 +47,9 @@ nav {
 .nav-links a {
     margin: 0 0.5em;
 }
+.nav-links a:hover, .nav-links a:focus{
+    font-weight: 600;
+}
 
 /* footer */
 footer {
@@ -68,7 +71,6 @@ footer {
 /* main */
 main {
     margin-top: 2rem;
-    height: 680px;
 }
 main a {
     text-decoration: underline;
@@ -81,6 +83,12 @@ main a:hover {
     line-height: 1.55;
     margin: 1em 1em;
     text-align: justify;
+}
+.welcome img {
+    width: 25%;
+    display: block;
+    margin: 1.5em auto;
+    border-radius: 2px;
 }
 .contact {
     display: flex;
