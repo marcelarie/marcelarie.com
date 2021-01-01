@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png"
         href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/apple/271/turtle_1f422.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script defer src="srt/js/main.js" type="module"></script>
     <title>arie</title>
 </head>
 
@@ -20,14 +21,14 @@
                 </a>
                 <p>Working hard to create the best devolper for you.</p>
             </div>
-            <div class="nav-links">
-                <a href="#0" class="nav-link">Home</a>
-                <a href="#0" class="nav-link">Blog</a>
-                <a href="#0" class="nav-link">Projects</a>
+            <div id="nav-links" class="nav-links">
+                <a href="#0" id="nav-home" class="nav-link">Home</a>
+                <a href="#0" id="nav-blog" class="nav-link">Blog</a>
+                <a href="#0" id="nav-projects" class="nav-link">Projects</a>
             </div>
         </nav>
         <main>
-            <article id="welcome" class="welcome">
+            <section id="home" class="welcome">
                 <img alt='Fantastic Planets - Eyes' src="srt/img/fplanet-eyes.gif">
                 <p>Hello! My name is Marcel and I'm a <span id="age">25</span>
                     y/o software developer from Barcelona.</p>
@@ -41,14 +42,21 @@
                 <p>Hope you have fun!!</p>
                 <br>
                 <p>If you want to contact me:</p>
-            </article>
-            <article id="contact" class="contact">
-                <a target=”_blank” rel="noreferrer noopener" class="git" href="https://github.com/marcelarie">GitHub</a>
-                <a target=”_blank” rel="noreferrer noopener" class="linkedin"
-                    href="https://www.linkedin.com/in/marcelarie/">LinkedIn</a>
-                <a target=”_blank” rel="noreferrer noopener" class="mail"
-                    href="mailto: info@marcelarie.com">info@marcelarie.com</a>
-            </article>
+                <article id="contact" class="contact">
+                    <a target=”_blank” rel="noreferrer noopener" class="git"
+                        href="https://github.com/marcelarie">GitHub</a>
+                    <a target=”_blank” rel="noreferrer noopener" class="linkedin"
+                        href="https://www.linkedin.com/in/marcelarie/">LinkedIn</a>
+                    <a target=”_blank” rel="noreferrer noopener" class="mail"
+                        href="mailto: info@marcelarie.com">info@marcelarie.com</a>
+                </article>
+            </section>
+            <section id="blog" class="blog none">
+                <h1>blog in progress</h1>
+            </section>
+            <section id="projects" class="projects none">
+                <h1>projects in progress</h1>
+            </section>
         </main>
     </div>
     <footer>
