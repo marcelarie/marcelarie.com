@@ -12,4 +12,11 @@ function showPage(clicked) {
     }
 }
 
-export {showPage}
+function focusHome() {
+    const home = document.getElementById('home')
+    if (!home.classList.contains('none')) {
+        document.getElementById('nav-home').focus()
+    }
+}
+
+export {showPage, focusHome}
