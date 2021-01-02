@@ -101,7 +101,16 @@ main a:hover {
     margin: 0 0.2em;
 }
 
-/* none */
+/* none & more */
 .none {
     display: none;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
