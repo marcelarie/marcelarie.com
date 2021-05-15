@@ -1,8 +1,37 @@
 import styled from 'styled-components'
 
-export default styled.footer`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+const styles = {
+    position: 'fixed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    left: '0',
+    bottom: '0',
+    width: '100%',
+    fontSize: '1.5rem',
+}
+
+const phantom = {
+    display: 'block',
+    padding: '20px',
+    width: '100%',
+}
+
+const footer = styled.footer`
+    .footer {
+        ${styles}
+        background-color: ${({ theme }) => theme.background};
+        height: ${({ heigth }) => heigth};
+    }
+    .phantom {
+        ${phantom}
+        height: ${({ heigth }) => heigth};
+    }
+    border: 2px solid ${({ theme }) => theme.text};
 `
 
+footer.defaultProps = {
+    heigth: '80px',
+}
+
+export default footer

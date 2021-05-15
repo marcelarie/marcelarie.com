@@ -6,7 +6,7 @@ import 'styles/fonts.scss'
 
 const App = () => {
     return (
-        <Theme className="App">
+        <Theme className="app">
             <Router />
         </Theme>
     )

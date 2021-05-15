@@ -4,9 +4,12 @@ import SFooter from './styled'
 const Footer = () => {
     return (
         <SFooter>
-            <a href="#0">Git</a>
-            <a href="#0">Donations</a>
-            <a href="#0">etc</a>
+            <div className="phantom" />
+            <div className="footer">
+                <a href="#0">Git</a>
+                <a href="#0">Donations</a>
+                <a href="#0">etc</a>
+            </div>
         </SFooter>
     )
 }
