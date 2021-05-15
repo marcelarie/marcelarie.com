@@ -1,9 +1,14 @@
-import Router from './components/internal/router'
+import Router from 'components/internal/router'
+import Theme from 'components/internal/theme-provider'
+
+import 'styles/reset.scss'
+import 'styles/fonts.scss'
+
 const App = () => {
     return (
-        <div className="App">
+        <Theme className="App">
             <Router />
-        </div>
+        </Theme>
     )
 }
 
