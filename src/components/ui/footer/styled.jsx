@@ -9,6 +9,7 @@ const styles = {
     bottom: '0',
     width: '100%',
     fontSize: '1.5rem',
+    padding: '2vw;'
 }
 
 const phantom = {
@@ -22,7 +23,7 @@ const footer = styled.footer`
         ${styles}
         background-color: ${({ theme }) => theme.background};
         height: ${({ heigth }) => heigth};
-    border: 2px solid ${({ theme }) => theme.text};
+        border: 2px solid ${({ theme }) => theme.text};
     }
     .phantom {
         ${phantom}

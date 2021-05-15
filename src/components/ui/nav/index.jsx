@@ -1,4 +1,6 @@
 import React from 'react'
+import ThemeToggle from 'components/ui/theme-toggle'
+
 import SNav from './styled'
 
 const Nav = () => {
@@ -9,6 +11,7 @@ const Nav = () => {
             <button>develop</button>
             <button>read me</button>
             <button>dark theme toggle</button>
+            <ThemeToggle/>
         </SNav>
     )
 }
