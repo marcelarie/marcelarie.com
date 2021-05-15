@@ -22,12 +22,12 @@ const footer = styled.footer`
         ${styles}
         background-color: ${({ theme }) => theme.background};
         height: ${({ heigth }) => heigth};
+    border: 2px solid ${({ theme }) => theme.text};
     }
     .phantom {
         ${phantom}
         height: ${({ heigth }) => heigth};
     }
-    border: 2px solid ${({ theme }) => theme.text};
 `
 
 footer.defaultProps = {
