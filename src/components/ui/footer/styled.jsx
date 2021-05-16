@@ -9,7 +9,7 @@ const styles = {
     bottom: '0',
     width: '100%',
     fontSize: '1.5rem',
-    padding: '2vw;'
+    padding: '2vw;',
 }
 
 const phantom = {

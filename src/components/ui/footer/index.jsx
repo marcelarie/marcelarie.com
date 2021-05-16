@@ -3,7 +3,7 @@ import SFooter from './styled'
 
 const Footer = () => {
     return (
-        <SFooter height="90px">
+        <SFooter>
             <div className="phantom" />
             <div className="footer">
                 <a href="#0">Git</a>

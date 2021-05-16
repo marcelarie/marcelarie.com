@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 //----> REDUCERS
-import themePicker from 'components/internal/theme-provider/state/theme-reducer'
+import themePicker from '../reducers/theme'
 
 const rootReducer = combineReducers({
     themePicker,

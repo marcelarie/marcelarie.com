@@ -1,17 +1,24 @@
 import React from 'react'
-import ThemeToggle from 'components/ui/theme-toggle'
+import { NavLink } from 'react-router-dom'
+import { HOME, MY_PROJECTS, ABOUT_ME } from 'routes'
 
+import ThemeToggle from '../theme-toggle'
 import SNav from './styled'
 
 const Nav = () => {
     return (
         <SNav>
             <h1>arie</h1>
-            <button>main</button>
-            <button>develop</button>
-            <button>read me</button>
-            <button>dark theme toggle</button>
-            <ThemeToggle/>
+            <NavLink to={HOME}>
+                <button>main</button>
+            </NavLink>
+            <NavLink to={MY_PROJECTS}>
+                <button>develop</button>
+            </NavLink>
+            <NavLink to={ABOUT_ME}>
+                <button>read me</button>
+            </NavLink>
+            <ThemeToggle />
         </SNav>
     )
 }

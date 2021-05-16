@@ -1,12 +1,13 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { changeTheme } from 'components/internal/theme-provider/state/theme-actions'
-import { DARK, LIGHT } from 'components/internal/theme-provider/state/theme-types'
+import { changeTheme } from '../../../redux/actions/theme'
+import { ThemeTypes } from '../../../redux/types/theme'
+import { RootState } from '../../../redux/root-reducer/types'
 
 const ThemeToggle = () => {
+    const {DARK, LIGHT} = ThemeTypes
     const dispatch = useDispatch()
-    const { theme } = useSelector(({ themePicker }) => themePicker)
+    const { theme } = useSelector(({ themePicker }: RootState) => themePicker)
 
     const toggle = theme === DARK ? LIGHT : DARK
 
@@ -18,7 +19,7 @@ const ThemeToggle = () => {
         return (
             <div className="darkLightToggle">
                 <button onClick={handleChangeTheme} type="button">
-                    <span aria-label="dark" value="moon" role="img">
+                    <span aria-label="dark" data-value="moon" role="img">
                         🌚
                     </span>
                 </button>
@@ -28,7 +29,7 @@ const ThemeToggle = () => {
     return (
         <div className="darkLightToggle">
             <button onClick={handleChangeTheme} type="button">
-                <span aria-label="light" value="sun" role="img">
+                <span aria-label="light" data-value="sun" role="img">
                     🌞
                 </span>
             </button>

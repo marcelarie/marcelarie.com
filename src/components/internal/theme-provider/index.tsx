@@ -1,14 +1,15 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
+import { RootState } from 'redux/root-reducer/types'
+import { ThemeTypes } from 'redux/types/theme'
 import { ThemeProvider as Provider } from 'styled-components'
 import GlobalStyles from 'styles/global'
 import { dark, light } from 'styles/theme'
-import { DARK } from './state/theme-types'
+import { Props } from './types'
 
-const ThemeProvider = ({ children }) => {
-    const { theme } = useSelector(({ themePicker }) => themePicker)
+const ThemeProvider = ({ children }: Props) => {
+    const { theme } = useSelector(({ themePicker }: RootState) => themePicker)
 
-    const themeCondition = theme === DARK ? dark : light;
+    const themeCondition = theme === ThemeTypes.DARK ? dark : light
 
     return (
         <Provider theme={themeCondition}>

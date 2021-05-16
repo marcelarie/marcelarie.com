@@ -1,12 +1,10 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 
-
-import rootReducer from './root-reducer.js'
+import rootReducer from '../root-reducer'
 
 const middlewares = [thunk]
-
 
 // prettier-ignore
 const store = createStore(
