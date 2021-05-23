@@ -6,4 +6,8 @@
 -   Create blog page
 -   Create login/registration components
 
+### Refactor
+
+-   [ ] Refactor TS folders
+
 ### done

@@ -1,4 +1,4 @@
-import { ThemeTypes } from '../../types/theme'
+import { ThemeTypes } from './theme-types'
 
 const initialState = {
     theme: ThemeTypes.LIGHT,

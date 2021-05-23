@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
-import { RootState } from 'redux/root-reducer/types'
-import { ThemeTypes } from 'redux/types/theme'
 import { ThemeProvider as Provider } from 'styled-components'
-import GlobalStyles from 'styles/global'
-import { dark, light } from 'styles/theme'
+
+import { RootState } from '../../../redux/root-reducer/types'
+import { ThemeTypes } from '../../../redux/state/theme/theme-types'
+import GlobalStyles from '../../../styles/global'
+import { dark, light } from '../../../styles/theme'
 import { Props } from './types'
 
 const ThemeProvider = ({ children }: Props) => {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { changeTheme } from '../../../redux/actions/theme'
-import { ThemeTypes } from '../../../redux/types/theme'
+import { changeTheme } from '../../../redux/state/theme/theme-actions'
+import { ThemeTypes } from '../../../redux/state/theme/theme-types'
 import { RootState } from '../../../redux/root-reducer/types'
 
 const ThemeToggle = () => {

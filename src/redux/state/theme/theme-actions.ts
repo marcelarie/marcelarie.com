@@ -1,4 +1,4 @@
-import { ThemeTypes, ThemePayloadType} from '../../types/theme'
+import { ThemeTypes, ThemePayloadType} from './theme-types'
 
 
 
