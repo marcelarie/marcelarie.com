@@ -8,6 +8,7 @@
 
 ### Refactor
 
--   [ ] Refactor TS folders
+-   [x] Refactor TS folders
+-   [ ] Deploy with auto pull
 
 ### done
