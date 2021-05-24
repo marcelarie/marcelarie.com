@@ -1,22 +1,31 @@
-import { NavLink } from 'react-router-dom'
-import { HOME, MY_PROJECTS, ABOUT_ME } from 'routes'
+import { NavLink, useLocation } from 'react-router-dom'
+import { HOME, MY_PROJECTS, ABOUT_ME, RoutesTypes } from 'routes'
 
 import ThemeToggle from '../theme-toggle'
 import SNav from './styled'
 import './styles.scss'
+import Button from '../../../styles/generic/button'
 
 const Nav = () => {
+        const currentLocation = useLocation().pathname
+    const handlePathFocus = (path: RoutesTypes) => {
+        console.log(currentLocation)
+        return currentLocation === path ? 'navfocus' : ''
+    }
+
     return (
         <SNav>
-            <h1>Marcel Arie</h1>
             <NavLink to={HOME}>
-                <button>Main</button>
+                <h1>Marcel Arie</h1>
             </NavLink>
-            <NavLink to={MY_PROJECTS}>
-                <button>Develop</button>
+            <NavLink className={handlePathFocus(HOME)} to={HOME}>
+                <Button>Main</Button>
             </NavLink>
-            <NavLink to={ABOUT_ME}>
-                <button>Read Me</button>
+            <NavLink className={handlePathFocus(MY_PROJECTS)} to={MY_PROJECTS}>
+                <Button>Develop</Button>
+            </NavLink>
+            <NavLink className={handlePathFocus(ABOUT_ME)} to={ABOUT_ME}>
+                <Button>Read Me</Button>
             </NavLink>
             <ThemeToggle />
         </SNav>

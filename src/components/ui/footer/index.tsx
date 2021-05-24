@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
                 <a target="_blank" rel="noreferrer" href={Git.link}>
                     {Git.svg}
                 </a>
-                <a target="_blank" rel="noreferrer" href={Donations.link}>
+                <a target="_blank" className="donations" rel="noreferrer" href={Donations.link}>
                     {Donations.svg}
                 </a>
                 <a target="_blank" rel="noreferrer" href={LinkedIn.link}>

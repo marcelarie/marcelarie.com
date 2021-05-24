@@ -2,9 +2,11 @@
 
 export const dark = {
     background: '#282828',
-    text: 'rgb(241,242,238)',
+    text: '#f1f2ee',
+    primary: '#fabd2f',
 }
 export const light = {
-    background: 'rgb(241,242,238)',
+    background: '#f1f2ee',
     text: '#282828',
+    primary: '#83a598',
 }

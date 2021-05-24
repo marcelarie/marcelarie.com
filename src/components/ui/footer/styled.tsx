@@ -9,6 +9,9 @@ const footer = styled.footer<FooterProps>`
         &__content {
             background-color: ${({ theme }) => theme.background};
             height: ${({ height }) => height};
+                    .donations {
+                        fill: ${({ theme }) => theme.text};
+                    }
             a {
                 svg {
                     stroke: ${({ theme }) => theme.text};
