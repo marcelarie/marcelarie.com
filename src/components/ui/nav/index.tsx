@@ -3,19 +3,20 @@ import { HOME, MY_PROJECTS, ABOUT_ME } from 'routes'
 
 import ThemeToggle from '../theme-toggle'
 import SNav from './styled'
+import './styles.scss'
 
 const Nav = () => {
     return (
         <SNav>
-            <h1>arie</h1>
+            <h1>Marcel Arie</h1>
             <NavLink to={HOME}>
-                <button>main</button>
+                <button>Main</button>
             </NavLink>
             <NavLink to={MY_PROJECTS}>
-                <button>develop</button>
+                <button>Develop</button>
             </NavLink>
             <NavLink to={ABOUT_ME}>
-                <button>read me</button>
+                <button>Read Me</button>
             </NavLink>
             <ThemeToggle />
         </SNav>
