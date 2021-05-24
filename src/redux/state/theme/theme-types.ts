@@ -5,3 +5,14 @@ export const ThemeTypes = {
 }
 
 export type ThemePayloadType = typeof ThemeTypes.DARK | typeof ThemeTypes.LIGHT
+
+export interface ChangeTheme {
+    type: typeof ThemeTypes.CHANGE_THEME,
+    payload: ThemePayloadType
+}
+
+
+
+export type ThemeDispatchTypes = ChangeTheme
+
+

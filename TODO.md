@@ -1,14 +1,14 @@
 ### Important
 
--   Create base template
--   Navbar
--   Create Landing page
--   Create blog page
--   Create login/registration components
+-   [x] Create base template
+-   [x] Navbar
+-   [ ] Create Landing page
+-   [ ] Create blog page
+-   [x] Create login/registration components
 
-### Refactor
+### TODO
 
 -   [x] Refactor TS folders
--   [ ] Deploy with auto pull
+-   [x] Deploy with auto pull
 
-### done
+### DONE

@@ -1,7 +1,6 @@
-import React from 'react'
 import SFooter from './styled'
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
     return (
         <SFooter>
             <div className="phantom" />

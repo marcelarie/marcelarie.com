@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { HOME, MY_PROJECTS, ABOUT_ME } from 'routes'
 

@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 
-const styles = {
+type stylesI = {
+    [name: string]: string
+}
+
+type FooterProps =  {
+    height?: string
+}
+
+const styles: stylesI = {
     position: 'fixed',
     display: 'flex',
     alignItems: 'center',
@@ -12,27 +20,27 @@ const styles = {
     padding: '2vw;',
 }
 
-const phantom = {
+const phantom: stylesI = {
     display: 'block',
     padding: '20px',
     width: '100%',
 }
 
-const footer = styled.footer`
+const footer = styled.footer<FooterProps>`
     .footer {
         ${styles}
         background-color: ${({ theme }) => theme.background};
-        height: ${({ heigth }) => heigth};
+        height: ${({ height }) => height};
         border: 2px solid ${({ theme }) => theme.text};
     }
     .phantom {
         ${phantom}
-        height: ${({ heigth }) => heigth};
+        height: ${({ height }) => height};
     }
 `
 
 footer.defaultProps = {
-    heigth: '80px',
+    height: '70px',
 }
 
 export default footer
