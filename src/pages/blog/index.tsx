@@ -7,7 +7,7 @@ function Blog() {
     const years = [
         {
             year: 2021,
-            projects: [
+            posts: [
                 {
                     title: 'marcelarie.com',
                     lang: 'TS',
@@ -29,12 +29,12 @@ function Blog() {
     return (
         <div className="my-projects">
             <h1>Projects</h1>
-            {years &&
-                years.map(({ year, projects }) => (
-                    <YearHeader year={year} projects={projects} />
-                ))}
         </div>
     )
 }
+            // {years &&
+            //     years.map(({ year, projects }) => (
+            //         <YearHeader year={year} projects={projects} />
+            //     ))}
 
 export default Blog
