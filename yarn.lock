@@ -4198,6 +4198,11 @@ detect-port-alt@1.1.6:
     address "^1.0.1"
     debug "^2.6.0"
 
+devicon@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/devicon/-/devicon-2.11.0.tgz#63ca168b920a39201d83c45ed15a7d6a1e3ee665"
+  integrity sha512-sQ4rGJK6azpWmoM1viICEhWVuXfTsUYbZU9yBeFlmUziFKLUvD4yAovM4qFrTytcXElLEix5xdRD5gKzwEwRNA==
+
 diff-sequences@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-26.6.2.tgz#48ba99157de1923412eed41db6b6d4aa9ca7c0b1"

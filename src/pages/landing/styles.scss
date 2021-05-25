@@ -24,3 +24,14 @@
         }
     }
 }
+
+@media (max-width: 650px) {
+    .landing {
+        &__welcome {
+            margin-top: 5vh;
+            p {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

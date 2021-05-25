@@ -8,13 +8,20 @@ function MyProjects() {
     const projectsData = [
         {
             title: 'marcelarie.com',
-            lang: ['typescript'],
+            lang: ['typescript', 'react', 'redux'],
             description: 'Portfolio & Personal blog',
             link: 'https://github.com/marcelarie/marcelarie.com',
         },
         {
             title: 'wave-in',
-            lang: ['mongodb', 'react'],
+            lang: [
+                'react',
+                'express',
+                'redux',
+                'mongodb',
+                'nodejs',
+                'firebase',
+            ],
             description: 'Spotify clone with the MERN stack.',
             link: 'https://github.com/marcelarie/Wave-In',
         },
@@ -24,10 +31,9 @@ function MyProjects() {
     }, [])
     return (
         <div className="my-projects">
-            <h1>Projects</h1>
             {projects &&
                 projects.map((project: typeof projectsData[0]) => (
-                    <ProjectCard project={project} />
+                    <ProjectCard key={project.title} project={project} />
                 ))}
         </div>
     )

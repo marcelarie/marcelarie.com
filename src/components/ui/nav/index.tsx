@@ -7,26 +7,33 @@ import './styles.scss'
 import Button from '../../../styles/generic/button'
 
 const Nav = () => {
-        const currentLocation = useLocation().pathname
+    const currentLocation = useLocation().pathname
     const handlePathFocus = (path: RoutesTypes) => {
         return currentLocation === path ? 'navfocus' : ''
     }
 
     return (
         <SNav>
+            <div className="nav__logo">
             <NavLink to={HOME}>
                 <h1>Marcel Arie</h1>
             </NavLink>
-            <NavLink className={handlePathFocus(HOME)} to={HOME}>
-                <Button>Main</Button>
-            </NavLink>
-            <NavLink className={handlePathFocus(MY_PROJECTS)} to={MY_PROJECTS}>
-                <Button>Develop</Button>
-            </NavLink>
-            <NavLink className={handlePathFocus(ABOUT_ME)} to={ABOUT_ME}>
-                <Button>Read Me</Button>
-            </NavLink>
-            <ThemeToggle />
+            </div>
+            <div className="nav__links">
+                <NavLink className={handlePathFocus(HOME)} to={HOME}>
+                    <Button>Main</Button>
+                </NavLink>
+                <NavLink
+                    className={handlePathFocus(MY_PROJECTS)}
+                    to={MY_PROJECTS}
+                >
+                    <Button>Projects</Button>
+                </NavLink>
+                <NavLink className={handlePathFocus(ABOUT_ME)} to={ABOUT_ME}>
+                    <Button>About Me</Button>
+                </NavLink>
+                <ThemeToggle />
+            </div>
         </SNav>
     )
 }

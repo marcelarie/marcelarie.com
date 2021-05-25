@@ -2,8 +2,9 @@
 
 -   [x] Create base template
 -   [x] Navbar
--   [ ] Create Landing page
+-   [x] Create Landing page
 -   [ ] Create blog page
+-   [ ] Create projects page
 -   [x] Create login/registration components
 
 ### TODO

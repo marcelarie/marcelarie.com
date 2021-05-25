@@ -10,3 +10,6 @@ export const light = {
     text: '#282828',
     primary: '#83a598',
 }
+
+// IDEAS:
+// #d8d4cf --> text on dark theme

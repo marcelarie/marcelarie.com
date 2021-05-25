@@ -9,11 +9,8 @@ function ProjectCard({ project }: ProjectCardProps) {
                 {project.title}
             </a>
             <p>{project.description}</p>
-            {project.lang.map((lang: String) => (
-                <>
-                    <i className={`devicon-${lang}-plain`}></i>
-                </>
-            ))}
+            {project.lang.map((lang: string) => <i key={lang} className={`devicon-${lang}-plain  devicon-${lang}-original colored`} ></i>
+                )}
         </SProjectCard>
     )
 }
