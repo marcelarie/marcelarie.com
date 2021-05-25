@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import hexToRgba from 'hex-to-rgba'
 
 export default styled.nav`
+    background-color: ${({ theme }) => theme.background};
     a button {
         color: ${({ theme }) => theme.text};
     }

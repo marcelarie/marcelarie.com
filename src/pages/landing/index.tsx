@@ -1,16 +1,31 @@
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 import { HOME } from 'routes'
 import './styles.scss'
 import SLanding from './styled'
+import { useEffect, useState } from 'react'
 
 const Landing = () => {
+    const [myAge, setMyAge] = useState(0)
+
+    useEffect(() => {
+        const calculateMyAge = () => {
+            const today = moment()
+            const bornDate = moment([1995, 9, 27])
+            setMyAge(today.diff(bornDate, 'years'))
+        }
+        calculateMyAge()
+    }, [])
+
     return (
         <SLanding className="landing">
             <div className="landing__welcome">
                 <p>
-                    Hello! My name is Marcel and I'm a <span id="age">25 </span>
-                    y/o software developer from Barcelona.<br/> My journey as a
-                    programmer started recently, so there are lots of things
+                    Hello! My name is{' '}
+                    Marcel and I'm a{' '}
+                    <span id="age">{myAge} </span>
+                    y/o software developer from Barcelona, Spain. My journey as
+                    a programmer started recently, so there are lots of things
                     still to learn.
                 </p>
                 <p>

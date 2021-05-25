@@ -3,6 +3,8 @@ nav {
     align-items: center;
     justify-content: space-around;
     padding: 1rem 0.2rem;
+    top: 0;
+    position: sticky;
     overflow: hidden;
 
     h1 {

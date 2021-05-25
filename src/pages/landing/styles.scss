@@ -1,9 +1,10 @@
 .landing {
-    min-height: 100vh;
+    min-height: 75vh;
+    overflow: hidden;
 
     &__welcome {
         margin-top: 10vh;
-        padding: 0.5rem;
+        padding: 0.7rem 1rem 1rem 1rem;
         text-align: justify;
         text-justify: inter-word;
 
