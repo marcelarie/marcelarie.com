@@ -9,7 +9,6 @@ import Button from '../../../styles/generic/button'
 const Nav = () => {
         const currentLocation = useLocation().pathname
     const handlePathFocus = (path: RoutesTypes) => {
-        console.log(currentLocation)
         return currentLocation === path ? 'navfocus' : ''
     }
 

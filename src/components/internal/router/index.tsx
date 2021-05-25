@@ -8,15 +8,17 @@ import Footer from '../../../components/ui/footer'
 
 const Router = () => {
     return (
+        <div className='main-container'>
         <BrowserRouter>
-            <Nav />
-            <Switch>
-                <Route path={HOME}>
-                    <Landing />
-                </Route>
-            </Switch>
-            <Footer />
+        <Nav />
+        <Switch>
+        <Route path={HOME}>
+        <Landing />
+        </Route>
+        </Switch>
+        <Footer />
         </BrowserRouter>
+        </div>
     )
 }
 

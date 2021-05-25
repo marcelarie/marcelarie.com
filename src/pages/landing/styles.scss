@@ -1,3 +1,25 @@
 .landing {
     min-height: 100vh;
+
+    &__welcome {
+        margin-top: 10vh;
+        padding: 0.5rem;
+        text-align: justify;
+        text-justify: inter-word;
+
+        p {
+            font-size: 1.3rem;
+            margin: 1.3rem 0;
+        }
+        a {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            &:hover {
+                //     text-decoration-color: ${props => props.theme.main};
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+            }
+        }
+    }
 }

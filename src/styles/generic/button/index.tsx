@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import hexToRgba from 'hex-to-rgba'
-// import * as main from '../../color-palette';
 
 type GenericButtonProps = {
     width?: string
@@ -31,6 +30,4 @@ GenericButton.defaultProps = {
     width: '100px',
 }
 
-// background: ${({ theme }) =>
-//     `linear-gradient(87.74deg, ${theme.mainDark} 5.63%, ${theme.main} 98.31%)`} ;
 export default GenericButton
