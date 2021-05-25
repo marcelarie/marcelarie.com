@@ -2,7 +2,7 @@
 
 export const dark = {
     background: '#282828',
-    text: '#f1f2ee',
+    text: '#d8d4cf',
     primary: '#fabd2f',
 }
 export const light = {
@@ -12,4 +12,4 @@ export const light = {
 }
 
 // IDEAS:
-// #d8d4cf --> text on dark theme
+// text: '#f1f2ee', <-- old dark text
