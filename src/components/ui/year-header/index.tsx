@@ -1,15 +1,15 @@
 import { YearHeaderProps } from './types'
+import PostCard from '../post-card'
 import './styles.scss'
 
-function YearHeader({ year, projects }: YearHeaderProps) {
+function YearHeader({ data }: YearHeaderProps) {
     return (
         <div className="year-header">
-            <h1>{year}</h1>
+            <h1 className="year-header__title">{data.year}</h1>
+            {data.posts.map((post) => (
+                <PostCard post={post} />
+            ))}
         </div>
     )
 }
-// {projects.map((project) => (
-//     // PostCard ↴
-//     <ProjectCard project={project} />
-// ))}
 export default YearHeader

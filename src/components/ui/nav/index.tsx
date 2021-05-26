@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import { HOME, MY_PROJECTS, ABOUT_ME, RoutesTypes } from 'routes'
+import { HOME, MY_PROJECTS, ABOUT_ME, RoutesTypes, BLOG } from 'routes'
 
 import ThemeToggle from '../theme-toggle'
 import SNav from './styled'
@@ -15,9 +15,9 @@ const Nav = () => {
     return (
         <SNav>
             <div className="nav__logo">
-            <NavLink to={HOME}>
-                <h1>Marcel Arie</h1>
-            </NavLink>
+                <NavLink to={HOME}>
+                    <h1>Marcel Arie</h1>
+                </NavLink>
             </div>
             <div className="nav__links">
                 <NavLink className={handlePathFocus(HOME)} to={HOME}>
@@ -29,8 +29,8 @@ const Nav = () => {
                 >
                     <Button>Projects</Button>
                 </NavLink>
-                <NavLink className={handlePathFocus(ABOUT_ME)} to={ABOUT_ME}>
-                    <Button>About Me</Button>
+                <NavLink className={handlePathFocus(BLOG)} to={BLOG}>
+                    <Button>Blog</Button>
                 </NavLink>
                 <ThemeToggle />
             </div>

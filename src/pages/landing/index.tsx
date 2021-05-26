@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-import { HOME } from 'routes'
+import { BLOG } from 'routes'
 import './styles.scss'
 import SLanding from './styled'
 import { useEffect, useState } from 'react'
@@ -37,7 +37,7 @@ const Landing = () => {
                 </p>
                 <p>
                     At my
-                    <Link to={HOME}> Blog </Link> I explain my learning process
+                    <Link to={BLOG}> Blog </Link> I explain my learning process
                     to{' '}
                     <a
                         target="_blank"

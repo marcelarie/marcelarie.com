@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { ABOUT_ME, HOME, MY_PROJECTS } from 'routes'
+import { ABOUT_ME, BLOG, HOME, MY_PROJECTS } from 'routes'
 
 // Components
 import Landing from '../../../pages/landing'
@@ -7,6 +7,7 @@ import MyProjects from '../../../pages/my-projects'
 import AboutMe from '../../../pages/about-me'
 import Nav from '../../../components/ui/nav'
 import Footer from '../../../components/ui/footer'
+import Blog from 'pages/blog'
 
 const Router = () => {
     return (
@@ -19,6 +20,9 @@ const Router = () => {
                     </Route>
                     <Route path={MY_PROJECTS}>
                         <MyProjects />
+                    </Route>
+                    <Route path={BLOG}>
+                        <Blog/>
                     </Route>
                     <Route path={ABOUT_ME}>
                         <AboutMe />
