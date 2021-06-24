@@ -2,17 +2,19 @@ import { useParams } from 'react-router-dom';
 import usePost from '../../hooks/fetchPostById';
 import ReactMarkdown from 'react-markdown';
 import codeBlock from '../../components/internal/code-block';
+import './styles.scss'
 
 export default function Post() {
     let { id }: { id: string } = useParams();
     const post = usePost(id);
+    // TODO: add no id found and 404 error handeling
     if (!post.data) return <h1>Loading...</h1>;
     const { data } = post;
 
     return (
         post.data && (
             <div>
-                <h1>{data.title}</h1>
+                {/* <h1>{data.title}</h1> */}
                 <ReactMarkdown
                     components={{
                         code({ className, children }) {
