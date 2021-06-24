@@ -1,15 +1,19 @@
-import Router from './components/internal/router'
-import Theme from './components/internal/theme-provider'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Router from './components/internal/router';
+import Theme from './components/internal/theme-provider';
 
-import 'styles/reset.scss'
-import 'styles/fonts.scss'
+import 'styles/reset.scss';
+import 'styles/fonts.scss';
 
 const App = () => {
+    const queryclient = new QueryClient()
     return (
-        <Theme>
-            <Router />
-        </Theme>
-    )
-}
+        <QueryClientProvider client={queryclient}>
+            <Theme>
+                <Router />
+            </Theme>
+        </QueryClientProvider>
+    );
+};
 
-export default App
+export default App;

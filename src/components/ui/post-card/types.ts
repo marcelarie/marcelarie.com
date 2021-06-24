@@ -1,9 +1,11 @@
+
 export type PostI = {
-    post: {
-        title: string
-        lang: string[]
-        description: string
-        date: string
-        tags: string[]
-    }
-}
+    id: number;
+    title: string;
+    body: string;
+    description: string;
+    created_at: string;
+    published: boolean;
+    // tags: string[]
+    // lang: string[]
+};

@@ -1,10 +1,10 @@
-import { PostI } from './types'
-import './styles.scss'
-import { NavLink } from 'react-router-dom'
-import { HOME } from 'routes'
-import StyledPostCard from './styled'
+import {  PostI } from './types';
+import './styles.scss';
+import { NavLink } from 'react-router-dom';
+import { HOME } from 'routes';
+import StyledPostCard from './styled';
 
-function PostCard({ post }: PostI) {
+function PostCard({ post }: { post: PostI}) {
     return (
         <StyledPostCard className="post">
             <NavLink to={HOME}>
@@ -12,6 +12,6 @@ function PostCard({ post }: PostI) {
             </NavLink>
             <p>{post.description}</p>
         </StyledPostCard>
-    )
+    );
 }
-export default PostCard
+export default PostCard;

@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import { HOME, MY_PROJECTS, ABOUT_ME, RoutesTypes, BLOG } from 'routes'
+import { HOME, MY_PROJECTS, RoutesTypes, BLOG } from 'routes'
 
 import ThemeToggle from '../theme-toggle'
 import SNav from './styled'
