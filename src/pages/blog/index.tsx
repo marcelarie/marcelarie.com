@@ -41,6 +41,7 @@ function Blog() {
         },
     ];
     const posts = usePosts();
+    console.log( posts.data)
     useEffect(() => {
         setPostsByYear(years);
         // eslint-disable-next-line
