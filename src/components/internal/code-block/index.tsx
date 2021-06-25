@@ -1,10 +1,11 @@
 import React from 'react';
+import { ReactNode } from 'react-markdown/src/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 type codeBlockI = {
     language: string;
-    value: string;
+    value: ReactNode;
 };
 
 const CodeBlock = ({ language, value }: codeBlockI) => {
