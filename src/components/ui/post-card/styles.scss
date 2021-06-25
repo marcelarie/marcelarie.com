@@ -1,9 +1,15 @@
 .post {
+    margin: 1rem 0.5rem;
     h1 {
         font-size: 1.7rem;
         font-weight: 500;
     }
     p {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+    span {
+        font-size: 0.8rem;
+        opacity: 0.5;
+        letter-spacing: 0.07rem;
     }
 }
