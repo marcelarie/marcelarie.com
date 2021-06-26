@@ -1,0 +1,28 @@
+.post-loading {
+    text-align: center;
+    opacity: 0.3;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-title {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        span {
+            font-size: 0.9rem;
+            opacity: 0.5;
+            text-align: right;
+        }
+    }
+}
+
+code,
+pre {
+    border-radius: 5px;
+}

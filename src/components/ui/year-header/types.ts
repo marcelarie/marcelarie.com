@@ -1,5 +1,7 @@
-import { BlogPostsDataI } from '../../../pages/blog/types'
+import { BlogPostsDataI } from '../../../pages/blog/types';
+import { PostI } from '../post-card/types';
 
 export interface YearHeaderProps {
-    data: BlogPostsDataI
+    data: PostI[];
+    year: string;
 }

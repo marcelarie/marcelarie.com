@@ -1,47 +1,39 @@
-import YearHeader from 'components/ui/year-header'
-import { useEffect, useState } from 'react'
-import { BlogPostsDataI } from './types'
-import './styles.scss'
+import YearHeader from 'components/ui/year-header';
+import { v4 as uuid } from 'uuid';
+
+import './styles.scss';
+import usePosts from 'hooks/fetchAllPosts';
+import { PostI } from 'components/ui/post-card/types';
+
+type PostByYearT = {
+    [key: string]: PostI[];
+};
 
 function Blog() {
-    const [postsByYear, setPostsByYear] = useState<any>([])
-    // this is temporal
-    const years = [
-        {
-            year: 2021,
-            posts: [
-                {
-                    title: 'This is a fake post',
-                    lang: ['typescript', 'react', 'redux'],
-                    description: 'This article is interesting',
-                    date: '28-Nov-2021',
-                    tags: ['new', 'fake'],
-                },
-            ],
-        },
-        {
-            year: 2019,
-            posts: [
-                {
-                    title: 'This is another fake post',
-                    lang: ['typescript', 'react', 'redux'],
-                    description: 'This article is old',
-                    date: '28-Nov-2019',
-                    tags: ['fake', 'old'],
-                },
-            ],
-        },
-    ]
-    useEffect(() => {
-        setPostsByYear(years)
-    }, [])
-    return (
-        <div className="blog">
-            {postsByYear &&
-                postsByYear.map((data: BlogPostsDataI) => (
-                    <YearHeader data={data} />
-                ))}
-        </div>
-    )
+    const postsQuery = usePosts();
+    const postByYear: PostByYearT = {};
+
+    const orderPostByYear = (posts: typeof postsQuery) => {
+        if (posts.data) {
+            posts.data.forEach((post: PostI) => {
+                const year = post.created_at.slice(0, 4);
+                postByYear[year]
+                    ? postByYear[year].push(post)
+                    : (postByYear[year] = [post]);
+            });
+        }
+    };
+
+    orderPostByYear(postsQuery);
+
+    const printPostsByYear = (postByYear: PostByYearT) => {
+        for (const post in postByYear) {
+            return (
+                <YearHeader key={uuid()} data={postByYear[post]} year={post} />
+            );
+        }
+    };
+
+    return <div className="blog">{printPostsByYear(postByYear)}</div>;
 }
-export default Blog
+export default Blog;

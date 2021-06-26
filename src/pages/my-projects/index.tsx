@@ -1,14 +1,14 @@
-import ProjectCard from 'components/ui/project-card'
-import { useEffect, useState } from 'react'
-import './styles.scss'
+import ProjectCard from 'components/ui/project-card';
+import { useEffect, useState } from 'react';
+import './styles.scss';
 
 function MyProjects() {
-    const [projects, setProjects] = useState<any>([])
+    const [projects, setProjects] = useState<any>([]);
     // this is temporal
     const projectsData = [
         {
             title: 'marcelarie.com',
-            lang: ['typescript', 'react', 'redux'],
+            lang: ['typescript', 'react', 'redux', 'rust', 'postgresql'],
             description: 'Portfolio & Personal blog',
             link: 'https://github.com/marcelarie/marcelarie.com',
         },
@@ -25,10 +25,11 @@ function MyProjects() {
             description: 'Spotify clone with the MERN stack.',
             link: 'https://github.com/marcelarie/Wave-In',
         },
-    ]
+    ];
     useEffect(() => {
-        setProjects(projectsData)
-    }, [])
+        setProjects(projectsData);
+        // eslint-disable-next-line
+    }, []);
     return (
         <div className="my-projects">
             {projects &&
@@ -36,7 +37,7 @@ function MyProjects() {
                     <ProjectCard key={project.title} project={project} />
                 ))}
         </div>
-    )
+    );
 }
 
-export default MyProjects
+export default MyProjects;
