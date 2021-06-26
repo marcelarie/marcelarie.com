@@ -6,7 +6,8 @@ const getContentByIdQueryKey = (id: string) => {
 };
 
 const fetchContentById = async (id: string) => {
-    const { data } = await axios.get('http://localhost:8000/posts/' + id);
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const { data } = await axios.get(apiUrl + 'posts/' + id);
     return data;
 };
 

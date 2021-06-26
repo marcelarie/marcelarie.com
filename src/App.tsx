@@ -5,8 +5,9 @@ import Theme from './components/internal/theme-provider';
 import 'styles/reset.scss';
 import 'styles/fonts.scss';
 
+
 const App = () => {
-    const queryclient = new QueryClient()
+    const queryclient = new QueryClient();
     return (
         <QueryClientProvider client={queryclient}>
             <Theme>
