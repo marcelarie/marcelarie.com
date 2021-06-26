@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import hexToRgba from 'hex-to-rgba'
+import styled from 'styled-components';
+import hexToRgba from 'hex-to-rgba';
 
 export default styled.nav`
     background-color: ${({ theme }) => theme.background};
@@ -16,4 +16,4 @@ export default styled.nav`
             font-weight: 600 !important;
         }
     }
-`
+`;

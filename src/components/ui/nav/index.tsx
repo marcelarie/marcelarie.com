@@ -1,16 +1,18 @@
-import { NavLink, useLocation } from 'react-router-dom'
-import { HOME, MY_PROJECTS, RoutesTypes, BLOG } from 'routes'
+import { NavLink, useLocation } from 'react-router-dom';
+import { HOME, MY_PROJECTS, RoutesTypes, BLOG } from 'routes';
 
-import ThemeToggle from '../theme-toggle'
-import SNav from './styled'
-import './styles.scss'
-import Button from '../../../styles/generic/button'
+import ThemeToggle from '../theme-toggle';
+import SNav from './styled';
+import './styles.scss';
+import Button from '../../../styles/generic/button';
 
 const Nav = () => {
-    const currentLocation = useLocation().pathname
+    const currentLocation = useLocation().pathname;
     const handlePathFocus = (path: RoutesTypes) => {
-        return currentLocation === path ? 'navfocus' : ''
-    }
+        if (currentLocation === '/' && path === '/') return 'navfocus';
+        if (path === '/') return ''
+        return currentLocation.includes(path) ? 'navfocus' : '';
+    };
 
     return (
         <SNav>
@@ -35,7 +37,7 @@ const Nav = () => {
                 <ThemeToggle />
             </div>
         </SNav>
-    )
-}
+    );
+};
 
-export default Nav
+export default Nav;

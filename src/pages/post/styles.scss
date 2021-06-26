@@ -1,6 +1,16 @@
+.post-loading {
+    text-align: center;
+    opacity: 0.3;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .post-title {
     display: flex;
     justify-content: space-between;
+
     div {
         display: flex;
         flex-direction: column;
