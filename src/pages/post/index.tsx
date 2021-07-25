@@ -3,6 +3,7 @@ import usePost from '../../hooks/fetchPostById';
 import ReactMarkdown from 'react-markdown';
 import codeBlock from '../../components/internal/code-block';
 import './styles.scss';
+import SPost from './styled';
 import moment from 'moment';
 import { BLOG } from 'routes';
 
@@ -10,7 +11,6 @@ export default function Post() {
     let { id }: { id: string } = useParams();
     const post = usePost(id);
     const history = useHistory();
-    console.log(post);
     // TODO: add no id found and 404 error handeling
     if (post.isError || post.failureCount > 2) history.push(BLOG);
     if (post.isLoading || post.isError)
@@ -32,7 +32,7 @@ export default function Post() {
 
     return (
         post.data && (
-            <div className="current-post">
+            <SPost className="current-post">
                 <div className="post-title">
                     <h1>{data.title}</h1>
                     <div>
@@ -52,13 +52,15 @@ export default function Post() {
                                 const value = children[0];
                                 return codeBlock({ language, value });
                             }
-                            return children;
+                            return (
+                                <span className="special-text">{children}</span>
+                            );
                         },
                     }}
                 >
                     {data.body}
                 </ReactMarkdown>
-            </div>
+            </SPost>
         )
     );
 }

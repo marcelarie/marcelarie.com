@@ -7,17 +7,59 @@
     align-items: center;
 }
 
+.current-post {
+    padding: 0 0.5rem;
+    h1 {
+        margin: 1rem 0;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 1rem 0;
+    }
+    p,
+    pre {
+        margin: 1rem 0;
+    }
+    ul li {
+        list-style-type: decimal-leading-zero;
+        margin-left: 2rem;
+    }
+    ol li {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+    }
+}
+
 .post-title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     div {
         display: flex;
         flex-direction: column;
+        padding: 0.2rem;
         span {
             font-size: 0.9rem;
             opacity: 0.5;
             text-align: right;
+        }
+    }
+}
+@media (max-width: 800px) {
+    .post-title {
+        flex-direction: column;
+        div {
+            flex-direction: row;
+            span {
+                padding: 0 1rem;
+            }
         }
     }
 }

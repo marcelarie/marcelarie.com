@@ -1,19 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux'
-
-import { changeTheme } from '../../../redux/state/theme/theme-actions'
-import { ThemeTypes } from '../../../redux/state/theme/theme-types'
-import { RootState } from '../../../redux/root-reducer/types'
+import { ThemeTypes } from './types';
+import { useContext } from 'react';
+import { AppContext } from 'App';
 
 const ThemeToggle = () => {
-    const {DARK, LIGHT} = ThemeTypes
-    const dispatch = useDispatch()
-    const { theme } = useSelector(({ themePicker }: RootState) => themePicker)
+    const { DARK, LIGHT } = ThemeTypes;
+    const { setTheme, theme } = useContext(AppContext);
 
-    const toggle = theme === DARK ? LIGHT : DARK
+    const toggle = theme === DARK ? LIGHT : DARK;
 
     const handleChangeTheme = () => {
-        dispatch(changeTheme(toggle))
-    }
+        setTheme && setTheme(toggle);
+        localStorage.setItem('theme', toggle);
+    };
 
     if (theme === LIGHT) {
         return (
@@ -24,7 +22,7 @@ const ThemeToggle = () => {
                     </span>
                 </button>
             </div>
-        )
+        );
     }
     return (
         <div className="darkLightToggle">
@@ -34,7 +32,7 @@ const ThemeToggle = () => {
                 </span>
             </button>
         </div>
-    )
-}
+    );
+};
 
-export default ThemeToggle
+export default ThemeToggle;
