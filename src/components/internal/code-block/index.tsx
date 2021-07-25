@@ -11,16 +11,18 @@ type codeBlockI = {
 
 const CodeBlock = ({ language, value }: codeBlockI) => {
     if (!value) return '';
+    const cleanValue = value.toLocaleString();
+    console.log(cleanValue);
     return (
         <CodeBlockStyled>
-        <SyntaxHighlighter
-            language={language}
-            style={tomorrow}
-            wrapLines={true}
-            showLineNumbers={true}
-            children={value}
-        />
-            </CodeBlockStyled>
+            <SyntaxHighlighter
+                language={language}
+                style={tomorrow}
+                wrapLines={true}
+                showLineNumbers={true}
+                children={cleanValue.substring(0, cleanValue.length - 1)}
+            />
+        </CodeBlockStyled>
     );
 };
 
