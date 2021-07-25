@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactNode } from 'react-markdown/src/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -12,7 +11,6 @@ type codeBlockI = {
 const CodeBlock = ({ language, value }: codeBlockI) => {
     if (!value) return '';
     const cleanValue = value.toLocaleString();
-    console.log(cleanValue);
     return (
         <CodeBlockStyled>
             <SyntaxHighlighter
