@@ -32,7 +32,7 @@ export default function Post() {
 
     return (
         post.data && (
-            <SPost className="current-post">
+            <SPost className="current-post text-to-read">
                 <div className="post-title">
                     <h1>{data.title}</h1>
                     <div>

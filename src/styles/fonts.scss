@@ -8,7 +8,13 @@
     src: url('../fonts/FiraCode.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'AdobeCaslonPro-Regular';
+    src: url('../fonts/acalsonpro/ACaslonPro-Regular.otf') format('truetype');
+}
+
 $font-code: 'FiraCode', sans-serif;
+$font-home: 'AdobeCaslonPro-Regular', sans-serif;
 
 .main-container {
     font-family: 'Source Sans Pro', sans-serif;
@@ -18,4 +24,8 @@ $font-code: 'FiraCode', sans-serif;
         font-family: $font-code !important;
         font-size: smaller;
     }
+}
+
+.text-to-read {
+    font-family: $font-home;
 }

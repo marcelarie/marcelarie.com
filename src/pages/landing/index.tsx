@@ -1,28 +1,27 @@
-import { Link } from 'react-router-dom'
-import moment from 'moment'
-import { BLOG } from 'routes'
-import './styles.scss'
-import SLanding from './styled'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import { BLOG } from 'routes';
+import './styles.scss';
+import SLanding from './styled';
+import { useEffect, useState } from 'react';
 
 const Landing = () => {
-    const [myAge, setMyAge] = useState(0)
+    const [myAge, setMyAge] = useState(0);
 
     useEffect(() => {
         const calculateMyAge = () => {
-            const today = moment()
-            const bornDate = moment([1995, 9, 27])
-            setMyAge(today.diff(bornDate, 'years'))
-        }
-        calculateMyAge()
-    }, [])
+            const today = moment();
+            const bornDate = moment([1995, 9, 27]);
+            setMyAge(today.diff(bornDate, 'years'));
+        };
+        calculateMyAge();
+    }, []);
 
     return (
         <SLanding className="landing">
-            <div className="landing__welcome">
+            <div className="landing__welcome text-to-read">
                 <p>
-                    Hello! My name is{' '}
-                    Marcel and I'm a{' '}
+                    Hello! My name is Marcel and I'm a{' '}
                     <span id="age">{myAge} </span>
                     y/o software developer from Barcelona, Spain. My journey as
                     a programmer started recently, so there are lots of things
@@ -30,8 +29,8 @@ const Landing = () => {
                 </p>
                 <p>
                     I work with React and TypeScript for my Frontend projects,
-                    and Node.JS with Express.JS for the backend. I love equally
-                    creating beautiful websites with a minimal UI and a solid
+                    and Node.JS or Rust for the backend. I love equally creating
+                    beautiful websites with a minimal UI and a solid
                     functionality, and setup performant, efficient and scalable
                     servers and databases.
                 </p>
@@ -51,7 +50,7 @@ const Landing = () => {
                 </p>
             </div>
         </SLanding>
-    )
-}
+    );
+};
 
-export default Landing
+export default Landing;

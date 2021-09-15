@@ -1,3 +1,5 @@
+@import '../../styles//fonts.scss';
+
 .landing {
     min-height: 75vh;
     overflow: hidden;
@@ -9,7 +11,7 @@
         text-justify: inter-word;
 
         p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin: 1.3rem 0;
         }
         a {
