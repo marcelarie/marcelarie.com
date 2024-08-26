@@ -13,7 +13,7 @@ FROM alpine:edge
 
 WORKDIR /app
 
-COPY --from=build /app/myapp .
+COPY --from=builder /app/myapp .
 
 # Set the timezone and install CA certificates
 RUN apk --no-cache add ca-certificates tzdata
