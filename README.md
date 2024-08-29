@@ -8,7 +8,7 @@ If you have [just](https://github.com/casey/just) installed:
 just build-and-run
 ```
 
-If not just run:
+If not run:
 
 ```bash
 docker build -t myapp .
