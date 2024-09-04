@@ -14,3 +14,8 @@ If not run:
 docker build -t myapp .
 docker run --env-file .env -p $PORT:$PORT myapp
 ```
+
+## Development dependencies
+
+- [just](https://github.com/casey/just)
+- [wgo](https://github.com/bokwoon95/wgo)
