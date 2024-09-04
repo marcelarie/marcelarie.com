@@ -5,11 +5,11 @@ import (
 	"net/http"
 
 	"github.com/a-h/templ"
-	"github.com/marcelarie/marcelarie.com/hello"
+	"github.com/marcelarie/marcelarie.com/components/hello"
 )
 
 func main() {
-	component := hello.Hello("Marcel")
+	component := hello.Hello("M")
 
 	http.Handle("/", templ.Handler(component))
 
