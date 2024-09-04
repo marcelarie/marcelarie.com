@@ -1,3 +1,4 @@
 .env
 .envrc
 bin/*
+*_templ.go
