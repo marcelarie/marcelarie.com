@@ -8,3 +8,6 @@ run:
 
 build-and-run: build run
     @echo "Build and run complete"
+
+dev:
+    wgo -file=.go -file=.templ -xfile=_templ.go clear :: templ generate :: go run main.go
