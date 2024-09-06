@@ -11,3 +11,6 @@ build-and-run: build run
 
 dev:
     wgo -file=.go -file=.templ -xfile=_templ.go clear :: templ generate :: go run main.go
+
+tailwind:
+    tailwindcss build -i static/css/style.css -o static/css/tailwind.css -m

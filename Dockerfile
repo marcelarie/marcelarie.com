@@ -2,6 +2,8 @@ FROM golang:1.23.0-alpine3.20 AS builder
 
 WORKDIR /app
 
+# TODO: Write and use apt install just 
+
 COPY go.mod go.sum ./
 RUN go mod download
 

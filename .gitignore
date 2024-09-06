@@ -2,3 +2,6 @@
 .envrc
 bin/*
 *_templ.go
+static/css/tailwind.css
+main
+marcelarie.com

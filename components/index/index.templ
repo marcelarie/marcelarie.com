@@ -1,0 +1,22 @@
+package components
+
+import components "github.com/marcelarie/marcelarie.com/components/layout"
+
+script doTheThing() {
+    window.alert("yoho")
+}
+
+templ main() {
+	<main>
+		<button
+			onClick={ doTheThing() }
+			class="bg-pink-600 rounded-md p-2"
+		>
+			Click me
+		</button>
+	</main>
+}
+
+templ Index() {
+	@components.Layout(main())
+}
