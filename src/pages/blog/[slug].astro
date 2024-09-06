@@ -4,6 +4,9 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
+// TODO: This should be a global setting that is set by the user
+const isDarkTheme = false;
+
 interface Props {
 	post: CollectionEntry<"posts">;
 }
@@ -23,7 +26,9 @@ const hasImage = post.data.cover;
 
 <Layout title={post.data.title}>
 	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
-		<article class="prose prose-slate dark:prose-invert">
+		<article
+			class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-slate"}`}
+		>
 			{
 				hasImage && (
 					<Image
