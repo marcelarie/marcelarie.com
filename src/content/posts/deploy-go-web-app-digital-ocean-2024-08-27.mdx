@@ -1,0 +1,277 @@
+---
+title: "Deploying a Go Web App to a DigitalOcean VPS"
+date: 2024-08-27
+excerpt: This comprehensive guide provides step-by-step instructions for deploying a Go web application to a DigitalOcean Virtual Private Server (VPS).
+uags: [deploy, go, digitalocean, vps, nginx]
+---
+
+# Deploying a Go Web App to a DigitalOcean VPS
+
+This comprehensive guide provides step-by-step instructions for deploying a Go
+web application to a DigitalOcean Virtual Private Server (VPS).
+
+## Get a VPS from DigitalOcean
+
+First we need to create a DigitalOcean account and create a new droplet. You can
+find the instructions for this in the [DigitalOcean documentation](https://www.digitalocean.com/docs/droplets/how-to/create/).
+
+## Connect via ssh to the droplet to set up the environment
+
+After creating the droplet, we need to connect to it using SSH. The following
+steps will guide you through the process:
+
+1. Open your terminal
+1. Run the following command to connect to your droplet:
+
+```bash
+ssh root@<your_droplet_ip>
+```
+
+Here you can create a new user and set up a password for it. This is a more
+secure way to connect to your droplet. The root user has full access to the system, 
+it is recommended to create a new user with limited permissions. 
+
+Run the following command to create a new user:
+```bash
+adduser <username>
+usermod -aG sudo <username>
+```
+
+Then you would login with the new user this way:
+```bash
+ssh <username>@<your_droplet_ip>
+```
+
+3. Enter your password when prompted. You are now connected to your droplet
+
+Run the following command to update the package list:
+
+```bash
+apt-get update
+```
+
+Now we will install the Git and Go programming language on the droplet.
+
+```bash
+apt install git golang
+```
+
+## Setup Git
+
+```bash
+git config --global user.name "<Name>"
+git config --global user.email "<GH-Mail>"
+```
+
+## Build the Go Web Application
+
+First we create the directory for our Go web application:
+```bash
+mkdir ~/go-web-app
+cd ~/go-web-app
+```
+
+Then we create the main file for our Go web application:
+```bash
+# you can use nano too
+vim main.go
+```
+
+To create a simple web server, add the following code to the `main.go` file:
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello World")
+	})
+
+	http.HandleFunc("/greet/", func(w http.ResponseWriter, r *http.Request) {
+		name := r.URL.Path[len("/greet/"):]
+		fmt.Fprintf(w, "Hello %s\n", name)
+	})
+
+	http.ListenAndServe(":9990", nil)
+}
+```
+
+Then build the binary:
+```bash
+go build main.go
+```
+
+This will create a binary file named `main` in the go app directory.
+
+## Create the Systemd Service
+
+Now we have the binary file for our Go web application, but running it manually
+is not enough to ensure the application stays active after server restarts
+or crashes. To address this, we need to create a systemd service file. 
+
+This file will define how our application should be managed by the system, 
+ensuring it starts automatically on boot and restarts if it crashes.
+
+```bash
+# you can name it as you like
+sudo vim /etc/systemd/system/go-web-app.service
+```
+
+The content of the `go-web-app.service` file should look like this:
+```ini
+[Unit]
+Description=<name-of-your-app>
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/home/<username>/<path-to-go-app>/main
+
+[Install]
+WantedBy=multi-user.target
+```
+
+To start the service and enable it to start on boot, run the following commands:
+```bash
+sudo systemctl start go-web-app
+sudo systemctl enable go-web-app
+```
+
+## Setup Nginx and reverse proxy
+
+First of all, we need to install Nginx on the droplet. Run the following commands:
+
+```bash
+sudo apt install nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+Now we need to configure Nginx to serve our Go web application. Create a new
+file in the `/etc/nginx/sites-available` directory:
+
+```bash
+sudo vim /etc/nginx/sites-available/<your_domain>
+```
+
+Now add the following configuration to the file `/etc/nginx/sites-available/<your_domain>`:
+
+```nginx
+server {
+    server_name your_domain www.your_domain;
+
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}
+```
+
+The `proxy_pass` directive tells Nginx to forward all requests to the specified URL.
+
+Next we need to create a symbolic link to the `/etc/nginx/sites-enabled` directory:
+```bash
+sudo ln -s /etc/nginx/sites-available/<your_domain> /etc/nginx/sites-enabled/
+```
+
+And reload the Nginx service:
+```bash
+sudo nginx -s reload
+```
+
+To make sure that the deployment is successful, you can visit your domain in a 
+web browser go to `http://your_domain` and you should see the message `Hello World`.
+
+It might be that your domain service is not pointing to the correct DNS server. 
+For changing that you need to go to your domain provider and point the domain to the correct DNS server.
+
+For example for porkbun you can do the following:
+1. Go to your domain provider and login
+2. Go to the DNS settings
+3. Add a new A record with the IP of your droplet with no host
+4. Add a new A record with the IP of your droplet with www as the host
+5. Save the changes
+
+This is better explained in this link [Setup Porkbun DNS with external VPS](https://kb.porkbun.com/article/54-pointing-your-domain-to-hosting-with-a-records).
+
+## Bonus: Firewall Setup
+
+## Secure the Nginx with Let's Encrypt
+
+This is an optional step, but it's recommended to secure your Nginx server with a
+free SSL certificate from Let's Encrypt, so the domain can be accesed via HTTPS.
+
+TODO: Setup firewall
+
+# Generate a deploy SSH key
+
+This step is necesary to allow the server to pull the code from the repository. 
+
+First we need to generate a new SSH key on the server:
+```bash
+ssh-keygen -t ed25519 -C "deploy@your_domain"
+```
+
+This command generates a new SSH key using the Ed25519 algorithm, which is more
+secure and efficient than older algorithms. The `-C` flag adds a comment to
+identify the key.
+
+> **Important:** If you already have a key generated, you can skip this step.
+> Only proceed with creating a new key if you don't have one or want a separate
+> key for deployment.
+
+To know if you already have a key generated you can run the command above and
+you will see something like this:
+```bash
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/root/.ssh/id_ed25519):
+/root/.ssh/id_ed25519 already exists.
+Overwrite (y/n)?
+```
+
+Then we should say `n` and we can use the existing key or generate a separated
+one with the following command:
+```bash
+ssh-keygen -t ed25519 -C "deploy@your_domain" -f ~/.ssh/id_ed25519_deploy
+```
+
+This will create a separated key that you can use specifically for the
+deployment of your domain.
+
+After generating the key, you'll need to add it to your GitHub or GitLab account:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Copy the output and add it as a deploy key in your repository settings on GitHub
+or GitLab. More info on how to add a deploy key can be found in the 
+[GitHub documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#set-up-deploy-keys).
+
+Next, test the SSH connection to ensure it's working correctly:
+
+```bash
+ssh -T git@github.com
+```
+
+With this setup, we can now clone the repository onto the server and implement
+an automated deployment process. We can achieve this with GitHub Actions:
+
+In the next section, we'll explore how to set this up.
+
+## Setup GitHub Actions for Automated Deployment
+
+
+Sources: 
+[How to create a VPS on DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/create/)
+[How to deploy a Go web application using Nginx on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-go-web-application-using-nginx-on-ubuntu-18-04)
+[Auto deploy git on DigitalOcean or any other VPS](https://thecodebeast.com/auto-deploy-git-on-digital-ocean-or-any-other-vps/)
+[Secure Ngix with Let's Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04)
+
+<sub>Aug 27, 2024</sub>
+#tag1
+```
