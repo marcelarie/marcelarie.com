@@ -5,14 +5,21 @@ import Layout from "../layouts/Layout.astro";
 const allPosts = await getCollection("posts");
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="marcelarie">
   <main>
     {
       allPosts.map((post) => {
         const { title } = post.data;
         const href = "/blog/" + post.slug;
 
-        return <a href={href}>{title}</a>;
+        return (
+          <a
+            class="mb-4 text-blue-500 hover:underline hover:text-blue-500 transition duration-100 ease-in-out"
+            href={href}
+          >
+            {title}
+          </a>
+        );
       })
     }
   </main>

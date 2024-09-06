@@ -21,12 +21,13 @@ const { Content } = await post.render();
 const hasImage = post.data.cover;
 ---
 
-<Layout title="test-post">
-	<div>
-		<article>
+<Layout title={post.data.title}>
+	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
+		<article class="prose prose-slate dark:prose-invert">
 			{
 				hasImage && (
 					<Image
+						class="object-cover object-center !m-0 aspect-square block"
 						src={post.data.cover}
 						alt={post.data.title}
 						width={600}
@@ -34,8 +35,8 @@ const hasImage = post.data.cover;
 					/>
 				)
 			}
-			<h1 <!-- class="md:!text-5xl md:!leading-[1.2]" -->
-				>{post.data.title}
+			<h1 class="md:!text-5xl md:!leading-[1.2] color-pink-500">
+				{post.data.title}
 			</h1>
 			<p class="lead">{post.data.excerpt}</p>
 			<div>
