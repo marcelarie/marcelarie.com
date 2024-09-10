@@ -31,7 +31,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
 });
 ---
 
-<div class="max-w-3xl mx-auto">
+<div class="max-w-3xl mx-auto px-8">
 	<Navbar />
 	<Layout title={post.data.title}>
 		<div
@@ -58,7 +58,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
 					{formattedDate}
 				</a>
 				<!-- <p class="lead">{post.data.excerpt}</p> -->
-				<div>
+				<div id="post-content">
 					<Content />
 				</div>
 			</article>
@@ -87,13 +87,6 @@ const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
 	.prose {
 		font-family: "IBM Plex Mono", monospace;
 		font-size: 14px;
-	}
-
-	.prose:where(h2) {
-		font-weight: 100;
-	}
-
-	pre {
-		border: 5px solid red;
+		max-width: none;
 	}
 </style>
