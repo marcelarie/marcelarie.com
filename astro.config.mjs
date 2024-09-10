@@ -1,12 +1,30 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import vue from '@astrojs/vue';
+import vue from "@astrojs/vue";
 
-import mdx from '@astrojs/mdx';
+import mdx from "@astrojs/mdx";
 
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
+
+import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), mdx(), tailwind()]
+  integrations: [
+    vue(),
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: {
+        themes: {
+          light: "light-plus",
+          dark: "vesper"
+        },
+      },
+      // remarkPlugins: [remarkToc],
+      // rehypePlugins: [rehypePresetMinify],
+      // remarkRehype: { footnoteLabel: "Footnotes" },
+      // gfm: false,
+    }),
+    tailwind(),
+  ],
 });
