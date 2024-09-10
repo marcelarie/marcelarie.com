@@ -5,13 +5,6 @@ excerpt: This comprehensive guide provides step-by-step instructions for deployi
 uags: [deploy, go, digitalocean, vps, nginx]
 ---
 
-# Deploying a Go Web App to a DigitalOcean VPS
-
-This comprehensive guide provides step-by-step instructions for deploying a Go
-web application to a DigitalOcean Virtual Private Server (VPS).
-
-## Get a VPS from DigitalOcean
-
 First we need to create a DigitalOcean account and create a new droplet. You can
 find the instructions for this in the [DigitalOcean documentation](https://www.digitalocean.com/docs/droplets/how-to/create/).
 
@@ -184,7 +177,7 @@ sudo nginx -s reload
 ```
 
 To make sure that the deployment is successful, you can visit your domain in a 
-web browser go to `http://your_domain` and you should see the message `Hello World`.
+web browser go to **http://your_domain** and you should see the message `Hello World`.
 
 It might be that your domain service is not pointing to the correct DNS server. 
 For changing that you need to go to your domain provider and point the domain to the correct DNS server.
@@ -266,12 +259,9 @@ In the next section, we'll explore how to set this up.
 ## Setup GitHub Actions for Automated Deployment
 
 
-Sources: 
-[How to create a VPS on DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/create/)
-[How to deploy a Go web application using Nginx on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-go-web-application-using-nginx-on-ubuntu-18-04)
-[Auto deploy git on DigitalOcean or any other VPS](https://thecodebeast.com/auto-deploy-git-on-digital-ocean-or-any-other-vps/)
-[Secure Ngix with Let's Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04)
-
-<sub>Aug 27, 2024</sub>
-#tag1
+Sources:  \
+[How to create a VPS on DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/create/)  \
+[How to deploy a Go web application using Nginx on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-go-web-application-using-nginx-on-ubuntu-18-04) \
+[Auto deploy git on DigitalOcean or any other VPS](https://thecodebeast.com/auto-deploy-git-on-digital-ocean-or-any-other-vps/) \
+[Secure Ngix with Lets Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04) 
 ```

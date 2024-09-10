@@ -23,16 +23,22 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const hasImage = post.data.cover;
+
+const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "short",
+	day: "numeric",
+});
 ---
 
-<div class="max-w-3xl mx-auto px-8">
+<div class="max-w-3xl mx-auto">
 	<Navbar />
-	<Layout title={post.data.title}>
+	<Layout title={post.data.title} isDarkTheme={isDarkTheme}>
 		<div
 			class="flex flex-col items-center justify-center min-h-screen mt-8"
 		>
 			<article
-				class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-slate"}`}
+				class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"}`}
 			>
 				{
 					hasImage && (
@@ -45,13 +51,13 @@ const hasImage = post.data.cover;
 						/>
 					)
 				}
-				<h1
-					id="title"
-					class="md:!text-5xl md:!leading-[1.2] color-pink-500"
-				>
+				<h1 id="title" class="mb-3">
 					{post.data.title}
 				</h1>
-				<p class="lead">{post.data.excerpt}</p>
+				<a id="post-date">
+					{formattedDate}
+				</a>
+				<!-- <p class="lead">{post.data.excerpt}</p> -->
 				<div>
 					<Content />
 				</div>
@@ -63,24 +69,31 @@ const hasImage = post.data.cover;
 <style>
 	#title {
 		font-family: "Noto Serif Georgia";
-		font-size: 24px;
-		weight: regular;
-	}
-
-	#post-title {
-		font-family: "Noto Serif Georgia";
-		font-size: 24px;
+		font-size: 26px;
 	}
 
 	#post-date {
 		font-family: "IBM Plex Mono", monospace;
 		font-size: 14px;
-		font-weight: 400;
 		color: #929292;
+		text-decoration: none;
 	}
 
 	#post-preview {
 		font-family: "IBM Plex Mono", monospace;
 		font-size: 14px;
+	}
+
+	.prose {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 14px;
+	}
+
+	.prose:where(h2) {
+		font-weight: 100;
+	}
+
+	pre {
+		border: 5px solid red;
 	}
 </style>
