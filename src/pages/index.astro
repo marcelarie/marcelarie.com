@@ -6,49 +6,44 @@ import Navbar from "../components/Navbar.astro";
 const allPosts = await getCollection("posts");
 ---
 
-<body>
-  <div class="max-w-3xl mx-auto px-8">
-    <Navbar />
-    <Layout title="blog">
-      <main>
-        {
-          allPosts.map(async (post) => {
-            const { title, date } = post.data;
-            const href = "/blog/" + post.slug;
-            const { Content } = await post.render();
+<Layout title="Blog">
+  <main>
+    {
+      allPosts.map(async (post) => {
+        const { title, date } = post.data;
+        const href = "/blog/" + post.slug;
+        const { Content } = await post.render();
 
-            const formattedDate = new Date(date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            });
+        const formattedDate = new Date(date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
 
-            return (
-              <div class="flex flex-col mb-8">
-                <a
-                  id="post-title"
-                  class="hover:underline hover:text-blue-500 transition duration-100 ease-in-out"
-                  href={href}
-                >
-                  {title}
-                </a>
-                <a id="post-date" class="mt-1">
-                  {formattedDate}
-                </a>
-                <div
-                  id="post-preview"
-                  class="mt-4 truncate overflow-hidden text-wrap max-h-20 whitespace-pre-line"
-                >
-                  <Content />
-                </div>
-              </div>
-            );
-          })
-        }
-      </main>
-    </Layout>
-  </div>
-</body>
+        return (
+          <div class="flex flex-col mb-8">
+            <a
+              id="post-title"
+              class="hover:underline hover:text-blue-500 transition duration-100 ease-in-out"
+              href={href}
+            >
+              {title}
+            </a>
+            <a id="post-date" class="mt-1">
+              {formattedDate}
+            </a>
+            <div
+              id="post-preview"
+              class="mt-4 truncate overflow-hidden text-wrap max-h-20 whitespace-pre-line"
+            >
+              <Content />
+            </div>
+          </div>
+        );
+      })
+    }
+  </main>
+</Layout>
 
 <style>
   nav #logo {

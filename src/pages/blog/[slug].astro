@@ -30,39 +30,34 @@ const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
 });
 ---
 
-<div class="max-w-3xl mx-auto px-8">
-	<Navbar />
-	<Layout title={post.data.title}>
-		<div
-			class="flex flex-col items-center justify-center min-h-screen mt-8"
+<Layout title={post.data.title}>
+	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
+		<article
+			class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"}`}
 		>
-			<article
-				class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"}`}
-			>
-				{
-					hasImage && (
-						<Image
-							class="object-cover object-center !m-0 aspect-square block"
-							src={post.data.cover}
-							alt={post.data.title}
-							width={600}
-							height={600}
-						/>
-					)
-				}
-				<h1 id="title">
-					{post.data.title}
-				</h1>
-				<a id="post-date">
-					{formattedDate}
-				</a>
-				<div id="post-content">
-					<Content />
-				</div>
-			</article>
-		</div>
-	</Layout>
-</div>
+			{
+				hasImage && (
+					<Image
+						class="object-cover object-center !m-0 aspect-square block"
+						src={post.data.cover}
+						alt={post.data.title}
+						width={600}
+						height={600}
+					/>
+				)
+			}
+			<h1 id="title">
+				{post.data.title}
+			</h1>
+			<a id="post-date">
+				{formattedDate}
+			</a>
+			<div id="post-content">
+				<Content />
+			</div>
+		</article>
+	</div>
+</Layout>
 
 <style>
 	#title {
