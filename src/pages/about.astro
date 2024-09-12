@@ -1,11 +1,79 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 
+const isDarkTheme = false;
+
+const aboutData = {
+  title: "Hi!",
+  image: "/public/images/work-pic.png",
+};
+
+const calculateYearDifference = (date: string) => {
+  const birthDate = new Date(date).getTime();
+  const now = new Date().getTime();
+  const diff = now - birthDate;
+  return Math.floor(diff / 31557600000);
+};
+
+const myAge = calculateYearDifference("1995-09-27");
+const yearsProgramming = calculateYearDifference("2020-10-10");
 ---
 
-<!-- # about page -->
-<div class="container">
-  <Layout title="About">
-    <h1>about page</h1>
-  </Layout>
-</div>
+<Layout title={aboutData.title}>
+  <article
+    class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"} flex row-auto gap-4`}
+  >
+    {
+      aboutData.image && (
+        <Image
+          class="object-cover object-center !m-0 aspect-square block"
+          src={aboutData.image}
+          alt=""
+          width={150}
+          height={150}
+        />
+      )
+    }
+    <div>
+      <h1 id="title">
+        {aboutData.title}
+      </h1>
+      <div id="about-content" class="text-sm leading-relaxed text-gray-700">
+        <span>
+          {`I'm Marcel a ${myAge}-year-old software developer from Barcelona.`}
+        </span>
+        </br>
+        </br>
+        {
+          `I've been coding for over ${yearsProgramming} years, specializing in React and TypeScript for`
+        }
+        frontend projects, and Node.js and Ruby for backend and CLI tools.
+        </br>
+        </br>
+        I'm currently a fullstack developer at Stuart, while I keep learning other
+        technologies in my free time, such as Rust and Go. I also love contributing
+        to open-source projects and continuously look for ways to improve.
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  #title {
+    font-family: "Noto Serif Georgia";
+    font-size: 30px;
+    margin-bottom: 4px;
+  }
+
+  #about-content {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+  }
+
+  .prose {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    max-width: none;
+  }
+</style>
