@@ -1,10 +1,12 @@
 ---
-
 ---
 
 <nav class="flex justify-between mt-10 mb-14">
-	<a id="logo" href="/">marcelarie</a>
-	<div id="right-navbar" class="flex space-x-4 self-center">
+	<a id="logo" href="/">
+		<span>m</span><span>a</span><span>r</span><span>c</span><span>e</span
+		><span>l</span><span>a</span><span>r</span><span>i</span><span>e</span>
+	</a>
+	<div id="right-navbar" class="flex space-x-4 self-end">
 		<a href="/about">About</a>
 		<a href="/projects">Projects</a>
 	</div>
@@ -16,9 +18,26 @@
 		font-size: 36px;
 	}
 
+	nav #logo span {
+		display: inline-block;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	nav #logo span:hover {
+		text-decoration: underline;
+	}
+
+	nav #logo span:active {
+		opacity: 0;
+		transition: 0.2s;
+	}
+
 	nav #right-navbar a {
 		font-family: "Noto Serif Georgia";
-		font-size: 24px;
+		font-size: 20px;
 		weight: regular;
+		&:hover {
+			opacity: 0.8;
+		}
 	}
 </style>
