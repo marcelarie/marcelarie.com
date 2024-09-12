@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/Navbar.astro";
 
 interface Props {
 	post: CollectionEntry<"posts">;
@@ -31,9 +30,9 @@ const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
 ---
 
 <Layout title={post.data.title}>
-	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
+	<div class="flex flex-col items-center justify-center min-h-screen mt-8 px-4 sm:px-6 lg:px-8">
 		<article
-			class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"}`}
+			class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"} w-full max-w-3xl`}
 		>
 			{
 				hasImage && (
@@ -83,5 +82,6 @@ const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
 		font-family: "IBM Plex Mono", monospace;
 		font-size: 14px;
 		max-width: none;
+		overflow-wrap: break-word;
 	}
 </style>
