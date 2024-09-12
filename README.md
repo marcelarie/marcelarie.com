@@ -3,7 +3,7 @@
 This is my blog. I'm using [Astro](https://astro.build) with [Vue 3](https://v3.vuejs.org).
 
 
-*Commands:*
+**Commands:**
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
