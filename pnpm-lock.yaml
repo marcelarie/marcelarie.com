@@ -45,6 +45,9 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
+      vite:
+        specifier: ^5.4.3
+        version: 5.4.3
 
 packages:
 
