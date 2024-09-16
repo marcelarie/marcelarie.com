@@ -20,6 +20,7 @@ export async function GET(context: Context) {
       pubDate: post.data.date,
       description: post.data.description,
       categories: post.data.tags,
+      content: post.body,
       // Assumes all posts are rendered as `/blog/[slug]`
       link: `/blog/${post.slug}/`,
     })),
