@@ -1,5 +1,8 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
+import sanitizeHtml from "sanitize-html";
+import MarkdownIt from "markdown-it";
+const parser = new MarkdownIt();
 
 type Context = {
   site: string | URL;
@@ -20,7 +23,10 @@ export async function GET(context: Context) {
       pubDate: post.data.date,
       description: post.data.description,
       categories: post.data.tags,
-      content: post.body,
+      // Note: this will not process components or JSX expressions in MDX files.
+      content: sanitizeHtml(parser.render(post.body), {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+      }),
       // Assumes all posts are rendered as `/blog/[slug]`
       link: `/blog/${post.slug}/`,
     })),
