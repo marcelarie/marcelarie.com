@@ -1,13 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import { BLOG_TITLE } from "./constants";
 
 const allPosts = await getCollection("posts");
-
-console.log(allPosts);
 ---
 
-<Layout title="Blog">
+<Layout title={BLOG_TITLE}>
   <main>
     {
       allPosts.map(async (post) => {

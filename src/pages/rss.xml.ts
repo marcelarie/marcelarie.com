@@ -2,6 +2,7 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
+import { BLOG_TITLE } from "./constants";
 const parser = new MarkdownIt();
 
 type Context = {
@@ -13,7 +14,7 @@ export async function GET(context: Context) {
   console.log(blogPosts);
 
   return rss({
-    title: "Marcel's Blog",
+    title: BLOG_TITLE,
     description: "This is my personal blog where I write about things I like.",
     site: context.site,
     // Array of `<item>`s in output xml
