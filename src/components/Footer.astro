@@ -1,7 +1,53 @@
 ---
-
+const isHome = Astro.url.pathname === "/";
+const justifyStyle = isHome ? "justify-end" : "justify-between";
 ---
 
-<footer class="text-right py-1">
-	RSS / Mail / GitHub
+<footer class=`flex ${justifyStyle} items-center py-4 mt-8`>
+	{
+		!isHome && (
+			<a href="/" class="text-xl md:text-2xl">
+				{"< "}home
+			</a>
+		)
+	}
+	<div class="flex space-x-4">
+		<a
+			href="/rss.xml"
+			class="font-ibm-plex-mono text-sm hover:underline"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			RSS
+		</a>
+		<span>/</span>
+		<a
+			href="mailto:googlillo@example.com"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="font-ibm-plex-mono text-sm hover:underline"
+		>
+			Mail
+		</a>
+		<span>/</span>
+		<a
+			href="https://github.com/marcelarie"
+			class="font-ibm-plex-mono text-sm hover:underline"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			GitHub
+		</a>
+
+		<style>
+			footer {
+				font-family: "Pixel Code Light";
+				/* font-family: "IBM Plex Mono", monospace; */
+			}
+			footer a {
+				font-family: "Pixel Code Light";
+				font-size: 12px;
+			}
+		</style>
+	</div>
 </footer>
