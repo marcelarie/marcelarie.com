@@ -1,5 +1,6 @@
 ---
-import Navbar from '../components/Navbar.astro';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
 	title: string;
@@ -18,30 +19,34 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="max-w-3xl mx-auto px-8">
-		<Navbar />
-		<slot />
+	<body class="max-w-3xl mx-auto px-8 flex flex-col min-h-screen">
+		<main class="flex-grow">
+			<Navbar />
+			<slot />
+		</main>
+		<Footer />
 	</body>
+
+	<style is:global>
+		:root {
+			--accent: 136, 58, 234;
+			--accent-light: 224, 204, 250;
+			--accent-dark: 49, 10, 101;
+			--accent-gradient: linear-gradient(
+				45deg,
+				rgb(var(--accent)),
+				rgb(var(--accent-light)) 30%,
+				white 60%
+			);
+		}
+		html {
+			font-family: system-ui, sans-serif;
+			/* background: #13151a; */
+			background: #ffffff;
+		}
+		code {
+			font-family: "IBM Plex Mono", monospace !important;
+			/* font-size: 14px; */
+		}
+	</style>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		/* background: #13151a; */
-		background: #ffffff;
-	}
-	code {
-		font-family: "IBM Plex Mono", monospace !important;
-		/* font-size: 14px; */
-	}
-</style>
