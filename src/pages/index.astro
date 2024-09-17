@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { BLOG_TITLE } from "./constants";
 import { formatDate } from "../utils/dates";
+import { calculateReadingTime } from "../utils/misc";
+import type { Post } from "../types";
 
 const allPosts = await getCollection("posts");
 ---
@@ -10,34 +12,40 @@ const allPosts = await getCollection("posts");
 <Layout title={BLOG_TITLE}>
   <main>
     {
-      allPosts.map(async (post) => {
-        const href = "/blog/" + post.slug;
-        const date = new Date(post.data.date);
-        const formattedDate = formatDate(date);
+      allPosts
+        .filter((post: Post) => !post.data.draft)
+        .map(async (post: Post) => {
+          const href = "/blog/" + post.slug;
+          const date = new Date(post.data.date);
+          const formattedDate = formatDate(date);
+          const readingTime = calculateReadingTime(post.body);
 
-        const { Content } = await post.render();
+          const { Content } = await post.render();
 
-        return (
-          <div class="flex flex-col mb-8">
-            <a
-              id="post-title"
-              class="hover:underline hover:text-blue-500"
-              href={href}
-            >
-              {post.data.title}
-            </a>
-            <a id="post-date" class="mt-1">
-              {formattedDate}
-            </a>
-            <div
-              id="post-preview"
-              class="mt-4 truncate overflow-hidden text-wrap max-h-20 whitespace-pre-line"
-            >
-              <Content />
+          return (
+            <div class="flex flex-col mb-8">
+              <a
+                id="post-title"
+                class="hover:underline hover:text-blue-500"
+                href={href}
+              >
+                {post.data.title}
+              </a>
+              <a id="post-date" class="mt-1">
+                {formattedDate} -
+                <span id="reading-time" class="ml-1">
+                  {readingTime} m read
+                </span>
+              </a>
+              <div
+                id="post-preview"
+                class="mt-4 truncate overflow-hidden text-wrap max-h-20 whitespace-pre-line"
+              >
+                <Content />
+              </div>
             </div>
-          </div>
-        );
-      })
+          );
+        })
     }
   </main>
 </Layout>

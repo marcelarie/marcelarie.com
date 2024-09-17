@@ -1,3 +1,5 @@
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 export type Post = {
   id: string;
   slug: string;
@@ -7,7 +9,10 @@ export type Post = {
     title: string;
     date: Date;
     excerpt: string;
+    draft: boolean;
     tags: string[];
   };
-  render: any;
+  render: () => Promise<{
+    Content: AstroComponentFactory;
+  }>;
 };

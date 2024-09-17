@@ -11,7 +11,6 @@ type Context = {
 
 export async function GET(context: Context) {
   const blogPosts = await getCollection("posts");
-  console.log(blogPosts);
 
   return rss({
     title: BLOG_TITLE,

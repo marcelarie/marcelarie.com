@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../utils/dates";
+import type { Post } from "../../types";
+import { calculateReadingTime } from "../../utils/misc";
 
 interface Props {
 	post: CollectionEntry<"posts">;
@@ -11,7 +13,7 @@ interface Props {
 
 export async function getStaticPaths() {
 	const blogPosts = await getCollection("posts");
-	return blogPosts.map((post) => ({
+	return blogPosts.map((post: Post) => ({
 		params: { slug: post.slug },
 		props: { post },
 	}));
@@ -20,6 +22,8 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const hasImage = post.data.cover;
+const isDraft = post.data.draft;
+const readingTime = calculateReadingTime(post.body);
 
 const date = new Date(post.data.date);
 const formattedDate = formatDate(date);
@@ -43,8 +47,22 @@ const formattedDate = formatDate(date);
 				{post.data.title}
 			</h1>
 			<a id="post-date">
-				{formattedDate}
+				{formattedDate} -
+				<span id="reading-time" class="ml-1">
+					{readingTime} m read
+				</span>
 			</a>
+			{
+				isDraft && (
+					<div
+						class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 pl-2 my-4 dark:bg-yellow-900 dark:border-yellow-500 dark:text-yellow-200"
+						role="alert"
+					>
+						<p class="font-bold">Note:</p>
+						<p>This post is still in progress.</p>
+					</div>
+				)
+			}
 			<div id="post-content">
 				<Content />
 			</div>
