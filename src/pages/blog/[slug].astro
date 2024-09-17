@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../utils/dates";
 
 interface Props {
 	post: CollectionEntry<"posts">;
@@ -22,15 +23,12 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const hasImage = post.data.cover;
 
-const formattedDate = new Date(post.data.date).toLocaleDateString("en-US", {
-	year: "numeric",
-	month: "short",
-	day: "numeric",
-});
+const date = new Date(post.data.date);
+const formattedDate = formatDate(date);
 ---
 
 <Layout title={post.data.title}>
-<div class="flex flex-col items-center justify-center min-h-screen mt-8">
+	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
 		<article
 			class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"} w-full max-w-3xl`}
 		>

@@ -1,22 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import { calculateYearDifference } from "../utils/dates";
 
-const BIRTH_DATE = "1995-09-27";
-const PROGRAMMING_START_DATE = "2020-10-10";
+const BIRTH_DATE = new Date("1995-09-27");
+const PROGRAMMING_START_DATE = new Date("2020-10-10");
 
 const isDarkTheme = false;
 
 const aboutData = {
   title: "Hi!",
   image: "/images/work-pic.png",
-};
-
-const calculateYearDifference = (date: string) => {
-  const birthDate = new Date(date).getTime();
-  const now = new Date().getTime();
-  const diff = now - birthDate;
-  return Math.floor(diff / 31557600000);
 };
 
 const myAge = calculateYearDifference(BIRTH_DATE);
