@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
 import { BLOG_TITLE } from "./constants";
+import type { Post } from "../types";
 const parser = new MarkdownIt();
 
 type Context = {
@@ -18,7 +19,7 @@ export async function GET(context: Context) {
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
-    items: blogPosts.map((post) => ({
+    items: blogPosts.map((post: Post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
