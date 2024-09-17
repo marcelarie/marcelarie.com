@@ -16,35 +16,39 @@
 				>This area is still under construction</span
 			>
 		</a>
-	</div>
+		<button id="theme-toggle" class="font-ibm-plex-mono text-sm">
+			<span class="hidden dark:block">☀️</span>
+			<span class="dark:hidden">🌑</span>
+		</button>
 
-	<style>
-		nav #logo {
-			font-family: "Pixel Code Light";
-			@apply text-xl md:text-4xl;
-		}
-
-		nav #logo span {
-			display: inline-block;
-			transition: opacity 0.2s ease-in-out;
-		}
-
-		nav #logo span:hover {
-			text-decoration: underline;
-		}
-
-		nav #logo span:active {
-			opacity: 0;
-			transition: 0.2s;
-		}
-
-		nav #right-navbar a {
-			font-family: "Noto Serif Georgian";
-			font-size: 20px;
-			weight: regular;
-			&:hover {
-				color: #424949;
+		<style>
+			nav #logo {
+				font-family: "Pixel Code Light";
+				@apply text-xl md:text-4xl;
 			}
-		}
-	</style>
+
+			nav #logo span {
+				display: inline-block;
+				transition: opacity 0.2s ease-in-out;
+			}
+
+			nav #logo span:hover {
+				text-decoration: underline;
+			}
+
+			nav #logo span:active {
+				opacity: 0;
+				transition: 0.2s;
+			}
+
+			nav #right-navbar a {
+				font-family: "Noto Serif Georgian";
+				font-size: 20px;
+				weight: regular;
+				&:hover {
+					color: #424949;
+				}
+			}
+		</style>
+	</div>
 </nav>

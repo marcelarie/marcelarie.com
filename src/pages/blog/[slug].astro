@@ -9,8 +9,6 @@ interface Props {
 	post: CollectionEntry<"posts">;
 }
 
-const isDarkTheme = false;
-
 export async function getStaticPaths() {
 	const blogPosts = await getCollection("posts");
 	return blogPosts.map((post) => ({
@@ -29,9 +27,7 @@ const formattedDate = formatDate(date);
 
 <Layout title={post.data.title}>
 	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
-		<article
-			class={`prose ${isDarkTheme ? "dark:prose-invert" : "prose-stone"} w-full max-w-3xl`}
-		>
+		<article class="prose dark:prose-invert prose-stone w-full max-w-3xl">
 			{
 				hasImage && (
 					<Image
