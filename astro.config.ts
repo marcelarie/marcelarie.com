@@ -6,8 +6,7 @@ import { loadEnv } from "vite";
 
 const DEFAULT_PORT = 4321;
 
-// Load dev port from environment variables with priority
-const env = loadEnv(process.env.PORT, process.cwd(), "");
+const env = loadEnv(process.env.PORT!, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
