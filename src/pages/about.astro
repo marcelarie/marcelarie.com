@@ -41,21 +41,29 @@ const yearsProgramming = calculateYearDifference(PROGRAMMING_START_DATE);
         class="text-sm leading-relaxed text-gray-700 prose mt-4 dark:text-white"
       >
         <span>
-          {`I'm Marcel a ${myAge}-year-old software developer from Barcelona.`}
+          {
+            `I'm Marcel, a ${myAge}-year-old software developer based in Barcelona.`
+          }
         </span>
         <br />
         <br />
         <span class="mt-1 block">
           {
-            `With over ${yearsProgramming} years of experience, I specializing in React and TypeScript for`
+            `With over ${yearsProgramming} years of experience in the tech industry,  I specialize in frontend development using`
           }
-          frontend, and Node.js and Ruby for backend development and tooling.
+          using React and TypeScript, and backend development and tooling with Node.js
+          and Ruby.
         </span>
         <br />
         <span>
-          Currently, I'm a fullstack developer at Stuart, and in my free time,
-          I'm learning Rust and Go while contributing to open-source projects.
+          Currently, I'm working as a full-stack developer at <a
+            href="https://stuart.com/"
+            target="_blank"
+            rel="noopener">Stuart</a
+          >. In my free time, I'm expanding my skills by learning Rust and Go
+          and contributing to open-source projects.
         </span>
+        <br/>
       </div>
     </div>
   </article>
@@ -73,5 +81,9 @@ const yearsProgramming = calculateYearDifference(PROGRAMMING_START_DATE);
     font-size: 14px;
     text-align: justify;
     text-justify: inter-word;
+  }
+
+  a {
+    color: #3182ce;
   }
 </style>
