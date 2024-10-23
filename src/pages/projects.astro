@@ -24,6 +24,10 @@ const projectNames = [
 const fetchProjects = async () => {
   try {
     const projects = await Promise.all(
+      // TODO: Consider querying repos by topic (e.g. "showcase-in-blog") instead of hardcoding names.
+      // This would allow managing the displayed projects directly on GitHub.
+      // Problem: can't order by creation date, `updated`  seems to be the best option.
+      // Example: const repos = await getReposByTopic("marcelarie", "showcase-in-blog");
       projectNames.map(async (project) => {
         const data = await getRepoInfo("marcelarie", project);
         const languages = await getRepoLanguages("marcelarie", project);
