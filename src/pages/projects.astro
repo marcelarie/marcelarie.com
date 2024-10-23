@@ -64,7 +64,7 @@ const projects: Project[] = await fetchProjects();
           >
             {project.name}
           </a>
-          <div class="w-96 mt-1 mb-2">
+          <div class="md:w-96 mt-1 mb-2">
             <LangColorBar languages={project.languages} />
           </div>
           <p>{project.description}</p>

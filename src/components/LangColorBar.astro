@@ -9,7 +9,7 @@ const { languages } = Astro.props;
 ---
 
 <div
-	class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 relative"
+	class="w-full sm:w-[calc(100%-2rem)] bg-gray-200 rounded-full md:h-2 h-3 dark:bg-gray-700 relative"
 >
 	{
 		languages.reduce(
@@ -34,7 +34,7 @@ const { languages } = Astro.props;
 				const currentElement = (
 					<div class="language-bar">
 						<div
-							class={`h-2 absolute ${style}`}
+							class={`h-3 md:h-2 absolute ${style}`}
 							style={{
 								width: `${lang.percent}%`,
 								backgroundColor: lang.color,
