@@ -42,7 +42,7 @@ const { languages } = Astro.props;
 							}}
 						/>
 						<div
-							class="tooltip bg-gray-50 text-black border-black dark:bg-gray-800 dark:text-white dark:border-white text-xs border-2"
+							class="tooltip bg-gray-50 text-black border-black dark:bg-black dark:text-white dark:border-white text-xs border-2"
 							style={{
 								left: `${acc.position + lang.percent / 2}%`,
 							}}
@@ -82,6 +82,7 @@ const { languages } = Astro.props;
 		visibility: hidden;
 		pointer-events: none;
 		margin-bottom: 5px;
+		border-radius: 6px;
 	}
 
 	.language-bar:hover .tooltip {
