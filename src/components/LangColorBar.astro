@@ -1,0 +1,52 @@
+---
+import type { Language } from "../pages/api/getGithubRepository";
+
+type Props = {
+	languages: Language[];
+};
+
+const { languages } = Astro.props;
+---
+
+<div
+	class="w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700 relative"
+>
+	{
+		languages.reduce(
+		(acc, lang, index) => {
+				const cleanPercent = Number(
+					lang.percent.toString().replace("%", ""),
+				);
+
+				let style = "";
+
+				if (languages.length === 1) {
+					style = "rounded-full";
+				} else if (index === 0) {
+					style = "rounded-l-full";
+				} else if (index === languages.length - 1) {
+					style = "rounded-r-full";
+				} else {
+					style = "border-l-2 border-gray-200 dark:border-gray-700"
+				}
+
+				const currentElement = (
+					<div
+						class=`h-1.5 absolute ${style}`
+						style={{
+							width: `${lang.percent}%`,
+							backgroundColor: lang.color,
+							left: acc.position + "%",
+						}}
+					/>
+				);
+
+				return {
+					bars: acc.bars.concat(currentElement),
+					position: (acc.position += cleanPercent),
+				};
+			},
+			{ bars: [], position: 0 },
+		).bars
+	}
+</div>

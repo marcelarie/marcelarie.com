@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LangColorBar from "../components/LangColorBar.astro";
+import {
+  getRepoInfo,
+  getRepoLanguages,
+  type Language,
+} from "./api/getGithubRepository";
+
+type Project = {
+  name: string;
+  description: string;
+  url: string;
+  languages: Language[];
+};
+
+const projectNames = [
+  "nu-alias-converter",
+  "git-tellme",
+  "rund",
+  "marcelarie.com",
+];
+
+const fetchProjects = async () => {
+  try {
+    const projects = await Promise.all(
+      projectNames.map(async (project) => {
+        const data = await getRepoInfo("marcelarie", project);
+        const languages = await getRepoLanguages("marcelarie", project);
+
+        return {
+          name: data.name,
+          description: data.description,
+          url: data.html_url,
+          languages,
+        };
+      }),
+    );
+    return projects;
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return [];
+  }
+};
+
+const projects: Project[] = await fetchProjects();
+---
+
+<Layout title="Projects">
+  {
+    projects.length > 0 ? (
+      projects.map((project) => (
+        <div class="flex flex-col mb-8">
+          <a
+            id="project-title"
+            class="hover:underline hover:text-blue-500"
+            target="_blank"
+            rel="noopener"
+            href={project.url}
+          >
+            {project.name}
+          </a>
+          <div class="w-80 mt-1">
+            <LangColorBar languages={project.languages} />
+          </div>
+          <p>{project.description}</p>
+        </div>
+      ))
+    ) : (
+      <p>No projects available or failed to load.</p>
+    )
+  }
+</Layout>
+
+<style>
+  #project-title {
+    font-family: "Noto Serif Georgian";
+    font-size: 24px;
+  }
+</style>
