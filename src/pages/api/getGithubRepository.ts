@@ -68,7 +68,5 @@ export async function getRepoLanguages(
     };
   });
 
-  console.log(langs);
-
   return langs;
 }
