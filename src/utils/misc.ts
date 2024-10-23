@@ -44,3 +44,15 @@ export function calculateReadingTime(
 
   return Math.ceil(wordCount / averageWordsPerMinute);
 }
+
+/**
+ * Converts the input string to Title Case.
+ */
+export function normalizeCase(input: string): string {
+  return input
+    .replace(/[_-]/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+    .replace(/([A-Z])/g, " $1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
