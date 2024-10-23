@@ -6,6 +6,7 @@ import {
   getRepoLanguages,
   type Language,
 } from "./api/getGithubRepository";
+import { normalizeCase } from "../utils/misc";
 
 type Project = {
   name: string;
@@ -27,6 +28,9 @@ const fetchProjects = async () => {
       projectNames.map(async (project) => {
         const data = await getRepoInfo("marcelarie", project);
         const languages = await getRepoLanguages("marcelarie", project);
+
+        // const shouldNormalize = data.name && !data.name.includes(".com");
+        // const name = shouldNormalize ? normalizeCase(data.name) : data.name;
 
         return {
           name: data.name,
@@ -60,7 +64,7 @@ const projects: Project[] = await fetchProjects();
           >
             {project.name}
           </a>
-          <div class="w-80 mt-1">
+          <div class="w-96 mt-1 mb-2">
             <LangColorBar languages={project.languages} />
           </div>
           <p>{project.description}</p>
