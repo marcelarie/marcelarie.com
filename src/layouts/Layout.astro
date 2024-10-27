@@ -94,5 +94,42 @@ const { title } = Astro.props;
 		body {
 			overflow-x: hidden;
 		}
+
+		.astro-code {
+			/* background-color: #f6f8fa !important; */
+		}
+
+		.dark .astro-code {
+			/* background-color: #111111 !important; */
+			background-color: var(--shiki-dark-bg) !important;
+		}
+
+		.dark .astro-code,
+		.dark .astro-code span {
+			color: var(--shiki-dark) !important;
+			font-style: var(--shiki-dark-font-style) !important;
+			font-weight: var(--shiki-dark-font-weight) !important;
+			text-decoration: var(--shiki-dark-text-decoration) !important;
+		}
+
+		.copy-code {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 0rem 0.3rem;
+			cursor: pointer;
+		}
+
+		.dark .copy-code {
+			border: none;
+		}
+
+		.copy-code:hover {
+			background-color: #ebebeb;
+		}
+
+		.dark .copy-code:hover {
+			background-color: #2d2d2d;
+		}
 	</style>
 </html>

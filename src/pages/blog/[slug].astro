@@ -29,6 +29,50 @@ const date = new Date(post.data.date);
 const formattedDate = formatDate(date);
 ---
 
+<script>
+	const copyButtonLabel = "Copy";
+
+	document.querySelectorAll("pre").forEach((codeBlock) => {
+		addCopyButton(codeBlock);
+	});
+
+	function addCopyButton(codeBlock: HTMLElement) {
+		const wrapper = document.createElement("div");
+		wrapper.style.position = "relative";
+
+		const copyButton = document.createElement("button");
+		copyButton.className = "copy-code";
+		copyButton.textContent = copyButtonLabel;
+
+		codeBlock.setAttribute("tabindex", "0");
+		codeBlock.appendChild(copyButton);
+
+		codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+		wrapper.appendChild(codeBlock);
+
+		copyButton.addEventListener("click", () =>
+			handleCopy(codeBlock, copyButton),
+		);
+	}
+
+	async function handleCopy(
+		codeBlock: HTMLElement,
+		button: HTMLButtonElement,
+	) {
+		const codeElement = codeBlock.querySelector("code");
+		if (!codeElement) return;
+
+		// Copy text content to clipboard
+		await navigator.clipboard.writeText(codeElement.innerText);
+
+		// Update button text temporarily
+		button.textContent = "Copied";
+		setTimeout(() => {
+			button.textContent = copyButtonLabel;
+		}, 900);
+	}
+</script>
+
 <Layout title={post.data.title}>
 	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
 		<article class="prose dark:prose-invert prose-stone w-full max-w-3xl">
