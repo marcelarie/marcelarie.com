@@ -3,9 +3,10 @@ import type { Language } from "../pages/api/getGithubRepository";
 
 type Props = {
 	languages: Language[];
+	projectUrl: string;
 };
 
-const { languages } = Astro.props;
+const { languages, projectUrl } = Astro.props;
 ---
 
 <div
@@ -31,16 +32,20 @@ const { languages } = Astro.props;
 					style = "border-l-2 border-gray-200 dark:border-gray-700";
 				}
 
+				const langUrl = projectUrl.concat(`/search?l=${lang.name}`);
+
 				const currentElement = (
 					<div class="language-bar">
-						<div
-							class={`h-3 md:h-2 absolute ${style}`}
-							style={{
-								width: `${lang.percent}%`,
-								backgroundColor: lang.color,
-								left: `${acc.position}%`,
-							}}
-						/>
+						<a href={langUrl} target="_blank" rel="noopener">
+							<div
+								class={`h-3 md:h-2 absolute ${style} hover:brightness-125`}
+								style={{
+									width: `${lang.percent}%`,
+									backgroundColor: lang.color,
+									left: `${acc.position}%`,
+								}}
+							/>
+						</a>
 						<div
 							class="tooltip bg-gray-50 text-black border-black dark:bg-black dark:text-white dark:border-white text-xs border-2"
 							style={{
