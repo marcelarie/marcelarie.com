@@ -4,6 +4,8 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import { loadEnv } from "vite";
 
+import icon from "astro-icon";
+
 const DEFAULT_PORT = 4321;
 
 const env = loadEnv(process.env.PORT!, process.cwd(), "");
@@ -14,18 +16,14 @@ export default defineConfig({
   server: {
     port: Number(env.PORT) || DEFAULT_PORT,
   },
-  integrations: [
-    vue(),
-    mdx({
-      syntaxHighlight: "shiki",
-      shikiConfig: {
-        themes: {
-          light: "light-plus",
-          dark: "vesper",
-        },
+  integrations: [vue(), mdx({
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      themes: {
+        light: "light-plus",
+        dark: "vesper",
       },
-      // gfm: false, // Github Flavored Markdown
-    }),
-    tailwind(),
-  ],
+    },
+    // gfm: false, // Github Flavored Markdown
+  }), tailwind(), icon()],
 });
