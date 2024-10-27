@@ -95,8 +95,13 @@ const { title } = Astro.props;
 			overflow-x: hidden;
 		}
 
-		.astro-code {
-			/* background-color: #f6f8fa !important; */
+		/* TODO: Find a better way to style the code blocks */
+		.prose
+			:where(pre):not(
+				:where([class~="not-prose"], [class~="not-prose"] *)
+			) {
+			/* background-color: #f0f0f0 !important; */
+			border-radius: 0rem !important;
 		}
 
 		.dark .astro-code {
