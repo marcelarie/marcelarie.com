@@ -34,7 +34,7 @@ const { languages, projectUrl } = Astro.props;
 
 				const langUrl = projectUrl.concat(`/search?l=${lang.name}`);
 
-				const currentElement = (
+				const bar = (
 					<div class="language-bar">
 						<a href={langUrl} target="_blank" rel="noopener">
 							<div
@@ -58,7 +58,7 @@ const { languages, projectUrl } = Astro.props;
 				);
 
 				return {
-					bars: acc.bars.concat(currentElement),
+					bars: acc.bars.concat(bar),
 					position: acc.position + lang.percent,
 				};
 			},
