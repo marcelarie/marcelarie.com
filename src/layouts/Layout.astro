@@ -109,12 +109,22 @@ const { title } = Astro.props;
 			background-color: var(--shiki-dark-bg) !important;
 		}
 
+		.astro-code {
+			font-size: 12px !important;
+			border: 1px solid #e1e1e1 !important;
+			/* border: 1px solid #000 !important; */
+		}
+		/*astro-code:hover { */
+		/*   border: 1px solid #000 !important; */
+		/*} */
+
 		.dark .astro-code,
 		.dark .astro-code span {
 			color: var(--shiki-dark) !important;
 			font-style: var(--shiki-dark-font-style) !important;
 			font-weight: var(--shiki-dark-font-weight) !important;
 			text-decoration: var(--shiki-dark-text-decoration) !important;
+			border: none !important;
 		}
 
 		.copy-code {
