@@ -1,4 +1,5 @@
 set dotenv-load
+export PORT := "4324"
 
 dev:
     pnpm run dev & PID=$! && \
