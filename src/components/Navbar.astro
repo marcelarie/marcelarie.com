@@ -2,12 +2,12 @@
 
 ---
 
-<nav class="flex justify-between mt-10 mb-14">
-	<a id="logo" href="/">
+<nav class="flex flex-col sm:flex-row sm:justify-between items-center sm:items-start mt-10 mb-14">
+	<a id="logo" href="/" class="mb-4 sm:mb-0 text-center sm:text-left">
 		<span>m</span><span>a</span><span>r</span><span>c</span><span>e</span
 		><span>l</span><span>a</span><span>r</span><span>i</span><span>e</span>
 	</a>
-	<div id="right-navbar" class="flex space-x-4 self-end ml-1">
+	<div id="right-navbar" class="flex space-x-4 sm:self-end">
 		<a href="/about">About</a>
 		<a href="/projects">
 			Projects
@@ -20,7 +20,7 @@
 		<style>
 			nav #logo {
 				font-family: "Pixel Code Light";
-				font-size: clamp(1rem, 5vw, 3rem);
+				font-size: clamp(2rem, 5vw, 3rem);
 			}
 
 			nav #logo span {
@@ -38,7 +38,7 @@
 			}
 
 			nav #right-navbar a {
-				font-family: "Noto Serif Georgian";
+				font-family: "Noto Serif Regular";
 				font-size: 20px;
 				font-weight: regular;
 				&:hover {

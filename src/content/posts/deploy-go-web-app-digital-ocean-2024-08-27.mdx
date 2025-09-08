@@ -22,16 +22,18 @@ ssh root@<your_droplet_ip>
 ```
 
 Here you can create a new user and set up a password for it. This is a more
-secure way to connect to your droplet. The root user has full access to the system, 
-it is recommended to create a new user with limited permissions. 
+secure way to connect to your droplet. The root user has full access to the system,
+it is recommended to create a new user with limited permissions.
 
 Run the following command to create a new user:
+
 ```bash
 adduser <username>
 usermod -aG sudo <username>
 ```
 
 Then you would login with the new user this way:
+
 ```bash
 ssh <username>@<your_droplet_ip>
 ```
@@ -60,18 +62,21 @@ git config --global user.email "<GH-Mail>"
 ## Build the Go Web Application
 
 First we create the directory for our Go web application:
+
 ```bash
 mkdir ~/go-web-app
 cd ~/go-web-app
 ```
 
 Then we create the main file for our Go web application:
+
 ```bash
 # you can use nano too
 vim main.go
 ```
 
 To create a simple web server, add the following code to the `main.go` file:
+
 ```go
 package main
 
@@ -95,6 +100,7 @@ func main() {
 ```
 
 Then build the binary:
+
 ```bash
 go build main.go
 ```
@@ -105,9 +111,9 @@ This will create a binary file named `main` in the go app directory.
 
 Now we have the binary file for our Go web application, but running it manually
 is not enough to ensure the application stays active after server restarts
-or crashes. To address this, we need to create a systemd service file. 
+or crashes. To address this, we need to create a systemd service file.
 
-This file will define how our application should be managed by the system, 
+This file will define how our application should be managed by the system,
 ensuring it starts automatically on boot and restarts if it crashes.
 
 ```bash
@@ -116,6 +122,7 @@ sudo vim /etc/systemd/system/go-web-app.service
 ```
 
 The content of the `go-web-app.service` file should look like this:
+
 ```ini
 [Unit]
 Description=<name-of-your-app>
@@ -131,6 +138,7 @@ WantedBy=multi-user.target
 ```
 
 To start the service and enable it to start on boot, run the following commands:
+
 ```bash
 sudo systemctl start go-web-app
 sudo systemctl enable go-web-app
@@ -168,22 +176,25 @@ server {
 The `proxy_pass` directive tells Nginx to forward all requests to the specified URL.
 
 Next we need to create a symbolic link to the `/etc/nginx/sites-enabled` directory:
+
 ```bash
 sudo ln -s /etc/nginx/sites-available/<your_domain> /etc/nginx/sites-enabled/
 ```
 
 And reload the Nginx service:
+
 ```bash
 sudo nginx -s reload
 ```
 
-To make sure that the deployment is successful, you can visit your domain in a 
+To make sure that the deployment is successful, you can visit your domain in a
 web browser go to **http://your_domain** and you should see the message `Hello World`.
 
-It might be that your domain service is not pointing to the correct DNS server. 
+It might be that your domain service is not pointing to the correct DNS server.
 For changing that you need to go to your domain provider and point the domain to the correct DNS server.
 
 For example for porkbun you can do the following:
+
 1. Go to your domain provider and login
 2. Go to the DNS settings
 3. Add a new A record with the IP of your droplet with no host
@@ -203,9 +214,10 @@ TODO: Setup firewall
 
 # Generate a deploy SSH key
 
-This step is necesary to allow the server to pull the code from the repository. 
+This step is necesary to allow the server to pull the code from the repository.
 
 First we need to generate a new SSH key on the server:
+
 ```bash
 ssh-keygen -t ed25519 -C "deploy@your_domain"
 ```
@@ -220,6 +232,7 @@ identify the key.
 
 To know if you already have a key generated you can run the command above and
 you will see something like this:
+
 ```bash
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/root/.ssh/id_ed25519):
@@ -229,6 +242,7 @@ Overwrite (y/n)?
 
 Then we should say `n` and we can use the existing key or generate a separated
 one with the following command:
+
 ```bash
 ssh-keygen -t ed25519 -C "deploy@your_domain" -f ~/.ssh/id_ed25519_deploy
 ```
@@ -243,7 +257,7 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 Copy the output and add it as a deploy key in your repository settings on GitHub
-or GitLab. More info on how to add a deploy key can be found in the 
+or GitLab. More info on how to add a deploy key can be found in the
 [GitHub documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#set-up-deploy-keys).
 
 Next, test the SSH connection to ensure it's working correctly:
@@ -259,9 +273,8 @@ In the next section, we'll explore how to set this up.
 
 ## Setup GitHub Actions for Automated Deployment
 
-
-Sources:  \
-[How to create a VPS on DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/create/)  \
+Sources: \
+[How to create a VPS on DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/create/) \
 [How to deploy a Go web application using Nginx on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-go-web-application-using-nginx-on-ubuntu-18-04) \
 [Auto deploy git on DigitalOcean or any other VPS](https://thecodebeast.com/auto-deploy-git-on-digital-ocean-or-any-other-vps/) \
-[Secure Ngix with Lets Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04) 
+[Secure Ngix with Lets Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04)

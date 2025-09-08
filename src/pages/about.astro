@@ -71,14 +71,15 @@ const yearsProgramming = calculateYearDifference(PROGRAMMING_START_DATE);
 
 <style>
   #title {
-    font-family: "Noto Serif Georgian";
+    font-family: "Noto Serif Regular";
     font-size: 30px;
     margin-bottom: 4px;
   }
 
   #about-content {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
+    font-size: clamp(15px, 4vw, 12px);
+    font-weight: bold;
     text-align: justify;
     text-justify: inter-word;
   }

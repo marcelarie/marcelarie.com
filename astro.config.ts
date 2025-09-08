@@ -16,14 +16,19 @@ export default defineConfig({
   server: {
     port: Number(env.PORT) || DEFAULT_PORT,
   },
-  integrations: [vue(), mdx({
-    syntaxHighlight: "shiki",
-    shikiConfig: {
-      themes: {
-        light: "light-plus",
-        dark: "vesper",
+  integrations: [
+    vue(),
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: {
+        themes: {
+          light: "light-plus",
+          dark: "vesper",
+        },
       },
-    },
-    // gfm: false, // Github Flavored Markdown
-  }), tailwind(), icon()],
+      // gfm: false, // Github Flavored Markdown
+    }),
+    tailwind(),
+    icon(),
+  ],
 });

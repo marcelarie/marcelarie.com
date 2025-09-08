@@ -19,6 +19,24 @@ const allPosts = await getCollection("posts");
           const date = new Date(post.data.date);
           const formattedDate = formatDate(date);
           const readingTime = calculateReadingTime(post.body);
+          const firstParagraph = post.body.split('\n\n')[0] || post.body.split('\n')[0] || '';
+
+          const cleanText = post.body
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+            .replace(new RegExp('\\x60\\x60\\x60[\\s\\S]*?\\x60\\x60\\x60', 'g'), '')
+            .replace(/[#*_\x60]/g, '')
+            .replace(/[*_\x60]/g, '')
+            .replace(/\n+/g, ' ')
+            .trim();
+
+          const maxLengthMobile = 100;
+          const maxLengthDesktop = 200;
+          const previewTextMobile = cleanText.length > maxLengthMobile 
+            ? cleanText.substring(0, maxLengthMobile) + "..." 
+            : cleanText;
+          const previewTextDesktop = cleanText.length > maxLengthDesktop 
+            ? cleanText.substring(0, maxLengthDesktop) + "..." 
+            : cleanText;
 
           const { Content } = await post.render();
 
@@ -39,9 +57,10 @@ const allPosts = await getCollection("posts");
               </a>
               <div
                 id="post-preview"
-                class="mt-4 truncate overflow-hidden text-wrap max-h-20 whitespace-pre-line"
+                class="mt-4 overflow-hidden"
               >
-                <Content />
+                <span class="block sm:hidden">{previewTextMobile}</span>
+                <span class="hidden sm:block">{previewTextDesktop}</span>
               </div>
             </div>
           );
@@ -57,25 +76,35 @@ const allPosts = await getCollection("posts");
   }
 
   nav #right-navbar a {
-    font-family: "Noto Serif Georgian";
+    font-family: "Noto Serif Regular";
     font-size: 24px;
     font-weight: regular;
   }
 
   #post-title {
-    font-family: "Noto Serif Georgian";
+    font-family: "Noto Serif Regular";
     font-size: 24px;
+  }
+
+  @media (min-width: 640px) {
+    #post-title {
+      font-size: 30px;
+    }
   }
 
   #post-date {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     color: #929292;
   }
 
   #post-preview {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
+    font-size: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
   }
 </style>

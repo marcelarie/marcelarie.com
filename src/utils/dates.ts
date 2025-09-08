@@ -9,7 +9,7 @@ export function formatDate(date: Date) {
 }
 
 // 31557600000 ms = 365.25 days * 24 hours * 60 minutes * 60 seconds * 1000 ms
-const MILLIS_IN_A_YEAR = 365.25 * 24 * 60 * 60 * 1000; 
+const MILLIS_IN_A_YEAR = 365.25 * 24 * 60 * 60 * 1000;
 
 export function calculateYearDifference(date: Date) {
   const birthDate = date.getTime();

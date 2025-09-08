@@ -49,11 +49,13 @@ export function calculateReadingTime(
  * Converts the input string to Title Case.
  */
 export function normalizeCase(input: string): string {
-  return input
-    .replace(/[_-]/g, " ")
-    // No need for now
-    // .replace(/\b\w/g, (char) => char.toUpperCase())
-    // .replace(/([A-Z])/g, " $1")
-    // .replace(/\s+/g, " ")
-    .trim();
+  return (
+    input
+      .replace(/[_-]/g, " ")
+      // No need for now
+      // .replace(/\b\w/g, (char) => char.toUpperCase())
+      // .replace(/([A-Z])/g, " $1")
+      // .replace(/\s+/g, " ")
+      .trim()
+  );
 }
