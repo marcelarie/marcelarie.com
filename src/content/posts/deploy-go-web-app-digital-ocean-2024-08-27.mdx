@@ -18,7 +18,7 @@ steps will guide you through the process:
 1. Run the following command to connect to your droplet:
 
 ```bash
-ssh root@<your_droplet_ip>
+ssh root@your_droplet_ip # should be something else of course
 ```
 
 Here you can create a new user and set up a password for it. This is a more
@@ -28,14 +28,14 @@ it is recommended to create a new user with limited permissions.
 Run the following command to create a new user:
 
 ```bash
-adduser <username>
-usermod -aG sudo <username>
+adduser "<username>"
+usermod -aG sudo "<username>"
 ```
 
 Then you would login with the new user this way:
 
 ```bash
-ssh <username>@<your_droplet_ip>
+ssh username@your_droplet_ip
 ```
 
 3. Enter your password when prompted. You are now connected to your droplet

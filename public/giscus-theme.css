@@ -1,0 +1,138 @@
+/* Custom Giscus Theme - Minimal with Light/Dark Support */
+:root {
+  /* Dark theme colors (default) */
+  --color-canvas-default: #000000;
+  --color-canvas-subtle: #000000;
+  --color-canvas-inset: #000000;
+  --color-bg-default: #000000;
+  --color-bg-primary: transparent;
+  --color-bg-secondary: #000000;
+  --color-bg-tertiary: #000000;
+  --color-border-default: #333333;
+  --color-border-primary: #333333;
+  --color-border-secondary: #333333;
+  --color-border-tertiary: #333333;
+  --color-border-muted: #333333;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-tertiary: #999999;
+  --color-accent-fg: #ffffff;
+  --color-accent-emphasis: #333333;
+  --color-btn-text: #ffffff;
+  --color-btn-bg: transparent;
+  --color-btn-border: #333333;
+  --color-btn-hover-bg: #111111;
+  --color-btn-active-bg: #222222;
+}
+
+
+/* Font family */
+* {
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
+/* Full width */
+.giscus,
+.gsc-main,
+.gsc-timeline,
+.gsc-comments-container {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Remove focus outlines and blue borders */
+*:focus,
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #333333 !important;
+}
+
+/* Specifically target input and textarea focus states */
+input:focus,
+textarea:focus,
+button:focus,
+.gsc-comment-box-textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #333333 !important;
+  border: 1px solid #333333 !important;
+}
+
+
+/* Hide reactions and loading images */
+.gsc-loading-image,
+.gsc-comment-reactions,
+.gsc-social-reaction-summary-item,
+.gsc-reply-reactions {
+  display: none !important;
+}
+
+/* Comment styling */
+.gsc-comment {
+  border: 1px solid #333333 !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  background-color: #000000 !important;
+}
+
+.gsc-comment-header {
+  padding: 12px 16px 8px 16px !important;
+  border-bottom: 1px solid #333333 !important;
+}
+
+.gsc-comment-body {
+  padding: 12px 16px !important;
+}
+
+.gsc-comment-box-bottom {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Textarea styling */
+.gsc-comment-box-textarea {
+  font-family: "IBM Plex Mono", monospace !important;
+  background-color: transparent !important;
+  border: 1px solid #333333 !important;
+  color: #ffffff !important;
+}
+
+.gsc-comment-box-textarea:focus {
+  border-color: #333333 !important;
+}
+
+/* Tab styling */
+.gsc-comment-box-tabs {
+  background-color: #000000 !important;
+  border-color: #333333 !important;
+}
+
+.gsc-comment-box-tab {
+  background-color: #000000 !important;
+  border-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+.gsc-comment-box-tab-active {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+
+/* Force everything to black */
+* {
+  background-color: #000000 !important;
+}
+
+/* Except make primary transparent */
+.color-bg-primary,
+[class*="bg-primary"] {
+  background-color: transparent !important;
+}
+
+/* Remove all borders from comment form elements */
+.gsc-comment-box-main,
+.gsc-comment-form,
+form {
+  border: none !important;
+}

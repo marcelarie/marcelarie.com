@@ -1,0 +1,135 @@
+/* Custom Giscus Light Theme - Minimal White */
+:root {
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #ffffff;
+  --color-canvas-inset: #ffffff;
+  --color-bg-default: #ffffff;
+  --color-bg-primary: transparent;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #ffffff;
+  --color-border-default: #e1e1e1;
+  --color-border-primary: #e1e1e1;
+  --color-border-secondary: #e1e1e1;
+  --color-border-tertiary: #e1e1e1;
+  --color-border-muted: #e1e1e1;
+  --color-text-primary: #000000;
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #666666;
+  --color-accent-fg: #000000;
+  --color-accent-emphasis: #000000;
+  --color-btn-text: #000000;
+  --color-btn-bg: transparent;
+  --color-btn-border: #e1e1e1;
+  --color-btn-hover-bg: #f5f5f5;
+  --color-btn-active-bg: #eeeeee;
+}
+
+/* Font family */
+* {
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
+/* Full width */
+.giscus,
+.gsc-main,
+.gsc-timeline,
+.gsc-comments-container {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Remove focus outlines and borders */
+*:focus,
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #e1e1e1 !important;
+}
+
+/* Specifically target input and textarea focus states */
+input:focus,
+textarea:focus,
+button:focus,
+.gsc-comment-box-textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #e1e1e1 !important;
+  border: 1px solid #e1e1e1 !important;
+}
+
+/* Hide reactions and loading images */
+.gsc-loading-image,
+.gsc-comment-reactions,
+.gsc-social-reaction-summary-item,
+.gsc-reply-reactions {
+  display: none !important;
+}
+
+/* Comment styling */
+.gsc-comment {
+  border: 1px solid #e1e1e1 !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  background-color: #ffffff !important;
+}
+
+.gsc-comment-header {
+  padding: 12px 16px 8px 16px !important;
+  border-bottom: 1px solid #e1e1e1 !important;
+}
+
+.gsc-comment-body {
+  padding: 12px 16px !important;
+}
+
+.gsc-comment-box-bottom {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Textarea styling */
+.gsc-comment-box-textarea {
+  font-family: "IBM Plex Mono", monospace !important;
+  background-color: transparent !important;
+  border: 1px solid #e1e1e1 !important;
+  color: #000000 !important;
+}
+
+.gsc-comment-box-textarea:focus {
+  border-color: #e1e1e1 !important;
+}
+
+/* Tab styling */
+.gsc-comment-box-tabs {
+  background-color: #ffffff !important;
+  border-color: #e1e1e1 !important;
+}
+
+.gsc-comment-box-tab {
+  background-color: #ffffff !important;
+  border-color: #e1e1e1 !important;
+  color: #000000 !important;
+}
+
+.gsc-comment-box-tab-active {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e1e1e1 !important;
+}
+
+/* Force everything to white */
+* {
+  background-color: #ffffff !important;
+}
+
+/* Except make primary transparent */
+.color-bg-primary,
+[class*="bg-primary"] {
+  background-color: transparent !important;
+}
+
+/* Remove all borders from comment form elements */
+.gsc-comment-box-main,
+.gsc-comment-form,
+form {
+  border: none !important;
+}
