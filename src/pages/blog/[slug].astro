@@ -6,6 +6,7 @@ import Layout from "../../layouts/Layout.astro";
 import { formatDate } from "../../utils/dates";
 import type { Post } from "../../types";
 import { calculateReadingTime } from "../../utils/misc";
+import Comments from "../../components/Comments.vue";
 
 interface Props {
 	post: CollectionEntry<"posts">;
@@ -111,6 +112,7 @@ const formattedDate = formatDate(date);
 				<Content />
 			</div>
 		</article>
+		<Comments client:load title={post.data.title} />
 	</div>
 </Layout>
 
@@ -139,4 +141,15 @@ const formattedDate = formatDate(date);
 		max-width: none;
 		overflow-wrap: break-word;
 	}
+	:global(.prose pre) {
+	  position: relative;
+	  padding-top: 2rem;
+	}
+
+	:global(.prose pre .copy-code) {
+	  position: absolute;
+	  top: 0.5rem;
+	  right: 0.5rem;
+	}
+
 </style>

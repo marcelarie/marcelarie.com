@@ -21,15 +21,16 @@ onMounted(() => {
   if (!giscusContainer.value) return
 
   const isDark = document.documentElement.classList.contains('dark')
-  const theme = isDark ? 'https://marcelarie.xyz/giscus-theme.css' : 'https://marcelarie.xyz/giscus-light-theme.css'
+  const theme = isDark ? `${window.location.origin}/giscus-theme.css` : `${window.location.origin}/giscus-light-theme-clean.css`
   
-  console.log('Theme on load:', { isDark, theme })
-
+  console.log('Loading giscus with theme:', theme)
+  console.log('Current pathname:', window.location.pathname)
+  
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
   script.setAttribute('data-repo', 'marcelarie/marcelarie.com')
   script.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyODU1OTY4MzE') 
-  script.setAttribute('data-category', 'Comments')
+  script.setAttribute('data-category', 'General')
   script.setAttribute('data-category-id', 'DIC_kwDOEQXcn84CvJvn') 
   script.setAttribute('data-mapping', 'pathname')
   script.setAttribute('data-strict', '0')
@@ -46,7 +47,7 @@ onMounted(() => {
 
   const observer = new MutationObserver(() => {
     const isDarkNow = document.documentElement.classList.contains('dark')
-    const newTheme = isDarkNow ? 'https://marcelarie.xyz/giscus-theme.css' : 'https://marcelarie.xyz/giscus-light-theme.css'
+    const newTheme = isDarkNow ? `${window.location.origin}/giscus-theme.css` : `${window.location.origin}/giscus-light-theme-clean.css`
     
     console.log('Theme change detected:', { isDarkNow, newTheme })
     

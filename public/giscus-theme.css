@@ -55,8 +55,8 @@ button:focus,
 .gsc-comment-box-textarea:focus {
   outline: none !important;
   box-shadow: none !important;
-  border-color: #333333 !important;
-  border: 1px solid #333333 !important;
+  border-color: red !important;
+  border: 1px solid red !important;
 }
 
 
