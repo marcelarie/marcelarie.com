@@ -46,10 +46,10 @@ const formattedDate = formatDate(date);
 		copyButton.textContent = copyButtonLabel;
 
 		codeBlock.setAttribute("tabindex", "0");
-		codeBlock.appendChild(copyButton);
 
 		codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
 		wrapper.appendChild(codeBlock);
+		wrapper.appendChild(copyButton);
 
 		copyButton.addEventListener("click", () =>
 			handleCopy(codeBlock, copyButton),
@@ -146,10 +146,11 @@ const formattedDate = formatDate(date);
 	  padding-top: 2rem;
 	}
 
-	:global(.prose pre .copy-code) {
+	:global(.copy-code) {
 	  position: absolute;
 	  top: 0.5rem;
 	  right: 0.5rem;
+	  z-index: 10;
 	}
 
 </style>
