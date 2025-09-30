@@ -67,7 +67,7 @@ const yearsProgramming = calculateYearDifference(PROGRAMMING_START_DATE);
     const BIRTH_DATE = new Date("1995-09-27");
     const PROGRAMMING_START_DATE = new Date("2020-10-10");
 
-    function calculateYearDifference(from) {
+    function calculateYearDifference(from: Date) {
       const today = new Date();
       let years = today.getFullYear() - from.getFullYear();
       const hasHadBirthday =
