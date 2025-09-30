@@ -41,16 +41,12 @@ const yearsProgramming = calculateYearDifference(PROGRAMMING_START_DATE);
         class="text-sm leading-relaxed text-gray-700 prose mt-4 dark:text-white"
       >
         <span>
-          {
-            `I'm Marcel, a ${myAge}-year-old software developer based in Barcelona.`
-          }
+          I'm Marcel, a <span id="my-age">{myAge}</span>-year-old software developer based in Barcelona.
         </span>
         <br />
         <br />
         <span class="mt-1 block">
-          {
-            `With over ${yearsProgramming} years of experience in the tech industry,  I specialize in frontend development using`
-          }
+          With over <span id="years-programming">{yearsProgramming}</span> years of experience in the tech industry,  I specialize in frontend development using
           React and TypeScript, and backend development and tooling with Node.js
           and Ruby.
         </span>
@@ -67,6 +63,26 @@ const yearsProgramming = calculateYearDifference(PROGRAMMING_START_DATE);
       </div>
     </div>
   </article>
+  <script>
+    const BIRTH_DATE = new Date("1995-09-27");
+    const PROGRAMMING_START_DATE = new Date("2020-10-10");
+
+    function calculateYearDifference(from) {
+      const today = new Date();
+      let years = today.getFullYear() - from.getFullYear();
+      const hasHadBirthday =
+        today.getMonth() > from.getMonth() ||
+        (today.getMonth() === from.getMonth() && today.getDate() >= from.getDate());
+      if (!hasHadBirthday) years--;
+      return years;
+    }
+
+    const ageEl = document.getElementById("my-age");
+    if (ageEl) ageEl.textContent = String(calculateYearDifference(BIRTH_DATE));
+
+    const yearsEl = document.getElementById("years-programming");
+    if (yearsEl) yearsEl.textContent = String(calculateYearDifference(PROGRAMMING_START_DATE));
+  </script>
 </Layout>
 
 <style>
