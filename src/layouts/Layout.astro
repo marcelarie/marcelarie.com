@@ -110,9 +110,35 @@ const { title } = Astro.props;
 			background-color: var(--shiki-dark-bg) !important;
 		}
 
+		html:not(.dark) a {
+			color: #0000ee;
+		}
+
+		html:not(.dark) a:hover {
+			color: #ff0000;
+		}
+
+		html:not(.dark) a:visited {
+			color: #551a8b;
+		}
+
+		html:not(.dark) nav #logo,
+		html:not(.dark) nav #logo:visited {
+			color: #0000ee;
+		}
+
+		html:not(.dark) nav #right-navbar a,
+		html:not(.dark) nav #right-navbar a:visited {
+			color: inherit;
+		}
+
+		html:not(.dark) footer a:visited {
+			color: #0000ee;
+		}
+
 		.astro-code {
 			font-size: 14px !important;
-			border: 1px solid #e1e1e1 !important;
+			border: 1px solid #0000ee !important;
 			/* border: 1px solid #000 !important; */
 		}
 		/*astro-code:hover { */
