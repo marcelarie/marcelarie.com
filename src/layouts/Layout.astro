@@ -13,10 +13,11 @@ const { title } = Astro.props;
 <script>
 	const themeToggleBtn = document.getElementById("theme-toggle");
 	const rootElement = document.documentElement;
-	const themes = ["light", "dark", "retro"];
+	const themes = ["light", "dark", "retro"] as const;
+	type Theme = (typeof themes)[number];
 	let themeIndex = 0;
 
-	const getCurrentTheme = () => {
+	const getCurrentTheme = (): Theme => {
 		if (rootElement.classList.contains("dark")) {
 			return "dark";
 		}
@@ -26,7 +27,7 @@ const { title } = Astro.props;
 		return "light";
 	};
 
-	const applyTheme = (theme) => {
+	const applyTheme = (theme: Theme) => {
 		rootElement.classList.remove("dark", "retro");
 		if (theme === "dark") {
 			rootElement.classList.add("dark");
@@ -41,10 +42,13 @@ const { title } = Astro.props;
 		}
 	};
 
-	const initializeTheme = () => {
+	const isTheme = (value: string): value is Theme =>
+		themes.includes(value as Theme);
+
+	const initializeTheme = (): Theme => {
 		const currentTheme = getCurrentTheme();
 		const storedTheme = localStorage.getItem("theme");
-		if (storedTheme && themes.includes(storedTheme)) {
+		if (storedTheme && isTheme(storedTheme)) {
 			applyTheme(storedTheme);
 			return storedTheme;
 		}
