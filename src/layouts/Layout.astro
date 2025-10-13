@@ -13,13 +13,55 @@ const { title } = Astro.props;
 <script>
 	const themeToggleBtn = document.getElementById("theme-toggle");
 	const rootElement = document.documentElement;
+	const themes = ["light", "retro", "dark"];
+	let themeIndex = 0;
 
-	if (themeToggleBtn) {
-		themeToggleBtn.addEventListener("click", () => {
-			const isDark = rootElement.classList.toggle("dark");
-			localStorage.setItem("theme", isDark ? "dark" : "light");
-		});
-	}
+	const getCurrentTheme = () => {
+		if (rootElement.classList.contains("dark")) {
+			return "dark";
+		}
+		if (rootElement.classList.contains("retro")) {
+			return "retro";
+		}
+		return "light";
+	};
+
+	const applyTheme = (theme) => {
+		rootElement.classList.remove("dark", "retro");
+		if (theme === "dark") {
+			rootElement.classList.add("dark");
+		} else if (theme === "retro") {
+			rootElement.classList.add("retro");
+		}
+		localStorage.setItem("theme", theme);
+		const index = themes.indexOf(theme);
+		themeIndex = index === -1 ? 0 : index;
+		if (themeToggleBtn) {
+			themeToggleBtn.dataset.theme = theme;
+		}
+	};
+
+	const initializeTheme = () => {
+		const currentTheme = getCurrentTheme();
+		const storedTheme = localStorage.getItem("theme");
+		if (storedTheme && themes.includes(storedTheme)) {
+			applyTheme(storedTheme);
+			return storedTheme;
+		}
+		applyTheme(currentTheme);
+		return currentTheme;
+	};
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const initialTheme = initializeTheme();
+		if (themeToggleBtn) {
+			themeToggleBtn.dataset.theme = initialTheme;
+			themeToggleBtn.addEventListener("click", () => {
+				const nextTheme = themes[(themeIndex + 1) % themes.length];
+				applyTheme(nextTheme);
+			});
+		}
+	});
 </script>
 
 <html lang="en">
@@ -29,10 +71,12 @@ const { title } = Astro.props;
 				var savedTheme = localStorage.getItem("theme");
 
 				function applyTheme(theme) {
+					document.documentElement.classList.remove("dark", "retro");
 					if (theme === "dark") {
 						document.documentElement.classList.add("dark");
-					} else {
-						document.documentElement.classList.remove("dark");
+					}
+					if (theme === "retro") {
+						document.documentElement.classList.add("retro");
 					}
 				}
 
@@ -41,7 +85,7 @@ const { title } = Astro.props;
 						"(prefers-color-scheme: dark)",
 					).matches;
 					if (prefersDark) {
-						document.documentElement.classList.add("dark");
+						applyTheme("dark");
 					}
 				}
 
@@ -110,30 +154,115 @@ const { title } = Astro.props;
 			background-color: var(--shiki-dark-bg) !important;
 		}
 
-		html:not(.dark) a {
+		html:not(.dark):not(.retro) a {
 			color: #0000ee;
 		}
 
-		html:not(.dark) a:hover {
+		html:not(.dark):not(.retro) a:hover {
 			color: #ff0000;
 		}
 
-		html:not(.dark) a:visited {
+		html:not(.dark):not(.retro) a:visited {
 			color: #551a8b;
 		}
 
-		html:not(.dark) nav #logo,
-		html:not(.dark) nav #logo:visited {
+		html:not(.dark):not(.retro) nav #logo,
+		html:not(.dark):not(.retro) nav #logo:visited {
 			color: #0000ee;
 		}
 
-		html:not(.dark) nav #right-navbar a,
-		html:not(.dark) nav #right-navbar a:visited {
+		html:not(.dark):not(.retro) nav #right-navbar a,
+		html:not(.dark):not(.retro) nav #right-navbar a:visited {
 			color: inherit;
 		}
 
-		html:not(.dark) footer a:visited {
+		html:not(.dark):not(.retro) footer a:visited {
 			color: #0000ee;
+		}
+
+		html.retro {
+			background-color: #bfbfbf;
+			color: #000000;
+			--accent: 191, 191, 191;
+			--accent-light: 197, 197, 197;
+			--accent-dark: 183, 183, 183;
+			--accent-gradient: linear-gradient(45deg, #c5c5c5, #ffffff 60%);
+		}
+
+		html.retro body {
+			background-color: #bfbfbf;
+			color: #000000;
+		}
+
+		html.retro body > div {
+			background-color: #c0c0c0;
+			border: 1px solid #b7b7b7;
+			box-shadow: 0 0 0 1px #c2c2c2 inset;
+		}
+
+		html.retro a {
+			color: #00ff00;
+		}
+
+		html.retro a:hover {
+			color: #00cc00;
+		}
+
+		html.retro a:visited {
+			color: #424949;
+		}
+
+		html.retro nav #logo,
+		html.retro nav #logo:visited {
+			color: #00ff00;
+		}
+
+		html.retro nav #right-navbar a,
+		html.retro nav #right-navbar a:visited {
+			color: #000000;
+		}
+
+		html.retro footer a:visited {
+			color: #424949;
+		}
+
+		html.retro .astro-code {
+			background-color: #ffffff !important;
+			border: 1px solid #00ff00 !important;
+			color: #000000 !important;
+		}
+
+		html.retro .copy-code {
+			background-color: #c5c5c5;
+			border: 1px solid #00ff00;
+		}
+
+		html.retro .copy-code:hover {
+			background-color: #c0c0c0;
+		}
+
+		html.retro .retro-image-border {
+			border-color: #00ff00 !important;
+		}
+
+		#theme-toggle .theme-icon {
+			display: none;
+		}
+
+		#theme-toggle img {
+			display: block;
+		}
+
+		html:not(.dark):not(.retro) #theme-toggle .theme-icon-retro {
+			display: inline;
+		}
+
+		html.retro #theme-toggle .theme-icon-dark {
+			display: inline;
+		}
+
+		html.dark #theme-toggle .theme-icon-light {
+			display: inline;
 		}
 
 		.astro-code {
