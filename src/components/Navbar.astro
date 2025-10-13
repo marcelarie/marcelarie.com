@@ -7,15 +7,94 @@
 		<span>m</span><span>a</span><span>r</span><span>c</span><span>e</span
 		><span>l</span><span>a</span><span>r</span><span>i</span><span>e</span>
 	</a>
-	<div id="right-navbar" class="flex space-x-4 sm:self-end">
+	<div id="right-navbar" class="flex space-x-4 items-center sm:self-end">
 		<a href="/about">About</a>
 		<a href="/projects">
 			Projects
 		</a>
-		<button id="theme-toggle" class="font-ibm-plex-mono text-sm">
-			<span class="theme-icon theme-icon-light">☀️</span>
-			<span class="theme-icon theme-icon-retro">👾</span>
-			<span class="theme-icon theme-icon-dark">🌑</span>
+		<button id="theme-toggle" class="font-ibm-plex-mono text-sm" aria-label="Toggle theme">
+			<span class="theme-icon theme-icon-light" aria-hidden="true">
+				<svg viewBox="0 0 24 24">
+					<circle cx="12" cy="12" r="4" fill="currentColor" />
+					<g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+						<line x1="12" y1="2.5" x2="12" y2="6" />
+						<line x1="12" y1="18" x2="12" y2="21.5" />
+						<line x1="3" y1="12" x2="6" y2="12" />
+						<line x1="18" y1="12" x2="21" y2="12" />
+						<line x1="5.5" y1="5.5" x2="7.9" y2="7.9" />
+						<line x1="16.1" y1="16.1" x2="18.5" y2="18.5" />
+						<line x1="5.5" y1="18.5" x2="7.9" y2="16.1" />
+						<line x1="16.1" y1="7.9" x2="18.5" y2="5.5" />
+					</g>
+				</svg>
+			</span>
+			<span class="theme-icon theme-icon-dark" aria-hidden="true">
+				<svg viewBox="0 0 400 400">
+					<g fill="currentColor" transform="translate(60 60) scale(0.7)">
+						<polygon points="133.3,53.3 133.3,26.7 106.7,26.7 80,26.7 80,53.3 106.7,53.3" />
+						<polygon points="160,53.3 186.7,53.3 186.7,26.7 213.3,26.7 213.3,0 186.7,0 160,0 133.3,0 133.3,26.7 160,26.7" />
+						<rect width="26.7" height="26.7" x="53.3" y="53.3" />
+						<rect width="26.7" height="26.7" x="133.3" y="53.3" />
+						<polygon points="106.7,106.7 106.7,133.3 106.7,160 106.7,186.7 106.7,213.3 133.3,213.3 133.3,186.7 133.3,160 133.3,133.3 133.3,106.7 133.3,80 106.7,80" />
+						<polygon points="53.3,106.7 53.3,80 26.7,80 26.7,106.7 26.7,133.3 53.3,133.3" />
+						<polygon points="373.3,186.7 373.3,213.3 346.7,213.3 346.7,240 373.3,240 373.3,266.7 400,266.7 400,240 400,213.3 400,186.7" />
+						<polygon points="26.7,213.3 26.7,186.7 26.7,160 26.7,133.3 0,133.3 0,160 0,186.7 0,213.3 0,240 0,266.7 26.7,266.7 26.7,240" />
+						<rect width="26.7" height="26.7" x="133.3" y="213.3" />
+						<rect width="26.7" height="26.7" x="160" y="240" />
+						<rect width="26.7" height="26.7" x="320" y="240" />
+						<polygon points="53.3,266.7 26.7,266.7 26.7,293.3 26.7,320 53.3,320 53.3,293.3" />
+						<polygon points="213.3,293.3 240,293.3 266.7,293.3 293.3,293.3 320,293.3 320,266.7 293.3,266.7 266.7,266.7 240,266.7 213.3,266.7 186.7,266.7 186.7,293.3" />
+						<polygon points="346.7,293.3 346.7,320 373.3,320 373.3,293.3 373.3,266.7 346.7,266.7" />
+						<rect width="26.7" height="26.7" x="53.3" y="320" />
+						<rect width="26.7" height="26.7" x="320" y="320" />
+						<polygon points="106.7,346.7 80,346.7 80,373.3 106.7,373.3 133.3,373.3 133.3,346.7" />
+						<polygon points="266.7,346.7 266.7,373.3 293.3,373.3 320,373.3 320,346.7 293.3,346.7" />
+						<polygon points="213.3,373.3 186.7,373.3 160,373.3 133.3,373.3 133.3,400 160,400 186.7,400 213.3,400 240,400 266.7,400 266.7,373.3 240,373.3" />
+					</g>
+				</svg>
+			</span>
+			<span class="theme-icon theme-icon-retro" aria-hidden="true">
+				<svg viewBox="0 0 24 24">
+					<rect
+						x="4"
+						y="6"
+						width="16"
+						height="11"
+						rx="1.5"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.8"
+					/>
+					<rect x="7" y="8.5" width="10" height="6" fill="currentColor" />
+					<line
+						x1="8"
+						y1="20"
+						x2="16"
+						y2="20"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+					/>
+					<line
+						x1="10"
+						y1="17"
+						x2="9"
+						y2="20"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+					/>
+					<line
+						x1="14"
+						y1="17"
+						x2="15"
+						y2="20"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+					/>
+				</svg>
+			</span>
 		</button>
 
 		<style>
@@ -46,6 +125,20 @@
 					color: #424949;
 				}
 			}
+
+			nav #right-navbar button {
+				display: flex;
+				align-items: center;
+				padding: 0;
+				line-height: 1;
+			}
+
+			nav #right-navbar button .theme-icon {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
 		</style>
 	</div>
 </nav>
