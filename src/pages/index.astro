@@ -44,7 +44,7 @@ const allPosts = await getCollection("posts");
             <div class="flex flex-col mb-8">
               <a
                 id="post-title"
-                class="hover:underline hover:text-blue-500"
+                class="hover:underline hover:text-[#424949]"
                 href={href}
               >
                 {post.data.title}
@@ -84,6 +84,14 @@ const allPosts = await getCollection("posts");
   #post-title {
     font-family: "Noto Serif Regular";
     font-size: 24px;
+  }
+
+  :global(html:not(.dark):not(.retro) #post-title) {
+    color: #000000;
+  }
+
+  :global(html:not(.dark):not(.retro) #post-title:visited) {
+    color: #000000;
   }
 
   @media (min-width: 640px) {

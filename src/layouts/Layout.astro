@@ -13,7 +13,7 @@ const { title } = Astro.props;
 <script>
 	const themeToggleBtn = document.getElementById("theme-toggle");
 	const rootElement = document.documentElement;
-	const themes = ["light", "retro", "dark"];
+	const themes = ["light", "dark", "retro"];
 	let themeIndex = 0;
 
 	const getCurrentTheme = () => {
@@ -181,23 +181,23 @@ const { title } = Astro.props;
 		}
 
 		html.retro {
-			background-color: #bfbfbf;
+			background-color: #8c8c8c;
 			color: #000000;
-			--accent: 191, 191, 191;
-			--accent-light: 197, 197, 197;
-			--accent-dark: 183, 183, 183;
-			--accent-gradient: linear-gradient(45deg, #c5c5c5, #ffffff 60%);
+			--accent: 140, 140, 140;
+			--accent-light: 163, 163, 163;
+			--accent-dark: 112, 112, 112;
+			--accent-gradient: linear-gradient(45deg, #9c9c9c, #c5c5c5 60%);
 		}
 
 		html.retro body {
-			background-color: #bfbfbf;
+			background-color: #8c8c8c;
 			color: #000000;
 		}
 
 		html.retro body > div {
-			background-color: #c0c0c0;
-			border: 1px solid #b7b7b7;
-			box-shadow: 0 0 0 1px #c2c2c2 inset;
+			background-color: #a3a3a3;
+			border: 1px solid #6f6f6f;
+			box-shadow: 0 0 0 1px #c1c1c1 inset;
 		}
 
 		html.retro a {
@@ -253,15 +253,15 @@ const { title } = Astro.props;
 			display: block;
 		}
 
-		html:not(.dark):not(.retro) #theme-toggle .theme-icon-retro {
+		html:not(.dark):not(.retro) #theme-toggle .theme-icon-dark {
 			display: inline;
 		}
 
-		html.retro #theme-toggle .theme-icon-dark {
+		html.dark #theme-toggle .theme-icon-retro {
 			display: inline;
 		}
 
-		html.dark #theme-toggle .theme-icon-light {
+		html.retro #theme-toggle .theme-icon-light {
 			display: inline;
 		}
 
