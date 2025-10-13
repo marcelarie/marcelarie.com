@@ -16,6 +16,7 @@ const { title } = Astro.props;
 	const themes = ["light", "dark", "retro"] as const;
 	type Theme = (typeof themes)[number];
 	let themeIndex = 0;
+	let hoverLocked = false;
 
 	const getCurrentTheme = (): Theme => {
 		if (rootElement.classList.contains("dark")) {
@@ -63,7 +64,18 @@ const { title } = Astro.props;
 			themeToggleBtn.addEventListener("click", () => {
 				const nextTheme = themes[(themeIndex + 1) % themes.length];
 				applyTheme(nextTheme);
+				hoverLocked = true;
+				themeToggleBtn.dataset.hoverLocked = "true";
 			});
+			const releaseHoverLock = () => {
+				if (!hoverLocked) {
+					return;
+				}
+				hoverLocked = false;
+				delete themeToggleBtn.dataset.hoverLocked;
+			};
+			themeToggleBtn.addEventListener("mouseleave", releaseHoverLock);
+			themeToggleBtn.addEventListener("blur", releaseHoverLock);
 		}
 	});
 </script>
@@ -261,12 +273,9 @@ const { title } = Astro.props;
 			border-color: #00ff00 !important;
 		}
 
-		html.retro #theme-toggle {
-			color: #2f2f2f;
-		}
-
-		#theme-toggle .theme-icon {
-			display: none;
+		#theme-toggle {
+			color: #9ca3af;
+			position: relative;
 		}
 
 		#theme-toggle svg {
@@ -275,16 +284,80 @@ const { title } = Astro.props;
 			height: 22px;
 		}
 
-		html:not(.dark):not(.retro) #theme-toggle .theme-icon-dark {
-			display: inline;
+		#theme-toggle .theme-icon {
+			color: inherit;
 		}
 
-		html.dark #theme-toggle .theme-icon-retro {
-			display: inline;
+		#theme-toggle[data-theme="light"] .theme-icon-light {
+			color: #0000ee;
 		}
 
-		html.retro #theme-toggle .theme-icon-light {
-			display: inline;
+		#theme-toggle[data-theme="light"] .theme-icon-dark,
+		#theme-toggle[data-theme="light"] .theme-icon-retro {
+			color: #9ca3af;
+		}
+
+		#theme-toggle[data-theme="light"]:not([data-hover-locked="true"]):hover
+			.theme-icon-light {
+			color: #d1d5db;
+		}
+
+		#theme-toggle[data-theme="light"]:not([data-hover-locked="true"]):hover
+			.theme-icon-dark {
+			color: #0000ee;
+		}
+
+		#theme-toggle[data-theme="light"]:not([data-hover-locked="true"]):hover
+			.theme-icon-retro {
+			color: #d1d5db;
+		}
+
+		#theme-toggle[data-theme="dark"] .theme-icon-dark {
+			color: #ffffff;
+		}
+
+		#theme-toggle[data-theme="dark"] .theme-icon-light,
+		#theme-toggle[data-theme="dark"] .theme-icon-retro {
+			color: #4b5563;
+		}
+
+		#theme-toggle[data-theme="dark"]:not([data-hover-locked="true"]):hover
+			.theme-icon-dark {
+			color: #4b5563;
+		}
+
+		#theme-toggle[data-theme="dark"]:not([data-hover-locked="true"]):hover
+			.theme-icon-light {
+			color: #4b5563;
+		}
+
+		#theme-toggle[data-theme="dark"]:not([data-hover-locked="true"]):hover
+			.theme-icon-retro {
+			color: #ffffff;
+		}
+
+		#theme-toggle[data-theme="retro"] .theme-icon-retro {
+			color: #8a2be2;
+		}
+
+		#theme-toggle[data-theme="retro"] .theme-icon-light,
+		#theme-toggle[data-theme="retro"] .theme-icon-dark {
+			color: #000000;
+		}
+
+		#theme-toggle[data-theme="retro"]:not([data-hover-locked="true"]):hover
+			.theme-icon-retro {
+			color: #000000;
+		}
+
+		#theme-toggle[data-theme="retro"]:not([data-hover-locked="true"]):hover
+			.theme-icon-light {
+			color: #8a2be2;
+		}
+
+		#theme-toggle[data-theme="retro"]:not([data-hover-locked="true"]):hover
+			.theme-icon-dark {
+			color: #000000;
 		}
 
 		.astro-code {
