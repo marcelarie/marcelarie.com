@@ -227,18 +227,26 @@ const { title } = Astro.props;
 		}
 
 		html.retro .astro-code {
-			background-color: #ffffff !important;
+			background-color: #050505 !important;
 			border: 1px solid #00ff00 !important;
-			color: #000000 !important;
+		}
+
+		html.retro .astro-code,
+		html.retro .astro-code span {
+			color: #00ff00 !important;
+			font-style: normal !important;
+			font-weight: 400 !important;
+			text-decoration: none !important;
 		}
 
 		html.retro .copy-code {
-			background-color: #c5c5c5;
+			background-color: #101010;
+			color: #00ff00;
 			border: 1px solid #00ff00;
 		}
 
 		html.retro .copy-code:hover {
-			background-color: #c0c0c0;
+			background-color: #161616;
 		}
 
 		html.retro .retro-image-border {
