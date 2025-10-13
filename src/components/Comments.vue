@@ -20,10 +20,21 @@ const giscusContainer = ref<HTMLElement>()
 onMounted(() => {
   if (!giscusContainer.value) return
 
-  const isDark = document.documentElement.classList.contains('dark')
-  const theme = isDark ? `${window.location.origin}/giscus-theme.css` : `${window.location.origin}/giscus-light-theme-clean.css`
+  const getThemeUrl = () => {
+    const origin = window.location.origin
+    const root = document.documentElement
+    if (root.classList.contains('retro')) {
+      return `${origin}/giscus-retro-theme.css`
+    }
+    if (root.classList.contains('dark')) {
+      return `${origin}/giscus-theme.css`
+    }
+    return `${origin}/giscus-light-theme-clean.css`
+  }
+
+  let currentTheme = getThemeUrl()
   
-  console.log('Loading giscus with theme:', theme)
+  console.log('Loading giscus with theme:', currentTheme)
   console.log('Current pathname:', window.location.pathname)
   
   const script = document.createElement('script')
@@ -37,7 +48,7 @@ onMounted(() => {
   script.setAttribute('data-reactions-enabled', '0')
   script.setAttribute('data-emit-metadata', '0')
   script.setAttribute('data-input-position', 'top')
-  script.setAttribute('data-theme', theme)
+  script.setAttribute('data-theme', currentTheme)
   script.setAttribute('data-lang', 'en')
   script.setAttribute('data-loading', 'lazy')
   script.crossOrigin = 'anonymous'
@@ -46,10 +57,11 @@ onMounted(() => {
   giscusContainer.value.appendChild(script)
 
   const observer = new MutationObserver(() => {
-    const isDarkNow = document.documentElement.classList.contains('dark')
-    const newTheme = isDarkNow ? `${window.location.origin}/giscus-theme.css` : `${window.location.origin}/giscus-light-theme-clean.css`
+    const newTheme = getThemeUrl()
+    if (newTheme === currentTheme) return
+    currentTheme = newTheme
     
-    console.log('Theme change detected:', { isDarkNow, newTheme })
+    console.log('Theme change detected:', { newTheme })
     
     const giscusFrame = giscusContainer.value?.querySelector('iframe')
     if (giscusFrame) {
