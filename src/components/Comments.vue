@@ -60,6 +60,7 @@ onMounted(() => {
     const newTheme = getThemeUrl()
     if (newTheme === currentTheme) return
     currentTheme = newTheme
+    script.setAttribute('data-theme', newTheme)
     
     console.log('Theme change detected:', { newTheme })
     
