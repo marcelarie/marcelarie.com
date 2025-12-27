@@ -4,8 +4,6 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import { loadEnv } from "vite";
 
-import icon from "astro-icon";
-
 const DEFAULT_PORT = 4321;
 
 const env = loadEnv(process.env.PORT!, process.cwd(), "");
@@ -26,9 +24,7 @@ export default defineConfig({
           dark: "vesper",
         },
       },
-      // gfm: false, // Github Flavored Markdown
     }),
     tailwind(),
-    icon(),
   ],
 });

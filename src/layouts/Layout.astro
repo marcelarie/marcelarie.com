@@ -13,7 +13,7 @@ const { title } = Astro.props;
 <script>
 	const themeToggleBtn = document.getElementById("theme-toggle");
 	const rootElement = document.documentElement;
-	const themes = ["light", "dark", "retro"] as const;
+	const themes = ["light", "dark"] as const;
 	type Theme = (typeof themes)[number];
 	let themeIndex = 0;
 	let hoverLocked = false;
@@ -22,18 +22,13 @@ const { title } = Astro.props;
 		if (rootElement.classList.contains("dark")) {
 			return "dark";
 		}
-		if (rootElement.classList.contains("retro")) {
-			return "retro";
-		}
 		return "light";
 	};
 
 	const applyTheme = (theme: Theme) => {
-		rootElement.classList.remove("dark", "retro");
+		rootElement.classList.remove("dark");
 		if (theme === "dark") {
 			rootElement.classList.add("dark");
-		} else if (theme === "retro") {
-			rootElement.classList.add("retro");
 		}
 		localStorage.setItem("theme", theme);
 		const index = themes.indexOf(theme);
@@ -87,12 +82,9 @@ const { title } = Astro.props;
 				var savedTheme = localStorage.getItem("theme");
 
 				function applyTheme(theme) {
-					document.documentElement.classList.remove("dark", "retro");
+					document.documentElement.classList.remove("dark");
 					if (theme === "dark") {
 						document.documentElement.classList.add("dark");
-					}
-					if (theme === "retro") {
-						document.documentElement.classList.add("retro");
 					}
 				}
 
@@ -143,12 +135,10 @@ const { title } = Astro.props;
 		}
 		html {
 			font-family: system-ui, sans-serif;
-			/* background: #13151a; */
 			background: #ffffff;
 		}
 		code {
 			font-family: "IBM Plex Mono", monospace !important;
-			/* font-size: 14px; */
 		}
 
 		html,
@@ -156,122 +146,44 @@ const { title } = Astro.props;
 			overflow-x: hidden;
 		}
 
-		/* TODO: Find a better way to style the code blocks */
 		.prose
 			:where(pre):not(
 				:where([class~="not-prose"], [class~="not-prose"] *)
 			) {
-			/* background-color: #f0f0f0 !important; */
 			border-radius: 0rem !important;
 		}
 
 		.dark .astro-code {
-			/* background-color: #111111 !important; */
 			background-color: var(--shiki-dark-bg) !important;
 		}
 
-		html:not(.dark):not(.retro) a {
+		html:not(.dark) a {
 			color: #0000ee;
 		}
 
-		html:not(.dark):not(.retro) a:hover {
+		html:not(.dark) a:hover {
 			color: #ff0000;
 		}
 
-		html:not(.dark):not(.retro) a:visited {
+		html:not(.dark) a:visited {
 			color: #551a8b;
 		}
 
-		html:not(.dark):not(.retro) nav #logo,
-		html:not(.dark):not(.retro) nav #logo:visited {
+		html:not(.dark) nav #logo,
+		html:not(.dark) nav #logo:visited {
 			color: #0000ee;
 		}
 
-		html:not(.dark):not(.retro) nav #right-navbar a,
-		html:not(.dark):not(.retro) nav #right-navbar a:visited {
+		html:not(.dark) nav #right-navbar a,
+		html:not(.dark) nav #right-navbar a:visited {
 			color: inherit;
 		}
 
-		html:not(.dark):not(.retro) footer a:visited {
+		html:not(.dark) footer a:visited {
 			color: #0000ee;
 		}
 
-		html.retro {
-			background-color: #8c8c8c;
-			color: #202020;
-			--accent: 140, 140, 140;
-			--accent-light: 163, 163, 163;
-			--accent-dark: 112, 112, 112;
-			--accent-gradient: linear-gradient(45deg, #9c9c9c, #c5c5c5 60%);
-		}
 
-		html.retro body {
-			background-color: #8c8c8c;
-			color: #202020;
-		}
-
-		html.retro body > div {
-			background-color: #a3a3a3;
-			border: 1px solid #6f6f6f;
-			box-shadow: 0 0 0 1px #c1c1c1 inset;
-		}
-
-		html.retro a {
-			color: #8a2be2;
-		}
-
-		html.retro a:hover {
-			color: #7a26c5;
-		}
-
-		html.retro a:visited {
-			color: #6c1fb0;
-		}
-
-		html.retro nav #logo,
-		html.retro nav #logo:visited {
-			color: #8a2be2;
-		}
-
-		html.retro nav #right-navbar a,
-		html.retro nav #right-navbar a:visited {
-			color: #000000;
-		}
-
-		html.retro nav #right-navbar a:hover {
-			color: #000000;
-		}
-
-		html.retro footer a:visited {
-			color: #6c1fb0;
-		}
-
-		html.retro .astro-code {
-			background-color: #050505 !important;
-			border: 1px solid #00ff00 !important;
-		}
-
-		html.retro .astro-code,
-		html.retro .astro-code span {
-			color: #00ff00 !important;
-			font-style: normal !important;
-			font-weight: 400 !important;
-			text-decoration: none !important;
-		}
-
-		html.retro .copy-code {
-			background-color: #101010;
-			color: #00ff00;
-			border: 1px solid #00ff00;
-		}
-
-		html.retro .copy-code:hover {
-			background-color: #161616;
-		}
-
-		html.retro .retro-image-border {
-			border-color: #00ff00 !important;
-		}
 
 		#theme-toggle {
 			color: #9ca3af;
@@ -292,8 +204,7 @@ const { title } = Astro.props;
 			color: #0000ee;
 		}
 
-		#theme-toggle[data-theme="light"] .theme-icon-dark,
-		#theme-toggle[data-theme="light"] .theme-icon-retro {
+		#theme-toggle[data-theme="light"] .theme-icon-dark {
 			color: #9ca3af;
 		}
 
@@ -307,17 +218,11 @@ const { title } = Astro.props;
 			color: #0000ee;
 		}
 
-		#theme-toggle[data-theme="light"]:not([data-hover-locked="true"]):hover
-			.theme-icon-retro {
-			color: #d1d5db;
-		}
-
 		#theme-toggle[data-theme="dark"] .theme-icon-dark {
 			color: #ffffff;
 		}
 
-		#theme-toggle[data-theme="dark"] .theme-icon-light,
-		#theme-toggle[data-theme="dark"] .theme-icon-retro {
+		#theme-toggle[data-theme="dark"] .theme-icon-light {
 			color: #4b5563;
 		}
 
@@ -328,46 +233,13 @@ const { title } = Astro.props;
 
 		#theme-toggle[data-theme="dark"]:not([data-hover-locked="true"]):hover
 			.theme-icon-light {
-			color: #4b5563;
-		}
-
-		#theme-toggle[data-theme="dark"]:not([data-hover-locked="true"]):hover
-			.theme-icon-retro {
 			color: #ffffff;
-		}
-
-		#theme-toggle[data-theme="retro"] .theme-icon-retro {
-			color: #8a2be2;
-		}
-
-		#theme-toggle[data-theme="retro"] .theme-icon-light,
-		#theme-toggle[data-theme="retro"] .theme-icon-dark {
-			color: #000000;
-		}
-
-		#theme-toggle[data-theme="retro"]:not([data-hover-locked="true"]):hover
-			.theme-icon-retro {
-			color: #000000;
-		}
-
-		#theme-toggle[data-theme="retro"]:not([data-hover-locked="true"]):hover
-			.theme-icon-light {
-			color: #8a2be2;
-		}
-
-		#theme-toggle[data-theme="retro"]:not([data-hover-locked="true"]):hover
-			.theme-icon-dark {
-			color: #000000;
 		}
 
 		.astro-code {
 			font-size: 14px !important;
 			border: 1px solid #0000ee !important;
-			/* border: 1px solid #000 !important; */
 		}
-		/*astro-code:hover { */
-		/*   border: 1px solid #000 !important; */
-		/*} */
 
 		.dark .astro-code,
 		.dark .astro-code span {

@@ -38,8 +38,6 @@ const allPosts = await getCollection("posts");
             ? cleanText.substring(0, maxLengthDesktop) + "..." 
             : cleanText;
 
-          const { Content } = await post.render();
-
           return (
             <div class="flex flex-col mb-8">
               <a
@@ -86,32 +84,12 @@ const allPosts = await getCollection("posts");
     font-size: 24px;
   }
 
-  :global(html:not(.dark):not(.retro) #post-title) {
+  :global(html:not(.dark) #post-title) {
     color: #000000;
   }
 
-  :global(html:not(.dark):not(.retro) #post-title:visited) {
+  :global(html:not(.dark) #post-title:visited) {
     color: #000000;
-  }
-
-  :global(html.retro #post-date) {
-    color: #f7f7f7;
-  }
-
-  :global(html.retro #post-title) {
-    color: #000000;
-  }
-
-  :global(html.retro #post-title:visited) {
-    color: #000000;
-  }
-
-  :global(html.retro #post-title:hover) {
-    color: #000000;
-  }
-
-  :global(html.retro #post-preview) {
-    color: #1f1f1f;
   }
 
   @media (min-width: 640px) {

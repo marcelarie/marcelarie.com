@@ -5,88 +5,85 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
 interface Props {
-  title?: string
+  title?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: ''
-})
+  title: "",
+});
 
-const giscusContainer = ref<HTMLElement>()
+const giscusContainer = ref<HTMLElement>();
 
 onMounted(() => {
-  if (!giscusContainer.value) return
+  if (!giscusContainer.value) return;
 
   const getThemeUrl = () => {
-    const origin = window.location.origin
-    const root = document.documentElement
-    if (root.classList.contains('retro')) {
-      return `${origin}/giscus-retro-theme.css`
+    const origin = window.location.origin;
+    const root = document.documentElement;
+    if (root.classList.contains("dark")) {
+      return `${origin}/giscus-theme.css`;
     }
-    if (root.classList.contains('dark')) {
-      return `${origin}/giscus-theme.css`
-    }
-    return `${origin}/giscus-light-theme-clean.css`
-  }
+    return `${origin}/giscus-light-theme-clean.css`;
+  };
 
-  let currentTheme = getThemeUrl()
-  
-  console.log('Loading giscus with theme:', currentTheme)
-  console.log('Current pathname:', window.location.pathname)
-  
-  const script = document.createElement('script')
-  script.src = 'https://giscus.app/client.js'
-  script.setAttribute('data-repo', 'marcelarie/marcelarie.com')
-  script.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyODU1OTY4MzE') 
-  script.setAttribute('data-category', 'General')
-  script.setAttribute('data-category-id', 'DIC_kwDOEQXcn84CvJvn') 
-  script.setAttribute('data-mapping', 'pathname')
-  script.setAttribute('data-strict', '0')
-  script.setAttribute('data-reactions-enabled', '0')
-  script.setAttribute('data-emit-metadata', '0')
-  script.setAttribute('data-input-position', 'top')
-  script.setAttribute('data-theme', currentTheme)
-  script.setAttribute('data-lang', 'en')
-  script.setAttribute('data-loading', 'lazy')
-  script.crossOrigin = 'anonymous'
-  script.async = true
+  let currentTheme = getThemeUrl();
 
-  giscusContainer.value.appendChild(script)
+  const script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "marcelarie/marcelarie.com");
+  script.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkyODU1OTY4MzE");
+  script.setAttribute("data-category", "General");
+  script.setAttribute("data-category-id", "DIC_kwDOEQXcn84CvJvn");
+  script.setAttribute("data-mapping", "pathname");
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "0");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "top");
+  script.setAttribute("data-theme", currentTheme);
+  script.setAttribute("data-lang", "en");
+  script.setAttribute("data-loading", "lazy");
+  script.crossOrigin = "anonymous";
+  script.async = true;
+
+  giscusContainer.value.appendChild(script);
 
   const observer = new MutationObserver(() => {
-    const newTheme = getThemeUrl()
-    if (newTheme === currentTheme) return
-    currentTheme = newTheme
-    script.setAttribute('data-theme', newTheme)
-    
-    console.log('Theme change detected:', { newTheme })
-    
-    const giscusFrame = giscusContainer.value?.querySelector('iframe')
+    const newTheme = getThemeUrl();
+    if (newTheme === currentTheme) return;
+    currentTheme = newTheme;
+    script.setAttribute("data-theme", newTheme);
+
+    console.log("Theme change detected:", { newTheme });
+
+    const giscusFrame = giscusContainer.value?.querySelector("iframe");
     if (giscusFrame) {
-      console.log('Updating theme via postMessage and reload')
-      giscusFrame.contentWindow?.postMessage({
-        giscus: { setConfig: { theme: newTheme } }
-      }, 'https://giscus.app')
-      
+      console.log("Updating theme via postMessage and reload");
+      giscusFrame.contentWindow?.postMessage(
+        {
+          giscus: { setConfig: { theme: newTheme } },
+        },
+        "https://giscus.app",
+      );
+
       setTimeout(() => {
         if (giscusFrame.contentDocument) {
-          giscusFrame.src = giscusFrame.src
-          console.log('Iframe reloaded')
+          giscusFrame.src = giscusFrame.src;
+          console.log("Iframe reloaded");
         }
-      }, 500)
+      }, 500);
     } else {
-      console.log('No iframe found')
+      console.log("No iframe found");
     }
-  })
+  });
 
   observer.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['class']
-  })
-})
+    attributeFilter: ["class"],
+  });
+});
 </script>
 
 <style>
@@ -102,5 +99,4 @@ onMounted(() => {
   box-shadow: none !important;
   border: none !important;
 }
-
 </style>
