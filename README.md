@@ -15,5 +15,5 @@ This is my blog. I'm using [Astro](https://astro.build) with [Vue 3](https://v3.
 | `make format`       | Format all files with Prettier               |
 | `make format-check` | Check if files are formatted correctly       |
 | `make preview`      | Preview your build locally, before deploying |
-| `pnpm install`      | Install dependencies                         |
-| `pnpm run`          | List all available commands                  |
+| `make install`      | Install dependencies                         |
+| `make help`         | List all available commands                  |

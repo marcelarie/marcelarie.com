@@ -2,8 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import LangColorBar from "../components/LangColorBar.astro";
 import {
-  getRepoInfo,
-  getRepoLanguages,
+  getMultipleRepos,
   type Language,
 } from "../utils/github";
 import { normalizeCase } from "../utils/misc";
@@ -18,11 +17,19 @@ type Project = {
 
 const fetchProjects = async () => {
   try {
-    const projects = await Promise.all(
-      SITE_CONFIG.projects.map(async (project) => {
-        const data = await getRepoInfo(SITE_CONFIG.github.username, project);
-        const languages = await getRepoLanguages(SITE_CONFIG.github.username, project);
+    // Fetch all repos in a single GraphQL query
+    const reposMap = await getMultipleRepos(
+      SITE_CONFIG.github.username,
+      SITE_CONFIG.projects,
+    );
 
+    // Transform to project array, maintaining order
+    const projects = SITE_CONFIG.projects
+      .map((projectName) => {
+        const repoData = reposMap.get(projectName);
+        if (!repoData) return null;
+
+        const { info: data, languages } = repoData;
         const shouldNormalize = data.name && !data.name.includes(".com");
         const name = shouldNormalize ? normalizeCase(data.name) : data.name;
 
@@ -32,8 +39,9 @@ const fetchProjects = async () => {
           url: data.html_url,
           languages,
         };
-      }),
-    );
+      })
+      .filter((p): p is Project => p !== null);
+
     return projects;
   } catch (error) {
     console.error("Error fetching projects:", error);
