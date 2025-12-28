@@ -1,6 +1,5 @@
 import { expect, test } from "vitest";
 import { calculateReadingTime, normalizeCase, segmentWords } from "./misc";
-import exp from "constants";
 
 test("Misc Utils: calculateReadingTime", () => {
   const oneThousandWords = "word ".repeat(1000);

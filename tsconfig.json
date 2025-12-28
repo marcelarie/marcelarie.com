@@ -3,5 +3,6 @@
   "compilerOptions": {
     "jsx": "preserve",
     "types": ["node"]
-  }
+  },
+  "exclude": ["dist", "node_modules"]
 }
