@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { SITE_CONFIG } from "../config";
 
 interface Props {
   title?: string;
@@ -33,10 +34,13 @@ onMounted(() => {
 
   const script = document.createElement("script");
   script.src = "https://giscus.app/client.js";
-  script.setAttribute("data-repo", "marcelarie/marcelarie.com");
-  script.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkyODU1OTY4MzE");
-  script.setAttribute("data-category", "General");
-  script.setAttribute("data-category-id", "DIC_kwDOEQXcn84CvJvn");
+  script.setAttribute(
+    "data-repo",
+    `${SITE_CONFIG.github.username}/${SITE_CONFIG.github.repo}`,
+  );
+  script.setAttribute("data-repo-id", SITE_CONFIG.github.repoId);
+  script.setAttribute("data-category", SITE_CONFIG.giscus.category);
+  script.setAttribute("data-category-id", SITE_CONFIG.giscus.categoryId);
   script.setAttribute("data-mapping", "pathname");
   script.setAttribute("data-strict", "0");
   script.setAttribute("data-reactions-enabled", "0");

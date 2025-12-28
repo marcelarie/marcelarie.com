@@ -1,15 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { BLOG_TITLE } from "./constants";
+import { SITE_CONFIG } from "../config";
 import { formatDate } from "../utils/dates";
 import { calculateReadingTime } from "../utils/misc";
+import { createResponsivePreview } from "../utils/text";
 import type { Post } from "../types";
 
 const allPosts = await getCollection("posts");
 ---
 
-<Layout title={BLOG_TITLE}>
+<Layout title={SITE_CONFIG.title}>
   <main>
     {
       allPosts
@@ -19,24 +20,7 @@ const allPosts = await getCollection("posts");
           const date = new Date(post.data.date);
           const formattedDate = formatDate(date);
           const readingTime = calculateReadingTime(post.body);
-          const firstParagraph = post.body.split('\n\n')[0] || post.body.split('\n')[0] || '';
-
-          const cleanText = post.body
-            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-            .replace(new RegExp('\\x60\\x60\\x60[\\s\\S]*?\\x60\\x60\\x60', 'g'), '')
-            .replace(/[#*_\x60]/g, '')
-            .replace(/[*_\x60]/g, '')
-            .replace(/\n+/g, ' ')
-            .trim();
-
-          const maxLengthMobile = 100;
-          const maxLengthDesktop = 200;
-          const previewTextMobile = cleanText.length > maxLengthMobile 
-            ? cleanText.substring(0, maxLengthMobile) + "..." 
-            : cleanText;
-          const previewTextDesktop = cleanText.length > maxLengthDesktop 
-            ? cleanText.substring(0, maxLengthDesktop) + "..." 
-            : cleanText;
+          const preview = createResponsivePreview(post.body);
 
           return (
             <div class="flex flex-col mb-8">
@@ -57,8 +41,8 @@ const allPosts = await getCollection("posts");
                 id="post-preview"
                 class="mt-4 overflow-hidden"
               >
-                <span class="block sm:hidden">{previewTextMobile}</span>
-                <span class="hidden sm:block">{previewTextDesktop}</span>
+                <span class="block sm:hidden">{preview.mobile}</span>
+                <span class="hidden sm:block">{preview.desktop}</span>
               </div>
             </div>
           );
@@ -69,18 +53,18 @@ const allPosts = await getCollection("posts");
 
 <style>
   nav #logo {
-    font-family: "Pixel Code Light";
+    font-family: var(--font-pixel);
     font-size: 36px;
   }
 
   nav #right-navbar a {
-    font-family: "Noto Serif Regular";
+    font-family: var(--font-serif);
     font-size: 24px;
     font-weight: regular;
   }
 
   #post-title {
-    font-family: "Noto Serif Regular";
+    font-family: var(--font-serif);
     font-size: 24px;
   }
 
@@ -99,14 +83,14 @@ const allPosts = await getCollection("posts");
   }
 
   #post-date {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 16px;
     font-weight: 400;
-    color: #929292;
+    color: var(--color-text-muted);
   }
 
   #post-preview {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 16px;
     word-wrap: break-word;
     overflow-wrap: break-word;

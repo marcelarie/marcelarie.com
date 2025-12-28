@@ -7,6 +7,7 @@ import {
   type Language,
 } from "./api/getGithubRepository";
 import { normalizeCase } from "../utils/misc";
+import { SITE_CONFIG } from "../config";
 
 type Project = {
   name: string;
@@ -15,26 +16,12 @@ type Project = {
   languages: Language[];
 };
 
-const projectNames = [
-  "tarea",
-  "git-commit-search",
-  "nu-alias-converter",
-  "sourses",
-  "rund",
-  "git-tellme",
-  "marcelarie.com",
-];
-
 const fetchProjects = async () => {
   try {
     const projects = await Promise.all(
-      // TODO: Consider querying repos by topic (e.g. "showcase-in-blog") instead of hardcoding names.
-      // This would allow managing the displayed projects directly on GitHub.
-      // Problem: can't order by creation date, `updated`  seems to be the best option.
-      // Example: const repos = await getReposByTopic("marcelarie", "showcase-in-blog");
-      projectNames.map(async (project) => {
-        const data = await getRepoInfo("marcelarie", project);
-        const languages = await getRepoLanguages("marcelarie", project);
+      SITE_CONFIG.projects.map(async (project) => {
+        const data = await getRepoInfo(SITE_CONFIG.github.username, project);
+        const languages = await getRepoLanguages(SITE_CONFIG.github.username, project);
 
         const shouldNormalize = data.name && !data.name.includes(".com");
         const name = shouldNormalize ? normalizeCase(data.name) : data.name;
@@ -88,7 +75,7 @@ const projects: Project[] = await fetchProjects();
 
 <style>
   #project-title {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 20px;
     text-decoration: none;
   }

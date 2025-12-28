@@ -1,4 +1,6 @@
 ---
+import { SITE_CONFIG } from "../config";
+
 const isHome = Astro.url.pathname === "/";
 const justifyStyle = isHome ? "justify-end" : "justify-between";
 ---
@@ -22,7 +24,7 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 		</a>
 		<span>/</span>
 		<a
-			href="mailto:googlillo@example.com"
+			href={`mailto:${SITE_CONFIG.author.email}`}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="font-ibm-plex-mono text-sm hover:underline"
@@ -31,7 +33,7 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 		</a>
 		<span>/</span>
 		<a
-			href="https://github.com/marcelarie"
+			href={`https://github.com/${SITE_CONFIG.github.username}`}
 			class="font-ibm-plex-mono text-sm hover:underline"
 			target="_blank"
 			rel="noopener noreferrer"
@@ -41,7 +43,7 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 
 		<style>
 			footer a {
-				font-family: "IBM Plex Mono", monospace;
+				font-family: var(--font-mono);
 				text-transform: lowercase;
 				font-size: clamp(14px, 4vw, 18px);
 			}

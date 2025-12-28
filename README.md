@@ -4,14 +4,17 @@ This is my blog. I'm using [Astro](https://astro.build) with [Vue 3](https://v3.
 
 **Commands:**
 
-| Command                    | Action                                                              |
-| :------------------------- | :------------------------------------------------------------------ |
-| `just dev`                 | Starts local dev server at `localhost:4321` and opens it in firefox |
-| `just build`               | Build your production site to `./dist/`                             |
-| `just test`                | Run tests                                                           |
-| `pnpm install`             | Installs dependencies                                               |
-| `pnpm run dev`             | Starts local dev server at `localhost:4321`                         |
-| `pnpm run build`           | Build your production site to `./dist/`                             |
-| `pnpm run preview`         | Preview your build locally, before deploying                        |
-| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check`                    |
-| `pnpm run astro -- --help` | Get help using the Astro CLI                                        |
+> **Note:** Any `just <command>` automatically runs `pnpm run <command>`. Use whichever you prefer!
+
+| Just Command           | npm/pnpm Command           | Action                                       |
+| :--------------------- | :------------------------- | :------------------------------------------- |
+| `just`                 | `pnpm run`                 | List all available commands                  |
+| `just dev`             | `pnpm run dev`             | Start local dev server at `localhost:4321`   |
+| `just build`           | `pnpm run build`           | Build your production site to `./dist/`      |
+| `just test`            | `pnpm run test`            | Run tests                                    |
+| `just format`          | `pnpm run format`          | Format all files with Prettier               |
+| `just format-check`    | `pnpm run format:check`    | Check if files are formatted correctly       |
+| `just preview`         | `pnpm run preview`         | Preview your build locally, before deploying |
+| `just astro <command>` | `pnpm run astro ...`       | Run Astro CLI commands (e.g., `astro add`)   |
+|                        | `pnpm install`             | Install dependencies                         |
+|                        | `pnpm run astro -- --help` | Get help using the Astro CLI                 |

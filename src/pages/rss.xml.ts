@@ -2,7 +2,7 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
-import { BLOG_TITLE } from "./constants";
+import { SITE_CONFIG } from "../config";
 import type { Post } from "../types";
 const parser = new MarkdownIt();
 
@@ -14,8 +14,8 @@ export async function GET(context: Context) {
   const blogPosts = await getCollection("posts");
 
   return rss({
-    title: BLOG_TITLE,
-    description: "This is my personal blog where I write about things I like.",
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports

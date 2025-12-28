@@ -11,11 +11,13 @@ export type Language = {
   color: string;
 };
 
-export type Repo = {
+export type RepoInfo = {
   name: string;
   description: string;
   html_url: string;
 };
+
+export type Repo = RepoInfo;
 
 export type ReposTopicResponse = {
   total_count: number;
@@ -23,7 +25,10 @@ export type ReposTopicResponse = {
   items: Repo[];
 };
 
-export async function getRepoInfo(repoOwner: string, repoName: string) {
+export async function getRepoInfo(
+  repoOwner: string,
+  repoName: string,
+): Promise<RepoInfo> {
   const response = await fetch(`${ghApi}/repos/${repoOwner}/${repoName}`, {
     headers: {
       Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -35,7 +40,7 @@ export async function getRepoInfo(repoOwner: string, repoName: string) {
     throw new Error(`Failed to fetch repository info: ${response.statusText}`);
   }
 
-  const data = await response.json();
+  const data: RepoInfo = await response.json();
   return data;
 }
 

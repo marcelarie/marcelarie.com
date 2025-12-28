@@ -4,7 +4,6 @@ interface Props {
 }
 
 const { error } = Astro.props;
-console.log(error);
 ---
 
 <div>{error instanceof Error ? error.message : "Unknown error"}</div>
