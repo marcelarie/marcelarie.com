@@ -16,11 +16,11 @@ const allPosts = await getCollection("posts");
       allPosts
         .filter((post: Post) => !post.data.draft)
         .map(async (post: Post) => {
-          const href = "/blog/" + post.slug;
+          const href = "/blog/" + post.id;
           const date = new Date(post.data.date);
           const formattedDate = formatDate(date);
-          const readingTime = calculateReadingTime(post.body);
-          const preview = createResponsivePreview(post.body);
+          const readingTime = calculateReadingTime(post.body || "");
+          const preview = createResponsivePreview(post.body || "");
 
           return (
             <div class="flex flex-col mb-8">

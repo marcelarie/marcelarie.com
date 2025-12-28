@@ -15,7 +15,7 @@ interface Props {
 export async function getStaticPaths() {
 	const blogPosts = await getCollection("posts");
 	return blogPosts.map((post: Post) => ({
-		params: { slug: post.slug },
+		params: { slug: post.id },
 		props: { post },
 	}));
 }
@@ -24,7 +24,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const hasImage = post.data.cover;
 const isDraft = post.data.draft;
-const readingTime = calculateReadingTime(post.body);
+const readingTime = calculateReadingTime(post.body || "");
 
 const date = new Date(post.data.date);
 const formattedDate = formatDate(date);
@@ -78,7 +78,7 @@ const formattedDate = formatDate(date);
 	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
 		<article class="prose dark:prose-invert prose-stone w-full max-w-3xl">
 			{
-				hasImage && (
+				hasImage && post.data.cover && (
 					<Image
 						class="object-cover object-center !m-0 aspect-square block"
 						src={post.data.cover}

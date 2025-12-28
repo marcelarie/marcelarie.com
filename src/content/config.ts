@@ -9,9 +9,11 @@ const postsCollection = defineCollection({
     z.object({
       title: z.string(),
       tags: z.array(z.string()),
-      cover: image(),
+      cover: image().optional(),
       date: z.coerce.date(),
       excerpt: z.string(),
+      description: z.string().optional(),
+      draft: z.boolean().optional(),
     }),
 });
 

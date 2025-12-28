@@ -5,4 +5,4 @@ export default getViteConfig({
   test: {
     // Vitest configuration options
   },
-});
+} as any);
