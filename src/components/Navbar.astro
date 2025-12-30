@@ -1,10 +1,12 @@
 ---
 const currentPath = Astro.url.pathname;
+const hostname = Astro.url.hostname;
+const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares' : 'follow the trace';
 ---
 
 <nav class="flex flex-col sm:flex-row sm:justify-between items-center sm:items-baseline mt-10 mb-14">
 	<a id="logo" href="/" class="mb-4 sm:mb-0 text-center sm:text-left">
-		follow the trace
+		{logoText}
 	</a>
 	<div id="right-navbar" class="flex space-x-4 items-center sm:self-end mb-[10px]">
 		<a href="/about" class={currentPath === '/about' ? 'active' : ''}>About</a>
