@@ -132,8 +132,9 @@ const { title } = Astro.props;
 			--font-pixel: "Pixel Code Light", monospace;
 			
 			/* Colors - Light mode */
-			--color-bg: #ffffff;
-			--color-bg-dark: #303030;
+			--color-bg-light: #fafafa;
+			--color-bg: #fafafa;
+			--color-bg-dark: #1a1a1a;
 			--color-text: #000000;
 			--color-text-muted: #929292;
 			--color-link: #0000ee;
@@ -308,7 +309,7 @@ const { title } = Astro.props;
 
 	.mermaid .edgeLabel,
 	.mermaid .labelBkg {
-		background-color: #ffffff !important;
+		background-color: var(--color-bg-light) !important;
 	}
 
 	.dark .mermaid .node rect,
