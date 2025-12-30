@@ -11,7 +11,7 @@ const env = loadEnv(process.env.PORT!, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://marcelarie.xyz",
+  site: "https://followthetrace.com",
   server: {
     port: Number(env.PORT) || DEFAULT_PORT,
   },

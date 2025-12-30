@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
-  title: "marcelarie.xyz",
+  title: "Unexpected cool pointer",
   description: "This is my personal blog where I write about things I like.",
-  url: "https://marcelarie.xyz",
+  url: "https://followthetrace.com",
 
   author: {
     name: "Marcel Arie",
