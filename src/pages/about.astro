@@ -80,7 +80,14 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
     line-height: 1.6;
   }
 
-  a {
-    color: #3182ce;
+  #about-content a {
+    padding: 0 0.15rem;
+    margin: 0 -0.15rem;
+    font-size: inherit;
+  }
+
+  :global(html:not(.dark)) #about-content a:hover {
+    background-color: #0000ee;
+    color: #ffff11 !important;
   }
 </style>

@@ -10,7 +10,7 @@ const allPosts = await getCollection("posts");
 ---
 
 <Layout title={SITE_CONFIG.title}>
-  <main>
+  <main class="mt-8">
     {
       allPosts
         .filter((post: Post) => !post.data.draft)
@@ -72,6 +72,10 @@ const allPosts = await getCollection("posts");
 
   :global(html:not(.dark) #post-title:visited) {
     color: #000000;
+  }
+
+  :global(html.dark #post-title:visited) {
+    color: var(--color-link-visited-dark);
   }
 
   @media (min-width: 640px) {

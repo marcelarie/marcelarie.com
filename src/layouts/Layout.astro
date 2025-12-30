@@ -130,6 +130,7 @@ const { title } = Astro.props;
 			--font-merriweather: "Merriweather", serif;
 			--font-atkinson: "Atkinson Hyperlegible", sans-serif;
 			--font-pixel: "Pixel Code Light", monospace;
+			--font-vt323: "VT323", monospace;
 			
 			/* Colors - Light mode */
 			--color-bg-light: #fafafa;
@@ -158,6 +159,7 @@ const { title } = Astro.props;
 			--color-bg: var(--color-bg-dark);
 			--color-text: #ffffff;
 			--color-text-muted: #d1d5db;
+			--color-link-visited-dark: #bb86fc;
 		}
 		
 		html {
@@ -198,7 +200,8 @@ const { title } = Astro.props;
 		}
 
 		html:not(.dark) nav #logo,
-		html:not(.dark) nav #logo:visited {
+		html:not(.dark) nav #logo:visited,
+		html:not(.dark) nav #logo:hover {
 			color: var(--color-link);
 		}
 
@@ -211,7 +214,15 @@ const { title } = Astro.props;
 			color: var(--color-link);
 		}
 
+		html.dark a:visited {
+			color: var(--color-link-visited-dark);
+		}
 
+		html.dark nav #logo:visited,
+		html.dark nav #right-navbar a:visited,
+		html.dark footer a:visited {
+			color: inherit;
+		}
 
 		#theme-toggle {
 			color: #9ca3af;
