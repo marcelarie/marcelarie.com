@@ -113,7 +113,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class=`min-h-screen dark:bg-[#000000] dark:text-white`>
+	<body class=`min-h-screen dark:bg-[var(--color-bg-dark)] dark:text-white`>
 		<div
 			class="max-w-3xl mx-auto px-8 flex flex-col min-h-screen sm:w-full"
 		>
@@ -133,6 +133,7 @@ const { title } = Astro.props;
 			
 			/* Colors - Light mode */
 			--color-bg: #ffffff;
+			--color-bg-dark: #303030;
 			--color-text: #000000;
 			--color-text-muted: #929292;
 			--color-link: #0000ee;
@@ -153,7 +154,7 @@ const { title } = Astro.props;
 		}
 		
 		html.dark {
-			--color-bg: #000000;
+			--color-bg: var(--color-bg-dark);
 			--color-text: #ffffff;
 			--color-text-muted: #d1d5db;
 		}
@@ -325,7 +326,7 @@ const { title } = Astro.props;
 
 	.dark .mermaid .edgeLabel,
 	.dark .mermaid .labelBkg {
-		background-color: #000000 !important;
+		background-color: var(--color-bg-dark) !important;
 		color: #ffffff !important;
 	}
 
@@ -344,7 +345,7 @@ const { title } = Astro.props;
 	}
 
 	.dark .mermaid .edgeLabel .label {
-		background-color: #000000 !important;
+		background-color: var(--color-bg-dark) !important;
 	}
 	</style>
 </html>
