@@ -1,10 +1,8 @@
 import { loadEnv } from "vite";
 import { getSpecificRepoLanguage } from "./getLanguageColor";
+import { getCached } from "./cache";
 
 const env = loadEnv(process.env.GITHUB_TOKEN!, process.cwd(), "");
-
-// Cache for language colors to avoid fetching multiple times
-let languageColorsCache: Promise<string> | null = null;
 
 export type Language = {
   name: string;
@@ -19,10 +17,12 @@ export type RepoInfo = {
   html_url: string;
 };
 
-// Fetch and cache language colors once (cache the promise to prevent duplicate fetches)
 async function getLanguageColors(): Promise<string> {
-  if (!languageColorsCache) {
-    languageColorsCache = (async () => {
+  const TTL_30_DAYS = 30 * 24 * 60 * 60 * 1000;
+
+  return getCached(
+    "linguist-colors",
+    async () => {
       const colorsResponse = await fetch(
         "https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml",
       );
@@ -34,14 +34,12 @@ async function getLanguageColors(): Promise<string> {
       }
 
       return await colorsResponse.text();
-    })();
-  }
-
-  return languageColorsCache;
+    },
+    { ttl: TTL_30_DAYS },
+  );
 }
 
-// GraphQL query to fetch multiple repos at once
-export async function getMultipleRepos(
+async function fetchReposFromGitHub(
   repoOwner: string,
   repoNames: readonly string[],
 ): Promise<Map<string, { info: RepoInfo; languages: Language[] }>> {
@@ -129,4 +127,18 @@ export async function getMultipleRepos(
   });
 
   return reposMap;
+}
+
+export async function getMultipleRepos(
+  repoOwner: string,
+  repoNames: readonly string[],
+): Promise<Map<string, { info: RepoInfo; languages: Language[] }>> {
+  const cacheKey = `github-repos-${repoOwner}`;
+
+  const reposArray = await getCached(cacheKey, async () => {
+    const reposMap = await fetchReposFromGitHub(repoOwner, repoNames);
+    return Array.from(reposMap.entries());
+  });
+
+  return new Map(reposArray);
 }

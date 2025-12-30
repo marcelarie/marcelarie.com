@@ -7,13 +7,18 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:fast": "CACHE_ONLY=true astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "build:fast": "astro build",
+    "build:fresh": "CACHE_BYPASS=true npm run build",
     "test": "vitest",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "cache:stats": "node scripts/cache-stats.js",
+    "cache:clear": "rm -rf .astro/cache"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

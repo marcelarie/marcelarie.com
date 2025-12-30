@@ -111,6 +111,14 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<link rel="dns-prefetch" href="https://github.com" />
+		<link rel="dns-prefetch" href="https://api.github.com" />
+		<link rel="preconnect" href="https://github.com" />
+		
+		<link rel="preload" href="/fonts/vt323-regular.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/fonts/atkinson-hyperlegible-regular.ttf" as="font" type="font/ttf" crossorigin />
+		
 		<title>{title}</title>
 	</head>
 	<body class=`min-h-screen dark:bg-[var(--color-bg-dark)] dark:text-white`>
@@ -129,7 +137,6 @@ const { title } = Astro.props;
 			--font-mono: "IBM Plex Mono", monospace;
 			--font-merriweather: "Merriweather", serif;
 			--font-atkinson: "Atkinson Hyperlegible", sans-serif;
-			--font-pixel: "Pixel Code Light", monospace;
 			--font-vt323: "VT323", monospace;
 			
 			/* Colors - Light mode */
