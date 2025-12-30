@@ -4,7 +4,6 @@ import Layout from "../layouts/Layout.astro";
 import { SITE_CONFIG } from "../config";
 import { formatDate } from "../utils/dates";
 import { calculateReadingTime } from "../utils/misc";
-import { createResponsivePreview } from "../utils/text";
 import type { Post } from "../types";
 
 const allPosts = await getCollection("posts");
@@ -15,12 +14,12 @@ const allPosts = await getCollection("posts");
     {
       allPosts
         .filter((post: Post) => !post.data.draft)
-        .map(async (post: Post) => {
+        .map((post: Post) => {
           const href = "/blog/" + post.id;
           const date = new Date(post.data.date);
           const formattedDate = formatDate(date);
           const readingTime = calculateReadingTime(post.body || "");
-          const preview = createResponsivePreview(post.body || "");
+          const excerpt = post.data.excerpt;
 
           return (
             <div class="flex flex-col mb-8">
@@ -37,13 +36,11 @@ const allPosts = await getCollection("posts");
                   {readingTime} m read
                 </span>
               </a>
-              <div
-                id="post-preview"
-                class="mt-4 overflow-hidden"
-              >
-                <span class="block sm:hidden">{preview.mobile}</span>
-                <span class="hidden sm:block">{preview.desktop}</span>
-              </div>
+              {excerpt && (
+                <div id="post-preview" class="mt-4">
+                  {excerpt}
+                </div>
+              )}
             </div>
           );
         })
@@ -58,14 +55,15 @@ const allPosts = await getCollection("posts");
   }
 
   nav #right-navbar a {
-    font-family: var(--font-serif);
+    font-family: var(--font-atkinson);
     font-size: 24px;
     font-weight: regular;
   }
 
   #post-title {
-    font-family: var(--font-serif);
-    font-size: 24px;
+    font-family: var(--font-merriweather);
+    font-size: 22px;
+    line-height: 1.3;
   }
 
   :global(html:not(.dark) #post-title) {
@@ -78,23 +76,40 @@ const allPosts = await getCollection("posts");
 
   @media (min-width: 640px) {
     #post-title {
-      font-size: 30px;
+      font-size: 24px;
     }
   }
 
   #post-date {
-    font-family: var(--font-mono);
-    font-size: 16px;
+    font-family: var(--font-atkinson);
+    font-size: 14px;
     font-weight: 400;
     color: var(--color-text-muted);
   }
 
   #post-preview {
-    font-family: var(--font-mono);
-    font-size: 16px;
-    word-wrap: break-word;
+    font-family: var(--font-atkinson);
+    font-size: 15px;
+    max-width: none;
     overflow-wrap: break-word;
-    hyphens: auto;
-    line-height: 1.4;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #post-preview :global(code) {
+    font-family: var(--font-mono);
+  }
+
+  #post-preview :global(pre code) {
+    font-family: var(--font-mono);
+  }
+
+  @media (min-width: 640px) {
+    #post-preview {
+      -webkit-line-clamp: 4;
+    }
   }
 </style>

@@ -34,7 +34,9 @@ const formattedDate = formatDate(date);
 	const copyButtonLabel = "Copy";
 
 	document.querySelectorAll("pre").forEach((codeBlock) => {
-		addCopyButton(codeBlock);
+		if (!codeBlock.classList.contains("mermaid")) {
+			addCopyButton(codeBlock);
+		}
 	});
 
 	function addCopyButton(codeBlock: HTMLElement) {
@@ -118,24 +120,34 @@ const formattedDate = formatDate(date);
 
 <style>
 	#title {
-        font-family: var(--font-serif);
-		font-size: 30px;
+        font-family: var(--font-merriweather);
+		font-size: 32px;
 		margin-bottom: 4px;
+		line-height: 1.2;
 	}
 
 	#post-date {
-		font-family: var(--font-mono);
-		font-size: 16px;
+		font-family: var(--font-atkinson);
+		font-size: 14px;
 		font-weight: 400;
 		color: var(--color-text-muted);
 		text-decoration: none;
 	}
 
 	.prose {
-		font-family: var(--font-mono);
-		font-size: 16px;
+		font-family: var(--font-atkinson);
+		font-size: 17px;
 		max-width: none;
 		overflow-wrap: break-word;
+		line-height: 1.6;
+	}
+
+	.prose code {
+		font-family: var(--font-mono);
+	}
+
+	.prose pre code {
+		font-family: var(--font-mono);
 	}
 	:global(.prose pre) {
 	  position: relative;

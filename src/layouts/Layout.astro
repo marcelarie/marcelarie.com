@@ -30,6 +30,7 @@ const { title } = Astro.props;
 		if (theme === "dark") {
 			rootElement.classList.add("dark");
 		}
+		rootElement.setAttribute("data-theme", theme);
 		localStorage.setItem("theme", theme);
 		const index = themes.indexOf(theme);
 		themeIndex = index === -1 ? 0 : index;
@@ -86,6 +87,7 @@ const { title } = Astro.props;
 					if (theme === "dark") {
 						document.documentElement.classList.add("dark");
 					}
+					document.documentElement.setAttribute("data-theme", theme);
 				}
 
 				function checkSystemThemePreferences() {
@@ -125,7 +127,8 @@ const { title } = Astro.props;
 		:root {
 			/* Fonts */
 			--font-mono: "IBM Plex Mono", monospace;
-			--font-serif: "Noto Serif Regular", serif;
+			--font-merriweather: "Merriweather", serif;
+			--font-atkinson: "Atkinson Hyperlegible", sans-serif;
 			--font-pixel: "Pixel Code Light", monospace;
 			
 			/* Colors - Light mode */
@@ -289,8 +292,59 @@ const { title } = Astro.props;
 			background-color: #ebebeb;
 		}
 
-		.dark .copy-code:hover {
-			background-color: #2d2d2d;
-		}
+	.dark .copy-code:hover {
+		background-color: #2d2d2d;
+	}
+
+	.mermaid {
+		font-family: var(--font-mono) !important;
+		background: transparent !important;
+	}
+
+	.mermaid svg {
+		background: transparent !important;
+	}
+
+	.mermaid .edgeLabel,
+	.mermaid .labelBkg {
+		background-color: #ffffff !important;
+	}
+
+	.dark .mermaid .node rect,
+	.dark .mermaid .node circle,
+	.dark .mermaid .node ellipse,
+	.dark .mermaid .node polygon,
+	.dark .mermaid .node path {
+		fill: transparent !important;
+		stroke: #ffffff !important;
+	}
+
+	.dark .mermaid .edgePath .path {
+		stroke: #ffffff !important;
+	}
+
+	.dark .mermaid .edgeLabel,
+	.dark .mermaid .labelBkg {
+		background-color: #000000 !important;
+		color: #ffffff !important;
+	}
+
+	.dark .mermaid .label {
+		color: #ffffff !important;
+	}
+
+	.dark .mermaid .nodeLabel,
+	.dark .mermaid .edgeLabel {
+		color: #ffffff !important;
+	}
+
+	.dark .mermaid .cluster rect {
+		fill: transparent !important;
+		stroke: #ffffff !important;
+	}
+
+	.dark .mermaid .edgeLabel .label {
+		background-color: #000000 !important;
+	}
 	</style>
 </html>
