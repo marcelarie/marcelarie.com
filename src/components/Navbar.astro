@@ -1,5 +1,5 @@
 ---
-
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class="flex flex-col sm:flex-row sm:justify-between items-center sm:items-baseline mt-10 mb-14">
@@ -7,8 +7,8 @@
 		marcelarie
 	</a>
 	<div id="right-navbar" class="flex space-x-4 items-center sm:self-end mb-[10px]">
-		<a href="/about">About</a>
-		<a href="/projects">
+		<a href="/about" class={currentPath === '/about' ? 'active' : ''}>About</a>
+		<a href="/projects" class={currentPath === '/projects' ? 'active' : ''}>
 			Projects
 		</a>
 		<button id="theme-toggle" class="font-ibm-plex-mono text-sm" aria-label="Toggle theme">
@@ -83,11 +83,20 @@
 					color: #424949;
 				}
 			}
+
+			:global(html:not(.dark)) nav #right-navbar a.active {
+				color: #0000ee;
+			}
+
 			:global(html.dark) nav #right-navbar a {
 				color: #d1d5db;
 			}
 			:global(html.dark) nav #right-navbar a:hover {
 				color: #ffffff;
+			}
+
+			:global(html.dark) nav #right-navbar a.active {
+				color: var(--color-link-visited-dark);
 			}
 
 			nav #right-navbar button {

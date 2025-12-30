@@ -7,10 +7,20 @@ import { calculateReadingTime } from "../utils/misc";
 import type { Post } from "../types";
 
 const allPosts = await getCollection("posts");
+const publishedPosts = allPosts.filter((post: Post) => !post.data.draft);
+const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sort();
 ---
 
 <Layout title={SITE_CONFIG.title}>
   <main class="mt-8">
+    <div class="filter-container mb-4">
+      <div id="tag-filter" class="tag-filter-hidden">
+        {allTags.map(tag => (
+          <button class="tag-btn" data-tag={tag}>{tag}</button>
+        ))}
+      </div>
+      <button id="filter-toggle" class="filter-toggle-btn">filters</button>
+    </div>
     {
       allPosts
         .filter((post: Post) => !post.data.draft)
@@ -22,7 +32,7 @@ const allPosts = await getCollection("posts");
           const excerpt = post.data.excerpt;
 
           return (
-            <div class="flex flex-col mb-8">
+            <div class="flex flex-col mb-12 post-item" data-tags={post.data.tags.join(',')}>
               <a
                 id="post-title"
                 class="hover:underline hover:text-[#424949] dark:text-[#d1d5db] dark:hover:text-white"
@@ -30,12 +40,19 @@ const allPosts = await getCollection("posts");
               >
                 {post.data.title}
               </a>
-              <a id="post-date" class="mt-1">
-                {formattedDate} -
-                <span id="reading-time" class="ml-1">
-                  {readingTime} m read
-                </span>
-              </a>
+              <div class="flex items-center gap-3 mt-1">
+                <a id="post-date">
+                  {formattedDate} -
+                  <span id="reading-time" class="ml-1">
+                    {readingTime} m read
+                  </span>
+                </a>
+                <div class="flex gap-2 post-tags-container">
+                  {post.data.tags.map(tag => (
+                    <a href={`/?tag=${tag}`} class="post-tag">{tag}</a>
+                  ))}
+                </div>
+              </div>
               {excerpt && (
                 <div id="post-preview" class="mt-4">
                   {excerpt}
@@ -116,4 +133,199 @@ const allPosts = await getCollection("posts");
       -webkit-line-clamp: 4;
     }
   }
+
+  .filter-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+    min-height: 2rem;
+  }
+
+  #tag-filter {
+    position: absolute;
+    right: calc(3.2rem + 0.5rem);
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: calc(100% - 3.7rem);
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .tag-filter-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .tag-btn {
+    font-family: var(--font-atkinson);
+    font-size: 14px;
+    padding: 0.05rem 0.6rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    cursor: pointer;
+    text-transform: lowercase;
+    line-height: 1.4;
+  }
+
+  :global(html:not(.dark)) .tag-btn:hover,
+  :global(html:not(.dark)) .tag-btn.active {
+    background-color: #0000ee;
+    color: #ffff11;
+  }
+
+  :global(html.dark) .tag-btn {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  :global(html.dark) .tag-btn:hover,
+  :global(html.dark) .tag-btn.active {
+    background-color: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .post-tag {
+    font-family: var(--font-atkinson);
+    font-size: 12px;
+    padding: 0.05rem 0.5rem;
+    border: 1px solid var(--color-text-muted);
+    color: var(--color-text-muted);
+    text-transform: lowercase;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+  }
+
+  .post-item {
+    transition: opacity 0.3s ease;
+  }
+
+  .post-item.hidden {
+    display: none;
+  }
+
+  .filter-toggle-btn {
+    font-family: var(--font-atkinson);
+    font-size: 14px;
+    padding: 0.05rem 0.6rem;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    cursor: pointer;
+    text-transform: lowercase;
+    line-height: 1.4;
+  }
+
+  :global(html:not(.dark)) .filter-toggle-btn {
+    color: #000000;
+    border-color: #000000;
+  }
+
+  :global(html:not(.dark)) .filter-toggle-btn:hover {
+    background-color: #0000ee;
+    color: #ffff11;
+  }
+
+  :global(html:not(.dark)) .filter-toggle-btn.active {
+    background-color: transparent;
+    color: #6b6b6b;
+    border-color: #6b6b6b;
+  }
+
+  :global(html.dark) .filter-toggle-btn {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  :global(html.dark) .filter-toggle-btn:hover {
+    background-color: #ffffff;
+    color: #1a1a1a;
+  }
+
+  :global(html.dark) .filter-toggle-btn.active {
+    background-color: transparent;
+    color: #d1d5db;
+    border-color: #d1d5db;
+  }
 </style>
+
+<script>
+  const filterToggle = document.getElementById('filter-toggle');
+  const tagFilter = document.getElementById('tag-filter');
+  const tagButtons = document.querySelectorAll('.tag-btn');
+  const postItems = document.querySelectorAll('.post-item');
+
+  filterToggle?.addEventListener('click', () => {
+    tagFilter?.classList.toggle('tag-filter-hidden');
+    filterToggle.classList.toggle('active');
+  });
+
+  const filterPosts = () => {
+    const activeTags = Array.from(tagButtons)
+      .filter(btn => btn.classList.contains('active'))
+      .map(btn => btn.getAttribute('data-tag'))
+      .filter((tag): tag is string => tag !== null);
+
+    postItems.forEach(post => {
+      const postTags = post.getAttribute('data-tags')?.split(',') || [];
+      
+      if (activeTags.length === 0 || activeTags.some(tag => postTags.includes(tag))) {
+        post.classList.remove('hidden');
+      } else {
+        post.classList.add('hidden');
+      }
+    });
+  };
+
+  tagButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      filterPosts();
+      updateURL();
+    });
+  });
+
+  const updateURL = () => {
+    const activeTags = Array.from(tagButtons)
+      .filter(btn => btn.classList.contains('active'))
+      .map(btn => btn.getAttribute('data-tag'))
+      .filter((tag): tag is string => tag !== null);
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete('tag');
+    
+    if (activeTags.length > 0) {
+      activeTags.forEach(tag => url.searchParams.append('tag', tag));
+    }
+    
+    window.history.replaceState({}, '', url.toString());
+  };
+
+  const initializeFiltersFromURL = () => {
+    const url = new URL(window.location.href);
+    const tagParams = url.searchParams.getAll('tag');
+    
+    if (tagParams.length > 0) {
+      tagFilter?.classList.remove('tag-filter-hidden');
+      filterToggle?.classList.add('active');
+      
+      tagButtons.forEach(btn => {
+        const tag = btn.getAttribute('data-tag');
+        if (tag && tagParams.includes(tag)) {
+          btn.classList.add('active');
+        }
+      });
+      
+      filterPosts();
+    }
+  };
+
+  initializeFiltersFromURL();
+</script>
