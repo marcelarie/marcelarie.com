@@ -32,6 +32,7 @@ const formattedDate = formatDate(date);
 
 <script>
 	const copyButtonLabel = "Copy";
+	const copyButtonActiveLabel = "Done";
 
 	document.querySelectorAll("pre").forEach((codeBlock) => {
 		if (!codeBlock.classList.contains("mermaid")) {
@@ -69,7 +70,7 @@ const formattedDate = formatDate(date);
 		await navigator.clipboard.writeText(codeElement.innerText);
 
 		// Update button text temporarily
-		button.textContent = "Copied";
+		button.textContent = copyButtonActiveLabel;
 		setTimeout(() => {
 			button.textContent = copyButtonLabel;
 		}, 900);
@@ -215,7 +216,7 @@ const formattedDate = formatDate(date);
 
 	:global(.copy-code) {
 	  position: absolute;
-	  top: 0.5rem;
+	  top: -0.35rem;
 	  right: 0.5rem;
 	  z-index: 10;
 	}
