@@ -52,7 +52,7 @@
 
 .gsc-comment-header {
   padding: 8px 0 8px 0 !important;
-  border-bottom: 1px solid #e8e8e8 !important;
+  border-bottom: 1px solid #333333 !important;
   background-color: transparent !important;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .gsc-comment-box-main {
-  border: 1px solid #e1e1e1 !important;
+  border: 1px solid #333333 !important;
   border-radius: none;
   padding: 10px;
 }
@@ -78,7 +78,7 @@
 .gsc-comment-box-textarea {
   font-family: "IBM Plex Mono", monospace !important;
   background-color: transparent !important;
-  border-bottom: 1px solid #e8e8e8 !important;
+  border-bottom: 1px solid #333333 !important;
   color: #000000 !important;
   padding: 12px 0 !important;
   line-height: 1.5 !important;
