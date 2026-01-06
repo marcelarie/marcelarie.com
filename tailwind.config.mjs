@@ -44,7 +44,7 @@ export default {
             code: {
               backgroundColor: "#333333",
               color: "var(--color-text)",
-              border: "1px solid var(--color-link-visited-dark)",
+              border: "1px solid var(--color-highlight-dark)",
             },
             "pre code": {
               backgroundColor: "transparent !important",

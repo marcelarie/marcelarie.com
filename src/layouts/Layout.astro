@@ -184,7 +184,7 @@ const { title } = Astro.props;
 		html.dark :not(pre) > code {
 			background-color: rgba(170, 229, 116, 0.15);
 			color: var(--color-highlight-dark);
-			border: 1px solid rgba(170, 229, 116, 0.4);
+			border: 1px solid var(--color-highlight-dark);
 			border-radius: 0.1rem;
 			padding: 0 0.15rem;
 		}
@@ -192,6 +192,11 @@ const { title } = Astro.props;
 		html,
 		body {
 			overflow-x: hidden;
+		}
+		
+		a[href],
+		button {
+			cursor: pointer;
 		}
 
 		.prose
