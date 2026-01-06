@@ -53,8 +53,24 @@ export default defineConfig({
       syntaxHighlight: "shiki",
       shikiConfig: {
         themes: {
-          light: "light-plus",
-          dark: "vesper",
+          light: {
+            name: "minimal-light",
+            type: "light",
+            colors: {
+              "editor.background": "transparent",
+              "editor.foreground": "#000000",
+            },
+            tokenColors: [],
+          },
+          dark: {
+            name: "minimal-dark",
+            type: "dark",
+            colors: {
+              "editor.background": "transparent",
+              "editor.foreground": "#ffffff",
+            },
+            tokenColors: [],
+          },
         },
       },
     }),
