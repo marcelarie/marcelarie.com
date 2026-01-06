@@ -1,11 +1,11 @@
 :root {
-  --color-canvas-default: #000000;
-  --color-canvas-subtle: #000000;
-  --color-canvas-inset: #000000;
-  --color-bg-default: #000000;
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: transparent;
+  --color-canvas-inset: transparent;
+  --color-bg-default: transparent;
   --color-bg-primary: transparent;
-  --color-bg-secondary: #000000;
-  --color-bg-tertiary: #000000;
+  --color-bg-secondary: transparent;
+  --color-bg-tertiary: transparent;
   --color-border-default: #ffffff;
   --color-border-primary: #ffffff;
   --color-border-secondary: #ffffff;
@@ -35,7 +35,7 @@
 .gsc-comment-box,
 .gsc-comment-box-main,
 .gsc-comment-form {
-  background-color: #000000 !important;
+  background-color: transparent !important;
   border-color: #ffffff !important;
   color: #f7f7f7 !important;
 }
@@ -43,14 +43,14 @@
 .gsc-comment {
   margin-bottom: 16px !important;
   padding: 8px 12px !important;
-  background-color: #181818 !important;
+  background-color: transparent !important;
   border: 1px solid #ffffff !important;
 }
 
 .gsc-comment-header {
   padding: 12px 16px 8px 16px !important;
   border-bottom: 1px solid #ffffff !important;
-  background-color: #181818 !important;
+  background-color: transparent !important;
 }
 
 .gsc-comment-body {
@@ -60,12 +60,12 @@
 
 .gsc-comment-box-bottom {
   background: none !important;
-  background-color: #000000 !important;
+  background-color: transparent !important;
   padding: 0 12px 12px 12px !important;
 }
 
 .gsc-comment-box-textarea {
-  background-color: #000000 !important;
+  background-color: transparent !important;
   border: 1px solid #ffffff !important;
   color: #f7f7f7 !important;
 }
@@ -78,7 +78,7 @@
 .gsc-comment-box-tabs,
 .gsc-comment-box-tab,
 .gsc-comment-box-tab-active {
-  background-color: #000000 !important;
+  background-color: transparent !important;
   color: #f7f7f7 !important;
   border-color: #ffffff !important;
 }

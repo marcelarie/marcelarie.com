@@ -1,12 +1,12 @@
 /* Ultra Clean Minimal Giscus Light Theme */
 :root {
-  --color-canvas-default: #ffffff;
-  --color-canvas-subtle: #ffffff;
-  --color-canvas-inset: #ffffff;
-  --color-bg-default: #ffffff;
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: transparent;
+  --color-canvas-inset: transparent;
+  --color-bg-default: transparent;
   --color-bg-primary: transparent;
-  --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #ffffff;
+  --color-bg-secondary: transparent;
+  --color-bg-tertiary: transparent;
   --color-border-default: #000000;
   --color-border-primary: #000000;
   --color-border-secondary: #000000;
@@ -46,7 +46,7 @@
 /* Clean comment styling */
 .gsc-comment {
   margin-bottom: 32px !important;
-  background-color: #ffffff !important;
+  background-color: transparent !important;
   padding: 0 !important;
 }
 
@@ -65,7 +65,7 @@
 .gsc-comment-box-main,
 .gsc-comment-form,
 .gsc-comment-box {
-  background-color: #ffffff !important;
+  background-color: transparent !important;
 }
 
 .gsc-comment-box-main {
@@ -148,7 +148,7 @@ button[class*="gsc-"]:focus {
 .gsc-comment-box-tabs,
 .gsc-comment-box-tab,
 .gsc-comment-box {
-  background-color: #ffffff !important;
+  background-color: transparent !important;
 }
 
 .color-bg-primary,
