@@ -81,6 +81,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     font-family: var(--font-merriweather);
     font-size: 22px;
     line-height: 1.3;
+    color: var(--color-text);
   }
 
   :global(html:not(.dark) #post-title) {
@@ -91,8 +92,12 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     color: #000000;
   }
 
+  :global(html.dark #post-title) {
+    color: #ffffff;
+  }
+
   :global(html.dark #post-title:visited) {
-    color: var(--color-link-visited-dark);
+    color: #ffffff;
   }
 
   @media (min-width: 640px) {
@@ -108,7 +113,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     color: var(--color-text-muted);
   }
 
-  #post-preview {
+ #post-preview {
     font-family: var(--font-atkinson);
     font-size: 15px;
     max-width: none;
@@ -118,6 +123,10 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    text-wrap: balance;
   }
 
   #post-preview :global(code) {
@@ -170,6 +179,8 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     cursor: pointer;
     text-transform: lowercase;
     line-height: 1.4;
+    color: #000000;
+    transition: none;
   }
 
   :global(html:not(.dark)) .tag-btn:hover,
@@ -178,9 +189,15 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     color: #ffff11;
   }
 
+  :global(html:not(.dark)) .tag-btn:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 1px;
+  }
+
   :global(html.dark) .tag-btn {
     border-color: #ffffff;
     color: #ffffff;
+    transition: none;
   }
 
   :global(html.dark) .tag-btn:hover,
@@ -193,15 +210,57 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     font-family: var(--font-atkinson);
     font-size: 12px;
     padding: 0.05rem 0.5rem;
-    border: 1px solid var(--color-text-muted);
-    color: var(--color-text-muted);
+    border: 1px solid #c0c0c0;
+    color: #000000;
     text-transform: lowercase;
     text-decoration: none;
     cursor: pointer;
+    background: #ffffff;
   }
 
-  .post-tag:hover {
-    text-decoration: underline;
+  .post-tag:hover,
+  .post-tag:focus-visible,
+  .post-tag:visited:hover,
+  .post-tag:visited:focus-visible {
+    background-color: #f0f0f0;
+    color: #000000;
+    border-color: #b8b8b8;
+    outline: none;
+  }
+
+  .post-tag:active {
+    background-color: #e5e5e5;
+    border-color: #afafaf;
+    color: var(--color-link);
+  }
+
+  .post-tag:visited {
+    color: #000000;
+  }
+
+  :global(html.dark) .post-tag {
+    color: #ffffff;
+    background: #2c2c2c;
+    border: 1px solid transparent;
+  }
+
+  :global(html.dark) .post-tag:hover,
+  :global(html.dark) .post-tag:focus-visible,
+  :global(html.dark) .post-tag:visited:hover,
+  :global(html.dark) .post-tag:visited:focus-visible {
+    background-color: #242424;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+
+  :global(html.dark) .post-tag:active {
+    background-color: #1e1e1e;
+    border-color: #d1d5db;
+    color: var(--color-highlight-dark);
+  }
+
+  :global(html.dark) .post-tag:visited {
+    color: #ffffff;
   }
 
   .post-item {
@@ -221,6 +280,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     cursor: pointer;
     text-transform: lowercase;
     line-height: 1.4;
+    transition: none;
   }
 
   :global(html:not(.dark)) .filter-toggle-btn {
@@ -231,6 +291,11 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
   :global(html:not(.dark)) .filter-toggle-btn:hover {
     background-color: #0000ee;
     color: #ffff11;
+  }
+
+  :global(html:not(.dark)) .filter-toggle-btn:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 1px;
   }
 
   :global(html:not(.dark)) .filter-toggle-btn.active {
@@ -249,10 +314,22 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     color: #1a1a1a;
   }
 
+  :global(html.dark) .filter-toggle-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 1px;
+  }
+
   :global(html.dark) .filter-toggle-btn.active {
     background-color: transparent;
     color: #d1d5db;
     border-color: #d1d5db;
+  }
+
+  @media (max-width: 640px) {
+    #post-preview {
+      text-align: left;
+      text-justify: auto;
+    }
   }
 </style>
 

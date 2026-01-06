@@ -127,10 +127,18 @@ const formattedDate = formatDate(date);
 
 <style>
 	#title {
-        font-family: var(--font-merriweather);
+		font-family: var(--font-merriweather);
 		font-size: 32px;
 		margin-bottom: 4px;
 		line-height: 1.2;
+		text-align: left;
+		hyphens: none;
+		text-wrap: wrap;
+		display: block;
+		width: 100%;
+		word-break: normal;
+		overflow-wrap: normal;
+		color: var(--color-text);
 	}
 
 	#post-date {
@@ -147,6 +155,10 @@ const formattedDate = formatDate(date);
 		max-width: none;
 		overflow-wrap: break-word;
 		line-height: 1.6;
+		text-align: justify;
+		text-justify: inter-word;
+		hyphens: auto;
+		text-wrap: balance;
 	}
 
 	.prose h2 {
@@ -194,6 +206,13 @@ const formattedDate = formatDate(date);
 	  padding-top: 2rem;
 	}
 
+	@media (max-width: 640px) {
+		.prose {
+			text-align: left;
+			text-justify: auto;
+		}
+	}
+
 	:global(.copy-code) {
 	  position: absolute;
 	  top: 0.5rem;
@@ -205,15 +224,57 @@ const formattedDate = formatDate(date);
 		font-family: var(--font-atkinson);
 		font-size: 12px;
 		padding: 0.05rem 0.5rem;
-		border: 1px solid var(--color-text-muted);
-		color: var(--color-text-muted);
+		border: 1px solid #c0c0c0;
+		color: #000000;
 		text-transform: lowercase;
 		text-decoration: none;
 		cursor: pointer;
+		background: #ffffff;
 	}
 
-	.post-tag:hover {
-		text-decoration: underline;
+	.post-tag:hover,
+	.post-tag:focus-visible,
+	.post-tag:visited:hover,
+	.post-tag:visited:focus-visible {
+		background-color: #f0f0f0;
+		color: #000000;
+		border-color: #b8b8b8;
+		outline: none;
+	}
+
+	.post-tag:active {
+		background-color: #e5e5e5;
+		border-color: #afafaf;
+		color: var(--color-link);
+	}
+
+	.post-tag:visited {
+		color: #000000;
+	}
+
+	:global(html.dark) .post-tag {
+		color: #ffffff;
+		background: #2c2c2c;
+		border: 1px solid transparent;
+	}
+
+	:global(html.dark) .post-tag:hover,
+	:global(html.dark) .post-tag:focus-visible,
+	:global(html.dark) .post-tag:visited:hover,
+	:global(html.dark) .post-tag:visited:focus-visible {
+		background-color: #242424;
+		color: #ffffff;
+		border-color: #ffffff;
+	}
+
+	:global(html.dark) .post-tag:active {
+		background-color: #1e1e1e;
+		border-color: #d1d5db;
+		color: var(--color-highlight-dark);
+	}
+
+	:global(html.dark) .post-tag:visited {
+		color: #ffffff;
 	}
 
 </style>

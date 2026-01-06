@@ -95,5 +95,17 @@ const projects: Project[] = await fetchProjects();
     font-family: var(--font-atkinson);
     font-size: 15px;
     line-height: 1.5;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    text-wrap: balance;
+    max-width: 68ch;
+  }
+
+  @media (max-width: 640px) {
+    p {
+      text-align: left;
+      text-justify: auto;
+    }
   }
 </style>

@@ -148,6 +148,9 @@ const { title } = Astro.props;
 			--color-link: #0000ee;
 			--color-link-hover: #ff0000;
 			--color-link-visited: #551a8b;
+			--color-logo-dark: #aae574;
+			--color-logo-dark-hover: #d7f48c;
+			--color-highlight-dark: var(--color-logo-dark);
 			--color-border: #0000ee;
 			
 			/* Accents */
@@ -166,7 +169,7 @@ const { title } = Astro.props;
 			--color-bg: var(--color-bg-dark);
 			--color-text: #ffffff;
 			--color-text-muted: #d1d5db;
-			--color-link-visited-dark: #bb86fc;
+			--color-link-visited-dark: var(--color-logo-dark);
 		}
 		
 		html {
@@ -176,6 +179,14 @@ const { title } = Astro.props;
 		
 		code {
 			font-family: var(--font-mono) !important;
+		}
+
+		html.dark :not(pre) > code {
+			background-color: rgba(170, 229, 116, 0.15);
+			color: var(--color-highlight-dark);
+			border: 1px solid rgba(170, 229, 116, 0.4);
+			border-radius: 0.1rem;
+			padding: 0 0.15rem;
 		}
 
 		html,
@@ -207,9 +218,25 @@ const { title } = Astro.props;
 		}
 
 		html:not(.dark) nav #logo,
-		html:not(.dark) nav #logo:visited,
-		html:not(.dark) nav #logo:hover {
+		html:not(.dark) nav #logo:visited {
 			color: var(--color-link);
+		}
+
+		html:not(.dark) nav #logo:hover,
+		html:not(.dark) nav #logo:focus-visible {
+			color: #ffff11;
+			outline: none;
+		}
+
+		html.dark nav #logo,
+		html.dark nav #logo:visited {
+			color: var(--color-logo-dark);
+		}
+
+		html.dark nav #logo:hover,
+		html.dark nav #logo:focus-visible {
+			color: var(--color-logo-dark-hover);
+			outline: none;
 		}
 
 		html:not(.dark) nav #right-navbar a,
@@ -225,7 +252,6 @@ const { title } = Astro.props;
 			color: var(--color-link-visited-dark);
 		}
 
-		html.dark nav #logo:visited,
 		html.dark nav #right-navbar a:visited,
 		html.dark footer a:visited {
 			color: inherit;
@@ -284,7 +310,15 @@ const { title } = Astro.props;
 
 		.astro-code {
 			font-size: 14px !important;
-			border: 1px solid var(--color-border) !important;
+			border: none !important;
+			padding: 1.2rem !important;
+			background-color: rgba(0, 0, 0, 0.02) !important;
+			border-left: 3px solid var(--color-link) !important;
+		}
+
+		html.dark .astro-code {
+			background-color: rgba(255, 255, 255, 0.05) !important;
+			border-left: 3px solid var(--color-highlight-dark) !important;
 		}
 
 		.dark .astro-code,
@@ -293,28 +327,38 @@ const { title } = Astro.props;
 			font-style: var(--shiki-dark-font-style) !important;
 			font-weight: var(--shiki-dark-font-weight) !important;
 			text-decoration: var(--shiki-dark-text-decoration) !important;
-			border: none !important;
 		}
 
 		.copy-code {
 			position: absolute;
 			top: 0;
 			right: 0;
-			padding: 0rem 0.3rem;
+			padding: 0.2rem 0.5rem;
 			cursor: pointer;
+			font-size: 12px;
+			font-family: var(--font-mono);
+			text-transform: lowercase;
+			background: transparent;
+			border: 1px solid currentColor;
+			color: #000000;
 		}
 
-		.dark .copy-code {
-			border: none;
+		html.dark .copy-code {
+			color: #ffffff;
 		}
 
-		.copy-code:hover {
-			background-color: #ebebeb;
+		.copy-code:hover,
+		.copy-code:focus-visible {
+			background-color: var(--color-link);
+			color: #ffff11;
+			outline: none;
 		}
 
-	.dark .copy-code:hover {
-		background-color: #2d2d2d;
-	}
+		html.dark .copy-code:hover,
+		html.dark .copy-code:focus-visible {
+			background-color: var(--color-highlight-dark);
+			color: #1a1a1a;
+		}
 
 	.mermaid {
 		font-family: var(--font-mono) !important;

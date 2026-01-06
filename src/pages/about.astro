@@ -78,6 +78,9 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
     text-align: justify;
     text-justify: inter-word;
     line-height: 1.6;
+    hyphens: auto;
+    text-wrap: balance;
+    max-width: 68ch;
   }
 
   #about-content a {
@@ -89,5 +92,12 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
   :global(html:not(.dark)) #about-content a:hover {
     background-color: #0000ee;
     color: #ffff11 !important;
+  }
+
+  @media (max-width: 640px) {
+    #about-content {
+      text-align: left;
+      text-justify: auto;
+    }
   }
 </style>
