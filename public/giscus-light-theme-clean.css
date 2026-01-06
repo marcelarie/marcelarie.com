@@ -7,11 +7,11 @@
   --color-bg-primary: transparent;
   --color-bg-secondary: #ffffff;
   --color-bg-tertiary: #ffffff;
-  --color-border-default: transparent;
-  --color-border-primary: transparent;
-  --color-border-secondary: transparent;
-  --color-border-tertiary: transparent;
-  --color-border-muted: transparent;
+  --color-border-default: #000000;
+  --color-border-primary: #000000;
+  --color-border-secondary: #000000;
+  --color-border-tertiary: #000000;
+  --color-border-muted: #000000;
   --color-text-primary: #000000;
   --color-text-secondary: #666666;
   --color-text-tertiary: #888888;
