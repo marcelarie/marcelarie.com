@@ -84,9 +84,19 @@ const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares'
 				}
 			}
 
-			:global(html:not(.dark)) nav #right-navbar a.active {
-				color: #0000ee;
-			}
+				:global(html:not(.dark)) nav #right-navbar a.active {
+					color: #111827;
+					padding: 0.1rem 0.2rem 0.2rem;
+					background-image: linear-gradient(#d1d5db, #d1d5db);
+					background-repeat: no-repeat;
+					background-size: 100% 0.15em;
+					background-position: 0 calc(100% - 0.1em);
+				}
+
+				:global(html:not(.dark)) nav #right-navbar a.active:hover,
+				:global(html:not(.dark)) nav #right-navbar a.active:focus-visible {
+					background-image: linear-gradient(#9ca3af, #9ca3af);
+				}
 
 			:global(html.dark) nav #right-navbar a {
 				color: #d1d5db;
@@ -95,9 +105,19 @@ const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares'
 				color: #ffffff;
 			}
 
-			:global(html.dark) nav #right-navbar a.active {
-				color: var(--color-link-visited-dark);
-			}
+				:global(html.dark) nav #right-navbar a.active {
+					color: #f9fafb;
+					padding: 0.1rem 0.2rem 0.2rem;
+					background-image: linear-gradient(#4b5563, #4b5563);
+					background-repeat: no-repeat;
+					background-size: 100% 0.15em;
+					background-position: 0 calc(100% - 0.1em);
+				}
+
+				:global(html.dark) nav #right-navbar a.active:hover,
+				:global(html.dark) nav #right-navbar a.active:focus-visible {
+					background-image: linear-gradient(#6b7280, #6b7280);
+				}
 
 			nav #right-navbar button {
 				display: flex;

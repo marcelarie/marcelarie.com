@@ -235,7 +235,7 @@ const { title } = Astro.props;
 
 		html.dark nav #logo:hover,
 		html.dark nav #logo:focus-visible {
-			color: var(--color-logo-dark-hover);
+			color: #a855f7;
 			outline: none;
 		}
 
@@ -312,7 +312,7 @@ const { title } = Astro.props;
 			font-size: 14px !important;
 			border: none !important;
 			padding: 1.2rem !important;
-			background-color: rgba(0, 0, 0, 0.02) !important;
+			background-color: rgba(0, 0, 0, 0.05) !important;
 			border-left: 3px solid var(--color-link) !important;
 		}
 
@@ -349,11 +349,11 @@ const { title } = Astro.props;
 			border-color: #5a5a5a;
 		}
 
-		.copy-code:hover,
-		.copy-code:focus-visible {
+		html:not(.dark) .copy-code:hover,
+		html:not(.dark) .copy-code:focus-visible {
 			background-color: #f0f0f0;
-			border-color: #c0c0c0;
-			color: var(--color-link);
+			border-color: var(--color-link);
+			color: #000000;
 			outline: none;
 		}
 

@@ -174,8 +174,8 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     padding: 0.05rem 0.6rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
-    border: 1px solid var(--color-border);
-    background: transparent;
+    border: 1px solid #c0c0c0;
+    background: #ffffff;
     cursor: pointer;
     text-transform: lowercase;
     line-height: 1.4;
@@ -183,10 +183,16 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     transition: none;
   }
 
-  :global(html:not(.dark)) .tag-btn:hover,
+  :global(html:not(.dark)) .tag-btn:hover {
+    background-color: #f0f0f0;
+    color: #000000;
+    border-color: var(--color-border);
+  }
+
   :global(html:not(.dark)) .tag-btn.active {
-    background-color: #0000ee;
-    color: #ffff11;
+    background-color: #e6e6e6;
+    color: #000000;
+    border-color: var(--color-border);
   }
 
   :global(html:not(.dark)) .tag-btn:focus-visible {
@@ -285,12 +291,14 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 
   :global(html:not(.dark)) .filter-toggle-btn {
     color: #000000;
-    border-color: #000000;
+    border-color: #c0c0c0;
+    background-color: #ffffff;
   }
 
   :global(html:not(.dark)) .filter-toggle-btn:hover {
-    background-color: #0000ee;
-    color: #ffff11;
+    background-color: #f0f0f0;
+    color: #000000;
+    border-color: var(--color-border);
   }
 
   :global(html:not(.dark)) .filter-toggle-btn:focus-visible {
@@ -301,7 +309,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
   :global(html:not(.dark)) .filter-toggle-btn.active {
     background-color: transparent;
     color: #6b6b6b;
-    border-color: #6b6b6b;
+    border-color: #c0c0c0;
   }
 
   :global(html.dark) .filter-toggle-btn {
