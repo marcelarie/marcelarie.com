@@ -24,10 +24,11 @@ onMounted(() => {
   const getThemeUrl = () => {
     const origin = window.location.origin;
     const root = document.documentElement;
+    const timestamp = new Date().getTime();
     if (root.classList.contains("dark")) {
-      return `${origin}/giscus-theme.css`;
+      return `${origin}/giscus-theme.css?t=${timestamp}`;
     }
-    return `${origin}/giscus-light-theme-clean.css`;
+    return `${origin}/giscus-light-theme-clean.css?t=${timestamp}`;
   };
 
   let currentTheme = getThemeUrl();
@@ -58,26 +59,18 @@ onMounted(() => {
     const newTheme = getThemeUrl();
     if (newTheme === currentTheme) return;
     currentTheme = newTheme;
-    script.setAttribute("data-theme", newTheme);
 
     console.log("Theme change detected:", { newTheme });
 
     const giscusFrame = giscusContainer.value?.querySelector("iframe");
     if (giscusFrame) {
-      console.log("Updating theme via postMessage and reload");
+      console.log("Updating theme via postMessage");
       giscusFrame.contentWindow?.postMessage(
         {
           giscus: { setConfig: { theme: newTheme } },
         },
         "https://giscus.app",
       );
-
-      setTimeout(() => {
-        if (giscusFrame.contentDocument) {
-          giscusFrame.src = giscusFrame.src;
-          console.log("Iframe reloaded");
-        }
-      }, 500);
     } else {
       console.log("No iframe found");
     }
@@ -97,7 +90,6 @@ onMounted(() => {
 }
 
 .comments-section:focus,
-.comments-section *:focus,
 .comments-section iframe:focus {
   outline: none !important;
   box-shadow: none !important;

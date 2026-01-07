@@ -9,14 +9,14 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 	{
 		!isHome && (
 			<a href="/" class="text-xl md:text-2xl">
-				{"< "}home
+				Home
 			</a>
 		)
 	}
 	<div class="flex space-x-4">
 		<a
 			href="/rss.xml"
-			class="text-sm hover:underline"
+			class="text-sm"
 			target="_blank"
 			rel="noopener noreferrer"
 		>
@@ -27,14 +27,14 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 			href={`mailto:${SITE_CONFIG.author.email}`}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="text-sm hover:underline"
+			class="text-sm"
 		>
 			Mail
 		</a>
 		<span>/</span>
 		<a
 			href={`https://github.com/${SITE_CONFIG.github.username}`}
-			class="text-sm hover:underline"
+			class="text-sm"
 			target="_blank"
 			rel="noopener noreferrer"
 		>
@@ -44,20 +44,19 @@ const justifyStyle = isHome ? "justify-end" : "justify-between";
 		<style>
 			footer a {
 				font-family: var(--font-atkinson);
-				text-transform: lowercase;
-				font-size: clamp(16px, 3vw, 18px);
+				font-size: clamp(16px, 3vw, 14px);
 				padding: 0 0.15rem;
 				margin: 0 -0.15rem;
 			}
 
 			:global(html:not(.dark)) footer a:hover {
 				background-color: #0000ee;
-				color: #ffff11 !important;
+				color: #ffff11;
 			}
 
 			:global(html.dark) footer a:hover {
-				background-color: #a855f7;
-				color: #111827 !important;
+				background-color: var(--color-logo-dark);
+				color: #111827;
 			}
 		</style>
 	</div>

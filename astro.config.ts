@@ -15,6 +15,15 @@ export default defineConfig({
   server: {
     port: Number(env.PORT) || DEFAULT_PORT,
   },
+  vite: {
+    server: {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    },
+  },
   integrations: [
     mermaid({
       theme: "base",
