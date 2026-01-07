@@ -131,6 +131,8 @@
 /* Tabs */
 .gsc-comment-box-tabs {
   background-color: transparent !important;
+  gap: 0 !important;
+  column-gap: 0 !important;
 }
 
 button.gsc-comment-box-tab,
@@ -138,7 +140,8 @@ button.gsc-comment-box-tab,
   background-color: transparent !important;
   color: var(--giscus-text-secondary) !important;
   padding: 8px 16px !important;
-  margin-right: 8px !important;
+  margin: 0 !important;
+  margin-right: -2px !important;
   border: 2px solid var(--giscus-border-muted) !important;
   box-shadow: none !important;
 }
@@ -257,6 +260,7 @@ button.gsc-comment-box-tab[role="tab"],
 button[class*="comment-box-tab"] {
   border: 2px solid var(--giscus-border-muted) !important;
   border-radius: 0 !important;
+  margin-right: -2px !important;
 }
 
 .giscus button.gsc-comment-box-tab:hover,

@@ -344,15 +344,15 @@ const { title } = Astro.props;
 			font-family: var(--font-atkinson);
 			text-transform: lowercase;
 			background: #ffffff;
-			border: 1px solid #c0c0c0;
+			border: 2px solid #c0c0c0;
 			color: #000000;
 		}
 
-		html.dark .copy-code {
-			color: #ffffff;
-			background: #3d3d3d;
-			border-color: #5a5a5a;
-		}
+	html.dark .copy-code {
+		color: #ffffff;
+		background: #3d3d3d;
+		border-color: #6b6b6b;
+	}
 
 		html:not(.dark) .copy-code:hover,
 		html:not(.dark) .copy-code:focus-visible {
@@ -364,9 +364,7 @@ const { title } = Astro.props;
 
 		html.dark .copy-code:hover,
 		html.dark .copy-code:focus-visible {
-			background-color: #2f2f2f;
-			border-color: #5a5a5a;
-			color: var(--color-highlight-dark);
+			border-color: var(--color-logo-dark);
 		}
 
 	.mermaid {
