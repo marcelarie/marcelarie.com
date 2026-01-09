@@ -69,11 +69,12 @@ const formattedDate = formatDate(date);
 		// Copy text content to clipboard
 		await navigator.clipboard.writeText(codeElement.innerText);
 
-		// Update button text temporarily
-		button.textContent = copyButtonActiveLabel;
+		// Add copied class for animation
+		button.classList.add("copied");
+
 		setTimeout(() => {
-			button.textContent = copyButtonLabel;
-		}, 900);
+			button.classList.remove("copied");
+		}, 500);
 	}
 </script>
 
