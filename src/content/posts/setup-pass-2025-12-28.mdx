@@ -2,18 +2,37 @@
 title: "Setup pass as a multi device password manager"
 date: 2025-12-28
 excerpt: "Setup a single password store that will use git and can be shared in multiple devices"
-draft: false
+draft: true
 tags: [learn, tools]
 ---
 
-I’ve been using password managers more seriously lately. Re-using passwords and
-storing them in notes is a liability. I also don’t want to depend on password
-services. I want the vault to be _mine_, portable and simple.
+I started to take password management more seriously lately.
 
-`pass` gives you exactly that: GPG-encrypted files in
-a Git repo you control.
+Reusing passwords is bad. Storing them in notes is worse. Depending on an external 
+service always puts you in a walled garden and that is never good.
 
-# The flow
+I want the password store to be **mine**, portable, simple and boring.
+
+That is why `pass` its perfect:
+
+* Passwords are just GPG encrypted files
+* Stored in a git repo
+* Works on laptop and phone perfectly so far
+* No servers, no accounts, no subscriptions!
+
+## The idea
+
+The idea is very simple:
+
+1. There is a single password store
+2. It lives in a git repository
+3. All devices clone and sync that repo (yes, automatically, wait for a sec)
+4. The same GPG key is used everywhere
+5. Apps and browsers use pass for autofill
+
+## How it works
+
+At a high level the flow looks like this:
 
 ```mermaid
 graph TD
@@ -38,12 +57,25 @@ graph TD
   L1 -->|GPG key| P1
 ```
 
-## 1. SSH into your phone
+The laptop is usually the place where the store is created and managed but you do you.
+The phone syncs and consumes it, you can always use tmux to setup everything in the phone of course.
 
-On the phone (Termux):
+## 1. Access your phone via SSH
+
+On Android your best bet is to use [Termux](https://play.google.com/store/apps/details?id=com.termux&pli=1).
+
+On the phone:
 
 ```shell
-pkg update pkg install openssh sshd passwd hostname -I
+pkg update
+pkg install openssh sshd passwd
+```
+
+Start sshd and check the IP:
+
+```shell
+sshd
+hostname -I
 ```
 
 On the laptop:
@@ -52,52 +84,86 @@ On the laptop:
 ssh u0_a482@PHONE_IP -p 8022
 ```
 
-## 2. Add Git SSH auth to the phone
+Once this works you can treat the phone almost like a normal machine.
 
-On the phone (Termux):
+## 2. Git access from the phone
+
+The phone needs SSH access to your git host.
+
+On the phone:
 
 ```shell
-ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" cat ~/.ssh/id_ed25519.pub
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+cat ~/.ssh/id_ed25519.pub
+```
+
+Add that public key to your Git provider (GitHub, GitLab, etc).
+
+Test it:
+
+```shell
 ssh -T git@github.com
+```
+
+Then clone the password store:
+
+```shell
 git clone git@github.com:username/password-store.git ~/password-store
 ```
 
-Add the printed `.pub` key to your Git host (account SSH keys).
+## 3. Import the GPG key
 
-## 3. Import your GPG key
+The same GPG key must exist on all devices.
 
 On the laptop:
 
-```
+```shell
 gpg --export-secret-keys --armor YOUR_KEY_ID > key.asc
-scp -P 8022 key.asc
-u0_a482@PHONE_IP:~
+scp -P 8022 key.asc u0_a482@PHONE_IP:~
 ```
 
-On the phone (Termux):
+On the phone:
 
-```
+```shell
 gpg --import ~/key.asc
 ```
 
-Also import `key.asc` in **OpenKeychain** if your Android app uses it.
+If you use an Android app like **OpenKeychain**, also import `key.asc` there.
 
-## 4. Enable Autofill
+## 4. Enable Autofill on Android
 
-Android Settings -> Passwords & accounts -> Autofill service -> Password Store
+Go to:
 
-Grant the requested permissions.
+> Android Settings -> Passwords & Accounts -> Autofill service
 
-## 5. Name entries by domain for autofill matching
+Select **Password Store** and grant the permissions it asks for.
 
-Use the site domain in the path:
+After this, browsers and apps can request credentials from pass.
+
+## 5. Entry naming matters
+
+Autofill matching is based on entry names.
+
+Use domains as paths:
 
 ```
-github.com/marcel amazon.com/personal mybank.co.uk/login
+github.com/marcel
+amazon.com/personal
+mybank.co.uk/login
 ```
 
-Avoid names without domains — they won’t match.
+Avoid generic names without domains, those usually don't match.
 
-You now have a self-hosted, encrypted password store that syncs to Android
-securely over SSH and autofills in your browser, without external password
-services.
+## Final result
+
+You end up with:
+
+* One encrypted password store
+* Synced with git
+* Works offline
+* No third-party services
+* Autofill on laptop and Android
+
+It is not flashy, but it is reliable, transparent and fully under your control.
+
+
