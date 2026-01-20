@@ -4,8 +4,8 @@ const hostname = Astro.url.hostname;
 const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares' : 'follow the trace';
 ---
 
-<nav class="flex flex-col sm:flex-row sm:justify-between items-center sm:items-baseline mt-10 mb-14">
-	<a id="logo" href="/" class="mb-4 sm:mb-0 text-center sm:text-left">
+<nav class="flex flex-col sm:flex-row sm:justify-between items-center sm:items-baseline mt-6 mb-6 sm:mt-10 sm:mb-14">
+	<a id="logo" href="/" class="mb-4 pb-2 sm:mb-0 sm:pb-8 text-center sm:text-left">
 		{logoText}
 	</a>
 	<div id="right-navbar" class="flex space-x-4 items-center sm:self-end mb-[10px]">
@@ -59,14 +59,21 @@ const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares'
 		<style>
 			nav #logo {
 				font-family: var(--font-vt323);
-				font-size: clamp(2.5rem, 6vw, 3.5rem);
+				font-size: clamp(3rem, 6vw, 3.5rem);
 				font-weight: normal;
 				letter-spacing: 0;
 				line-height: 1;
 				display: inline-block;
-				padding: 0 0.25rem;
+				padding-left: 0.25rem;
+				padding-right: 0.25rem;
 				margin: 0 -0.25rem;
 				transition: none;
+			}
+
+			@media (max-width: 639px) {
+				nav #logo {
+					padding-bottom: 0.5rem;
+				}
 			}
 
 				:global(html:not(.dark)) nav #logo:hover,

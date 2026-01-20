@@ -12,7 +12,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 ---
 
 <Layout title={SITE_CONFIG.title}>
-  <main class="mt-8 px-4 max-w-85ch" data-layout="wide">
+  <main class="mt-4 px-3 max-w-85ch sm:mt-8" data-layout="wide">
     <section class="filter-container mb-4" aria-label="Filter posts">
       <div id="tag-filter" class="tag-filter-hidden" role="group" aria-label="Filter by tag">
         {allTags.map(tag => (
@@ -35,7 +35,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
             const dateIso = post.data.date.toISOString();
 
             return (
-              <article class="flex flex-col mb-12 post-item" data-tags={post.data.tags.join(',')}>
+              <article class="flex flex-col mb-6 sm:mb-12 post-item" data-tags={post.data.tags.join(',')}>
                 <h2 class="post-title">
                   <a
                     href={href}
