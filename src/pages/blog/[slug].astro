@@ -78,9 +78,9 @@ const formattedDate = formatDate(date);
 	}
 </script>
 
-<Layout title={post.data.title}>
+	<Layout title={post.data.title}>
 	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
-		<article class="prose dark:prose-invert prose-stone w-full max-w-3xl">
+		<article class="prose dark:prose-invert prose-stone w-full max-w-65ch px-4">
 			{
 				hasImage && post.data.cover && (
 					<Image
@@ -153,19 +153,20 @@ const formattedDate = formatDate(date);
 
 	.prose {
 		font-family: var(--font-atkinson);
-		font-size: 17px;
-		max-width: none;
+		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+		max-width: 65ch;
 		overflow-wrap: break-word;
 		line-height: 1.6;
-		text-align: left;
+		text-align: justify;
 		hyphens: auto;
-		text-wrap: balance;
+		text-wrap: pretty;
 		margin: 0 auto;
+		padding-inline: 1rem;
 	}
 
 	.prose h2 {
 		font-family: var(--font-merriweather);
-		font-size: 24px;
+		font-size: 32px;
 		margin-top: 2rem;
 		margin-bottom: 1rem;
 		line-height: 1.3;
@@ -173,7 +174,7 @@ const formattedDate = formatDate(date);
 
 	.prose h3 {
 		font-family: var(--font-merriweather);
-		font-size: 20px;
+		font-size: 28px;
 		margin-top: 1.5rem;
 		margin-bottom: 0.75rem;
 		line-height: 1.3;
@@ -181,14 +182,14 @@ const formattedDate = formatDate(date);
 
 	.prose h4 {
 		font-family: var(--font-merriweather);
-		font-size: 18px;
+		font-size: 24px;
 		margin-top: 1.25rem;
 		margin-bottom: 0.5rem;
 		line-height: 1.3;
 	}
 
 	.prose p {
-		margin-bottom: 1.25rem;
+		margin-block: 1em;
 	}
 
 	.prose ul, .prose ol {
@@ -208,7 +209,7 @@ const formattedDate = formatDate(date);
 	  padding-top: 2rem;
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 600px) {
 		.prose {
 			text-align: left;
 		}

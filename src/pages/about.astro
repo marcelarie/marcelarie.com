@@ -15,7 +15,7 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
 
 <Layout title={aboutData.title}>
   <article
-    class="prose dark:prose-invert prose-stone w-full max-w-none gap-4 flex flex-col items-center mt-8"
+    class="prose dark:prose-invert prose-stone w-full max-w-65ch gap-4 flex flex-col items-center mt-8 px-4"
   >
     {
       aboutData.image && (
@@ -73,14 +73,15 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
 
   #about-content {
     font-family: var(--font-atkinson);
-    font-size: 17px;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
     font-weight: normal;
-    text-align: left;
+    text-align: justify;
     line-height: 1.6;
     hyphens: auto;
-    text-wrap: balance;
-    max-width: 68ch;
+    text-wrap: pretty;
+    max-width: 65ch;
     margin: 0 auto;
+    padding-inline: 1rem;
   }
 
   #about-content a {
@@ -98,7 +99,7 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
     font-weight: 800;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 600px) {
     #about-content {
       text-align: left;
     }

@@ -2,14 +2,13 @@
   <div :class="['notification', type]" class="notification">
     <div class="notification-header">
       <span class="notification-author">{{ author }}</span>
-      <span v-if="replies" class="notification-replies">{{ replies }}</span>
+      <div class="notification-meta">
+        <span v-if="replies" class="notification-replies">{{ replies }}</span>
+        <span v-if="time" class="notification-time">{{ time }}</span>
+      </div>
     </div>
     <div class="notification-content">
       <slot />
-    </div>
-    <div v-if="date || time" class="notification-footer">
-      <span v-if="date" class="notification-date">{{ formatDate(date) }}</span>
-      <span v-if="time" class="notification-time">{{ formatTime(time) }}</span>
     </div>
   </div>
 </template>
@@ -19,137 +18,115 @@ interface Props {
   author: string;
   replies?: number;
   type?: "urgent" | "info" | "warning";
-  date?: string;
   time?: string;
 }
 
 withDefaults(defineProps<Props>(), {
   replies: undefined,
   type: undefined,
-  date: undefined,
   time: undefined,
 });
-
-const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString([], { month: "short", day: "numeric" });
-};
-
-const formatTime = (timeStr: string) => {
-  return timeStr;
-};
 </script>
 
 <style scoped>
 .notification {
-  max-width: 320px;
+  max-width: 300px;
   margin: 0 auto 1rem auto;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  padding: 0.5rem 0.75rem 0.625rem 0.75rem;
+  border-radius: 18px;
   font-family: var(--font-atkinson);
-  font-size: 0.875rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.35;
   border: none;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 :root .notification {
-  background-color: #e7ffdb;
-  border-left: 4px solid #25d366;
+  background: linear-gradient(135deg, #dcf8c6 0%, #d4f7c6 100%);
 }
 
 :root .notification.urgent {
-  background-color: #fff7ed;
-  border-left-color: #ff4500;
+  background: linear-gradient(135deg, #ffdede 0%, #ffd1d1 100%);
 }
 
 :root .notification.warning {
-  background-color: #fffbeb;
-  border-left-color: #ff9500;
+  background: linear-gradient(135deg, #fff7d6 0%, #ffebbf 100%);
 }
 
 :root .notification.info {
-  background-color: #f0f4ff;
-  border-left-color: #0066cc;
+  background: linear-gradient(135deg, #d6e8ff 0%, #c7dfff 100%);
 }
 
 html.dark .notification {
-  background-color: #005c4b;
-  border-left-color: #25d366;
+  background: linear-gradient(135deg, #0a3d2e 0%, #082e22 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 html.dark .notification.urgent {
-  background-color: rgba(255, 69, 0, 0.2);
-  border-left-color: #ff6b6b;
+  background: linear-gradient(135deg, #3d1a1a 0%, #2d1212 100%);
 }
 
 html.dark .notification.warning {
-  background-color: rgba(255, 149, 0, 0.2);
-  border-left-color: #ffa94d;
+  background: linear-gradient(135deg, #3d2f0d 0%, #2d2208 100%);
 }
 
 html.dark .notification.info {
-  background-color: rgba(0, 102, 204, 0.2);
-  border-left-color: #74c0fc;
+  background: linear-gradient(135deg, #0d1f3d 0%, #08142d 100%);
 }
 
 .notification-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .notification-author {
   font-weight: 600;
-  color: var(--color-text);
-  font-size: 0.95rem;
+  color: #075e54;
+  font-size: 0.9rem;
+}
+
+html.dark .notification-author {
+  color: #25d366;
+}
+
+.notification-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .notification-replies {
-  font-size: 0.7rem;
-  padding: 0.2rem 0.5rem;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 9999px;
-  background-color: rgba(0, 0, 0, 0.1);
-  color: var(--color-text);
-  font-weight: 500;
+  background-color: rgba(7, 94, 84, 0.15);
+  color: #075e54;
+  font-weight: 600;
 }
 
 html.dark .notification-replies {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(37, 211, 102, 0.2);
+  color: #25d366;
+}
+
+.notification-time {
+  font-size: 0.65rem;
+  color: rgba(7, 94, 84, 0.7);
+  font-weight: 500;
+}
+
+html.dark .notification-time {
+  color: rgba(37, 211, 102, 0.7);
 }
 
 .notification-content {
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
+  color: #111b21;
+  word-wrap: break-word;
 }
 
-.notification-footer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
-}
-
-.notification-date,
-.notification-time {
-  font-size: 0.7rem;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 400;
-}
-
-html.dark .notification-date,
-html.dark .notification-time {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-:root .notification-content a {
-  color: var(--color-link);
-  text-decoration: underline;
-}
-
-html.dark .notification-content a {
-  color: #74c0fc;
+html.dark .notification-content {
+  color: #ece5dd;
 }
 </style>

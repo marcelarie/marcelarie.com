@@ -53,7 +53,7 @@ const projects: Project[] = await fetchProjects();
 ---
 
 <Layout title="Projects">
-  <main class="mt-8">
+  <main class="mt-8 px-4 max-w-65ch mx-auto">
   {
     projects.length > 0 ? (
       projects.map((project) => (
@@ -116,12 +116,13 @@ const projects: Project[] = await fetchProjects();
   
   p {
     font-family: var(--font-atkinson);
-    font-size: 15px;
-    line-height: 1.5;
-    text-align: left;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    line-height: 1.6;
+    text-align: justify;
     hyphens: auto;
-    text-wrap: balance;
-    max-width: 68ch;
+    text-wrap: pretty;
+    max-width: 65ch;
+    margin-block: 1em;
   }
 
   p a {
@@ -141,5 +142,11 @@ const projects: Project[] = await fetchProjects();
   :global(html.dark) p a:hover,
   :global(html.dark) p a:focus-visible {
     color: #a855f7;
+  }
+
+  @media (max-width: 600px) {
+    p {
+      text-align: left;
+    }
   }
 </style>
