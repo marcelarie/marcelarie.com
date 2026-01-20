@@ -166,12 +166,18 @@ const { title } = Astro.props;
 			);
 		}
 		
-		html.dark {
-			--color-bg: var(--color-bg-dark);
-			--color-text: #ffffff;
-			--color-text-muted: #d1d5db;
-			--color-link-visited-dark: #a855f7;
-		}
+	html.dark {
+		--color-bg: var(--color-bg-dark);
+		--color-text: #e5e5e5;
+		--color-text-muted: #d1d5db;
+		--color-link-visited-dark: #a855f7;
+		--color-text-dark: #e5e5e5;
+		--color-text-h2: #ffffff;
+		--color-text-h3: #e5e5e5;
+		--color-text-h4: #d4d4d4;
+		--color-text-h5: #cccccc;
+		--color-text-h6: #b3b3b3;
+	}
 		
 		html {
 			font-family: system-ui, sans-serif;
@@ -262,19 +268,24 @@ const { title } = Astro.props;
 			color: var(--color-link-visited-dark);
 		}
 
-		html.dark a:hover {
-			color: #ffffff;
-		}
+	html.dark a:hover {
+		color: #e5e5e5;
+	}
 
-		html.dark a:visited {
-			color: var(--color-link-visited-dark);
-		}
+	html.dark a:visited {
+		color: var(--color-link-visited-dark);
+	}
 
-		html.dark nav #right-navbar a,
-		html.dark nav #right-navbar a:visited,
-		html.dark footer a:visited {
-			color: inherit;
-		}
+	html.dark nav #right-navbar a,
+	html.dark nav #right-navbar a:visited,
+	html.dark footer a:visited {
+		color: inherit;
+	}
+
+	html.dark b,
+	html.dark strong {
+		color: var(--color-text-dark);
+	}
 
 		html.dark nav #right-navbar a:hover {
 			color: #ffffff;
@@ -310,6 +321,11 @@ const { title } = Astro.props;
 		article.prose h2 {
 			font-size: 26px !important;
 			color: var(--color-text-h2);
+		}
+
+		article.prose h3 {
+			font-size: 20px !important;
+			color: var(--color-text-h3);
 		}
 
 		article.prose h3 {
