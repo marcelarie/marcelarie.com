@@ -31,6 +31,7 @@ withDefaults(defineProps<Props>(), {
 <style scoped>
 .notification {
   max-width: 300px;
+  height: 80px;
   margin: 0 auto 1rem auto;
   padding: 0.5rem 0.75rem 0.625rem 0.75rem;
   border-radius: 18px;

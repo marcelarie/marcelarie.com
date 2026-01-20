@@ -1,14 +1,14 @@
 ---
 title: "Xivat: Global notification marks"
 date: 2026-01-20
-excerpt: Anonymous, geo pinned questions and alerts answered by people nearby.
+excerpt: An anonymous pin global mark system for the curious and the people in need.
 draft: false
 tags: [project]
 ---
 
 import Notification from "../../components/Notification.vue";
 
-The app could be named XivApp or Xivat (snitch in catalan a bit changed).
+The app could be named XivApp or Xivat. It means *snitch* in catalan a bit changed, still thinking on the name.
 
 ## The idea
 
@@ -49,9 +49,9 @@ from, for example:
 And when any new mark appears that is urgent in that radious it will get a notification.
 We could have a way of knowing when the mark is already trusted or has some answers so the user does not get an empty notification if it does not want to.
 
-## Scenarios where this can be useful:
+Some scenarios where this can be useful:
 
-### 1. You are waiting for a package in the package station (Correos in Spain)
+### 1. You are waiting for a package in the Correos station
 
 You get the line ticket and it says that the current number is 230 and you are
 the 265, that is 35 more people in front of you!
@@ -66,7 +66,7 @@ You get some live updates on you phone:
   232
 </Notification>
 
-then you forget to check for a while and get another one:
+Then you forget to check for a while and get another one:
 
 <Notification author="Cathy" type="urgent" replies={12} time="14:45">
   260, hurry!
@@ -101,8 +101,6 @@ Wisdom Pin: "Be carful with this street, I got robed yesterday and the locals sa
 
 Then the users can validate how real its this wisom pin, if its still useful
 after some time or this is already fixed.
-
----
 
 This is the main idea for now, also I think it would be really useful to have a
 good search engine for the app so anyone can try to search for specific words
