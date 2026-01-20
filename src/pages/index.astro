@@ -113,7 +113,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     color: var(--color-text-muted);
   }
 
- #post-preview {
+  #post-preview {
     font-family: var(--font-atkinson);
     font-size: 15px;
     max-width: none;
@@ -123,10 +123,10 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-align: justify;
-    text-justify: inter-word;
+    text-align: left;
     hyphens: auto;
     text-wrap: balance;
+    margin: 0 auto;
   }
 
   #post-preview :global(code) {
@@ -337,7 +337,6 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
   @media (max-width: 640px) {
     #post-preview {
       text-align: left;
-      text-justify: auto;
     }
   }
 </style>

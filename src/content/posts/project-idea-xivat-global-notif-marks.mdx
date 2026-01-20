@@ -1,0 +1,109 @@
+---
+title: "Xivat: Global notification marks"
+date: 2026-01-20
+excerpt: Anonymous, geo pinned questions and alerts answered by people nearby.
+draft: false
+tags: [project]
+---
+
+import Notification from "../../components/Notification.vue";
+
+The app could be named XivApp or Xivat (snitch in catalan a bit changed).
+
+## The idea
+
+The idea is the following:
+
+1. You create some type of identificator that its anoymous for everyone
+   1. Internally each phone should be identified
+2. You give access to location and maybe other stuff
+3. The app will ask for what is happening where you are now?
+   1. This is part of the initial tutorial
+4. You can add a question or create a snitch
+   1. Questions are answered by snitch, and those are "planted" in any area of the map
+   2. Snitch can answer questions or leave answers in the area
+5. Each question/answer can contain a photo and the text
+6. There should be a trust system for all the users, questions can be downvoted
+   of course and there should be moderators.
+
+## How it works
+
+The main idea is that you activate the app and if you go around once in a while
+it gets some information on the map, or if you want to keep it off it will
+search for them when opening it.
+
+Then if you are on the map and you opened, you can configure in what radious you
+want to answer, some questions will be urgent or need updated info. Other can be
+static and grow for some time.
+
+Once the question is marked as answered by the owner it wille be archived, or
+deleted if the oner put it as auto destructive.
+
+## Notifications by area
+
+Also people could mark parts of the map where they want to get notification
+from, for example:
+
+> Enable 10km radious in location X, only urgent marks
+
+And when any new mark appears that is urgent in that radious it will get a notification.
+We could have a way of knowing when the mark is already trusted or has some answers so the user does not get an empty notification if it does not want to.
+
+## Scenarios where this can be useful:
+
+### 1. You are waiting for a package in the package station (Correos in Spain)
+
+You get the line ticket and it says that the current number is 230 and you are
+the 265, that is 35 more people in front of you!
+
+You can leave a "question" in the map and go for a walk:
+Q: "Could anyone tell me the current number in the line?"
+
+This will be marked on the map, as a question thread where any user can answer:
+You get some live updates on you phone:
+
+<Notification author="John" replies={2}>
+  232
+</Notification>
+
+then you forget to check for a while and get another one:
+
+<Notification author="Cathy" type="urgent" replies={12}>
+  260, hurry!
+</Notification>
+
+You come back on time and you got you package! There will be cases where some
+app is already implemented for this, but for the cases that there is not this is
+really useful.
+
+### 2. You see some sidewalk blocked in you neighbourd
+
+You add a picture with a comment in that location in the map so anyone can see,
+with the tag of "Construction". It can accept answers.
+
+Someone then can pass the next day and see that the construction is over, and
+add an answer.
+
+Q: "Construction is done, finally!"
+
+The answer has a pic of the finished construction and some user can verify the
+answer if they are on the location or can justify being there recently.
+
+### 3. You are new on the neighborhood and got robed in a street
+
+Also one of the owners of the shop in the street tells you that its always a
+problem in this street for ever.
+
+You don't want this to happen to anyone else, so you create a "Wisdom pin" in
+the map!
+
+Wisdom Pin: "Be carful with this street, I got robed yesterday and the locals say that this happens all the time!"
+
+Then the users can validate how real its this wisom pin, if its still useful
+after some time or this is already fixed.
+
+---
+
+This is the main idea for now, also I think it would be really useful to have a
+good search engine for the app so anyone can try to search for specific words
+and filter by location, tags etc.
