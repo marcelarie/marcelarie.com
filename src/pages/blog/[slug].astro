@@ -79,7 +79,7 @@ const formattedDate = formatDate(date);
 </script>
 
 	<Layout title={post.data.title}>
-	<div class="flex flex-col items-center justify-center min-h-screen mt-8">
+	<div class="mt-8">
 		<article class="prose dark:prose-invert prose-stone w-full max-w-65ch px-4">
 			{
 				hasImage && post.data.cover && (
@@ -160,7 +160,6 @@ const formattedDate = formatDate(date);
 		text-align: justify;
 		hyphens: auto;
 		text-wrap: pretty;
-		margin: 0 auto;
 		padding-inline: 1rem;
 	}
 

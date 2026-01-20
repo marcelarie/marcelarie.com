@@ -12,7 +12,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 ---
 
 <Layout title={SITE_CONFIG.title}>
-  <main class="mt-8">
+  <main class="mt-8 px-4 max-w-85ch">
     <div class="filter-container mb-4">
       <div id="tag-filter" class="tag-filter-hidden">
         {allTags.map(tag => (
@@ -115,18 +115,16 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 
   #post-preview {
     font-family: var(--font-atkinson);
-    font-size: 15px;
-    max-width: none;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
     overflow-wrap: break-word;
-    line-height: 1.5;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-align: left;
+    text-align: justify;
     hyphens: auto;
-    text-wrap: balance;
-    margin: 0 auto;
+    text-wrap: pretty;
   }
 
   #post-preview :global(code) {
@@ -334,7 +332,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
     border-color: #d1d5db;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 600px) {
     #post-preview {
       text-align: left;
     }
