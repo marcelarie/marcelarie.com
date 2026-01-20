@@ -54,27 +54,28 @@ const projects: Project[] = await fetchProjects();
 
 <Layout title="Projects">
   <main class="mt-8 px-4 max-w-65ch">
+    <h1 class="page-title mb-8">Projects</h1>
   {
     projects.length > 0 ? (
       projects.map((project) => (
-        <div class="flex flex-col mb-12">
-          <a
-            id="project-title"
-            class="hover:underline"
-            target="_blank"
-            rel="noopener"
-            href={project.url}
-          >
-            {project.name}
-          </a>
-          <div class="md:w-96 mt-1 mb-2">
+        <article class="flex flex-col mb-12">
+          <h2 class="project-title">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.name}
+            </a>
+          </h2>
+          <div class="project-languages md:w-96 mt-1 mb-2">
             <LangColorBar
               languages={project.languages}
               projectUrl={project.url}
             />
           </div>
-          <p>{project.description}</p>
-        </div>
+          <p class="project-description">{project.description}</p>
+        </article>
       ))
     ) : (
       <p>No projects available or failed to load.</p>
@@ -84,7 +85,14 @@ const projects: Project[] = await fetchProjects();
 </Layout>
 
 <style>
-  #project-title {
+  .page-title {
+    font-family: var(--font-merriweather);
+    font-size: 32px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .project-title a {
     font-family: var(--font-atkinson);
     font-size: 22px;
     text-decoration: none;
@@ -92,29 +100,29 @@ const projects: Project[] = await fetchProjects();
     color: var(--color-text);
   }
 
-  #project-title:visited {
+  .project-title a:visited {
     color: var(--color-text);
   }
 
-  #project-title:hover,
-  #project-title:focus-visible {
+  .project-title a:hover,
+  .project-title a:focus-visible {
     color: #424949;
   }
 
-  :global(html.dark) #project-title {
+  :global(html.dark) .project-title a {
     color: #d1d5db;
   }
 
-  :global(html.dark) #project-title:visited {
+  :global(html.dark) .project-title a:visited {
     color: #d1d5db;
   }
 
-  :global(html.dark) #project-title:hover,
-  :global(html.dark) #project-title:focus-visible {
+  :global(html.dark) .project-title a:hover,
+  :global(html.dark) .project-title a:focus-visible {
     color: #ffffff;
   }
-  
-  p {
+
+  .project-description {
     font-family: var(--font-atkinson);
     font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
     line-height: 1.6;
@@ -124,27 +132,27 @@ const projects: Project[] = await fetchProjects();
     max-width: 65ch;
   }
 
-  p a {
+  .project-description a {
     color: inherit;
     text-decoration: underline;
   }
 
-  p a:hover,
-  p a:focus-visible {
+  .project-description a:hover,
+  .project-description a:focus-visible {
     color: #424949;
   }
 
-  :global(html.dark) p a {
+  :global(html.dark) .project-description a {
     color: #d1d5db;
   }
 
-  :global(html.dark) p a:hover,
-  :global(html.dark) p a:focus-visible {
+  :global(html.dark) .project-description a:hover,
+  :global(html.dark) .project-description a:focus-visible {
     color: #a855f7;
   }
 
   @media (max-width: 600px) {
-    p {
+    .project-description {
       text-align: left;
     }
   }

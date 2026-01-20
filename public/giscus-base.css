@@ -158,7 +158,6 @@ button.gsc-comment-box-tab-active,
 .gsc-comment-box-tab-active {
   background-color: transparent !important;
   color: var(--giscus-accent) !important;
-  font-weight: 500 !important;
   border: 2px solid var(--giscus-accent) !important;
   box-shadow: none !important;
 }

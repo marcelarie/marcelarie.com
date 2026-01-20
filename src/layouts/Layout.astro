@@ -123,6 +123,7 @@ const { title } = Astro.props;
 	</head>
 	<body class=`min-h-screen dark:bg-[var(--color-bg-dark)] dark:text-white`>
 		<div
+			id="main-wrapper"
 			class="max-w-3xl mx-auto px-8 flex flex-col min-h-screen sm:w-full"
 		>
 			<Navbar />
@@ -206,6 +207,10 @@ const { title } = Astro.props;
 			border-radius: 0rem !important;
 		}
 
+		.prose :where(blockquote) {
+			color: var(--color-text);
+		}
+
 		.dark .astro-code {
 			background-color: var(--shiki-dark-bg) !important;
 		}
@@ -273,6 +278,78 @@ const { title } = Astro.props;
 
 		html.dark nav #right-navbar a:hover {
 			color: #ffffff;
+		}
+
+		article.prose :where(h2, h3, h4, h5, h6) {
+			font-family: var(--font-merriweather) !important;
+			margin-top: 1rem !important;
+			margin-bottom: 0.5rem !important;
+			line-height: 1.3;
+		}
+
+		article.prose h2 {
+			font-size: 26px !important;
+		}
+
+		article.prose h3 {
+			font-size: 20px !important;
+		}
+
+		article.prose h4 {
+			font-size: 18px !important;
+		}
+
+		article.prose h5 {
+			font-size: 16px !important;
+		}
+
+		article.prose h6 {
+			font-size: 14px !important;
+		}
+
+		article.prose h2 {
+			font-size: 26px !important;
+			color: var(--color-text-h2);
+		}
+
+		article.prose h3 {
+			font-size: 20px !important;
+			color: var(--color-text-h3);
+		}
+
+		article.prose h4 {
+			font-size: 18px !important;
+			color: var(--color-text-h4);
+		}
+
+		article.prose h5 {
+			font-size: 16px !important;
+			color: var(--color-text-h5);
+		}
+
+		article.prose h6 {
+			font-size: 14px !important;
+			color: var(--color-text-h6);
+		}
+
+	article.prose h2 {
+			font-size: 26px !important;
+		}
+
+	article.prose h3 {
+			font-size: 20px !important;
+		}
+
+	article.prose h4 {
+			font-size: 18px !important;
+		}
+
+	article.prose h5 {
+			font-size: 16px !important;
+		}
+
+	article.prose h6 {
+			font-size: 14px !important;
 		}
 
 		#theme-toggle {

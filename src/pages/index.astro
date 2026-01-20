@@ -12,63 +12,120 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 ---
 
 <Layout title={SITE_CONFIG.title}>
-  <main class="mt-8 px-4 max-w-85ch">
-    <div class="filter-container mb-4">
-      <div id="tag-filter" class="tag-filter-hidden">
+  <main class="mt-8 px-4 max-w-85ch" data-layout="wide">
+    <section class="filter-container mb-4" aria-label="Filter posts">
+      <div id="tag-filter" class="tag-filter-hidden" role="group" aria-label="Filter by tag">
         {allTags.map(tag => (
-          <button class="tag-btn" data-tag={tag}>{tag}</button>
+          <button class="tag-btn" data-tag={tag} type="button">{tag}</button>
         ))}
       </div>
-      <button id="filter-toggle" class="filter-toggle-btn">filters</button>
-    </div>
-    {
-      allPosts
-        .filter((post: Post) => !post.data.draft)
-        .map((post: Post) => {
-          const href = "/blog/" + post.id;
-          const date = new Date(post.data.date);
-          const formattedDate = formatDate(date);
-          const readingTime = calculateReadingTime(post.body || "");
-          const excerpt = post.data.excerpt;
+      <button id="filter-toggle" class="filter-toggle-btn" type="button" aria-expanded="false" aria-controls="tag-filter">filters</button>
+    </section>
 
-          return (
-            <div class="flex flex-col mb-12 post-item" data-tags={post.data.tags.join(',')}>
-              <a
-                id="post-title"
-                class="hover:underline hover:text-[#424949] dark:text-[#d1d5db] dark:hover:text-white"
-                href={href}
-              >
-                {post.data.title}
-              </a>
-              <div class="flex items-center gap-3 mt-1">
-                <a id="post-date">
-                  {formattedDate} -
-                  <span id="reading-time" class="ml-1">
-                    {readingTime} m read
+    <section class="posts-list" aria-label="Blog posts">
+      {
+        allPosts
+          .filter((post: Post) => !post.data.draft)
+          .map((post: Post) => {
+            const href = "/blog/" + post.id;
+            const date = new Date(post.data.date);
+            const formattedDate = formatDate(date);
+            const readingTime = calculateReadingTime(post.body || "");
+            const excerpt = post.data.excerpt;
+            const dateIso = post.data.date.toISOString();
+
+            return (
+              <article class="flex flex-col mb-12 post-item" data-tags={post.data.tags.join(',')}>
+                <h2 class="post-title">
+                  <a
+                    href={href}
+                  >
+                    {post.data.title}
+                  </a>
+                </h2>
+                <div class="post-meta flex items-center gap-3 mt-1">
+                  <time datetime={dateIso} class="post-date">
+                    {formattedDate}
+                  </time>
+                  <span class="post-reading-time">
+                    {readingTime} min read
                   </span>
-                </a>
-                <div class="flex gap-2 post-tags-container">
-                  {post.data.tags.map(tag => (
-                    <a href={`/?tag=${tag}`} class="post-tag">{tag}</a>
-                  ))}
+                  <div class="flex gap-2 post-tags-container" role="list">
+                    {post.data.tags.map(tag => (
+                      <a href={`/?tag=${tag}`} class="post-tag" role="listitem">{tag}</a>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              {excerpt && (
-                <div id="post-preview" class="mt-4">
-                  {excerpt}
-                </div>
-              )}
-            </div>
-          );
-        })
-    }
+                {excerpt && (
+                  <p id="post-preview" class="mt-4">
+                    {excerpt}
+                  </p>
+                )}
+              </article>
+            );
+          })
+      }
+    </section>
   </main>
 </Layout>
 
 <style>
-  nav #logo {
-    font-family: var(--font-vt323);
-    font-size: 36px;
+  .post-title a {
+    font-family: var(--font-merriweather);
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .post-title a:hover {
+    text-decoration: underline;
+  }
+
+  :global(html:not(.dark)) .post-title a,
+  :global(html:not(.dark)) .post-title a:visited {
+    color: #000000;
+  }
+
+  :global(html.dark) .post-title a,
+  :global(html.dark) .post-title a:visited {
+    color: #ffffff;
+  }
+
+  :global(html:not(.dark)) .post-title a:hover {
+    color: #424949;
+  }
+
+  :global(html.dark) .post-title a:hover {
+    color: #d1d5db;
+  }
+
+  @media (min-width: 640px) {
+    .post-title a {
+      font-size: 24px;
+    }
+  }
+
+  .post-date,
+  .post-reading-time {
+    font-family: var(--font-atkinson);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  #post-preview {
+    font-family: var(--font-atkinson);
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: justify;
+    hyphens: auto;
+    text-wrap: pretty;
   }
 
   nav #right-navbar a {
@@ -337,6 +394,10 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
       text-align: left;
     }
   }
+
+  #main-wrapper {
+    max-width: 85ch;
+  }
 </style>
 
 <script>
@@ -346,8 +407,10 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
   const postItems = document.querySelectorAll('.post-item');
 
   filterToggle?.addEventListener('click', () => {
+    const isHidden = tagFilter?.classList.contains('tag-filter-hidden');
     tagFilter?.classList.toggle('tag-filter-hidden');
     filterToggle.classList.toggle('active');
+    filterToggle.setAttribute('aria-expanded', String(!isHidden));
   });
 
   const filterPosts = () => {
@@ -358,7 +421,7 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 
     postItems.forEach(post => {
       const postTags = post.getAttribute('data-tags')?.split(',') || [];
-      
+
       if (activeTags.length === 0 || activeTags.some(tag => postTags.includes(tag))) {
         post.classList.remove('hidden');
       } else {
@@ -383,29 +446,30 @@ const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sor
 
     const url = new URL(window.location.href);
     url.searchParams.delete('tag');
-    
+
     if (activeTags.length > 0) {
       activeTags.forEach(tag => url.searchParams.append('tag', tag));
     }
-    
+
     window.history.replaceState({}, '', url.toString());
   };
 
   const initializeFiltersFromURL = () => {
     const url = new URL(window.location.href);
     const tagParams = url.searchParams.getAll('tag');
-    
+
     if (tagParams.length > 0) {
       tagFilter?.classList.remove('tag-filter-hidden');
       filterToggle?.classList.add('active');
-      
+      filterToggle?.setAttribute('aria-expanded', 'true');
+
       tagButtons.forEach(btn => {
         const tag = btn.getAttribute('data-tag');
         if (tag && tagParams.includes(tag)) {
           btn.classList.add('active');
         }
       });
-      
+
       filterPosts();
     }
   };

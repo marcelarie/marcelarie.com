@@ -14,57 +14,55 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
 ---
 
 <Layout title={aboutData.title}>
-  <article
-    class="prose dark:prose-invert prose-stone w-full max-w-85ch gap-4 flex flex-col mt-8 px-4"
-  >
-    {
-      aboutData.image && (
-        <div class="w-full flex justify-center">
-          <Image
-            class="object-cover object-center !m-0 aspect-square block border-2 border-[var(--color-border)] dark:border-white"
-            src={aboutData.image}
-            alt="me"
-            width={150}
-            height={150}
-          />
-        </div>
-      )
-    }
-    <div class="mt-2">
-      <h1 id="title">
-        {aboutData.title}
-      </h1>
+  <main class="mt-8 px-4">
+    <article
+      class="prose dark:prose-invert prose-stone w-full max-w-85ch gap-4 flex flex-col mt-8"
+    >
+      {
+        aboutData.image && (
+          <figure class="profile-image w-full flex justify-center mb-6">
+            <Image
+              class="object-cover object-center !m-0 aspect-square block border-2 border-[var(--color-border)] dark:border-white"
+              src={aboutData.image}
+              alt="Marcel - software developer based in Barcelona"
+              width={150}
+              height={150}
+            />
+          </figure>
+        )
+      }
+      <header class="mb-6">
+        <h1 class="page-title">
+          {aboutData.title}
+        </h1>
+      </header>
       <div
         id="about-content"
-        class="text-sm leading-relaxed text-gray-700 prose mt-4 dark:text-white"
+        class="text-sm leading-relaxed text-gray-700 prose dark:text-white"
       >
-        <span>
+        <p>
           I'm Marcel, a {myAge}-year-old software developer based in Barcelona.
-        </span>
-        <br />
-        <br />
-        <span class="mt-1 block">
-          With over {yearsProgramming} years of experience in the tech industry,  I specialize in frontend development using
+        </p>
+        <p>
+          With over {yearsProgramming} years of experience in tech industry, I specialize in frontend development using
           React and TypeScript, and backend development and tooling with Node.js
           and Ruby.
-        </span>
-        <br />
-        <span>
+        </p>
+        <p>
           Currently, I'm working as a full-stack developer at <a
             href="https://www.worldsensing.com/"
             target="_blank"
             rel="noopener">Worldsensing</a
           >. In my free time, I'm expanding my skills by learning Rust and Go
           and contributing to open-source projects.
-        </span>
-        <br/>
+        </p>
       </div>
-    </div>
-  </article>
+    </article>
+  </main>
 </Layout>
 
 <style>
-  #title {
+  .page-title {
     font-family: var(--font-merriweather);
     font-size: 32px;
     margin-bottom: 4px;
@@ -79,7 +77,10 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
     line-height: 1.6;
     hyphens: auto;
     text-wrap: pretty;
-    padding-inline: 1rem;
+  }
+
+  #about-content p {
+    margin-block: 1em;
   }
 
   #about-content a {
