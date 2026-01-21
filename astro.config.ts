@@ -1,9 +1,9 @@
-import { defineConfig } from "astro/config";
-import vue from "@astrojs/vue";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
-import { loadEnv } from "vite";
+import vue from "@astrojs/vue";
+import { defineConfig } from "astro/config";
 import mermaid from "astro-mermaid";
+import { loadEnv } from "vite";
 
 const DEFAULT_PORT = 4321;
 

@@ -1,6 +1,6 @@
 import { loadEnv } from "vite";
-import { getSpecificRepoLanguage } from "./getLanguageColor";
 import { getCached } from "./cache";
+import { getSpecificRepoLanguage } from "./getLanguageColor";
 
 const env = loadEnv(process.env.GITHUB_TOKEN!, process.cwd(), "");
 

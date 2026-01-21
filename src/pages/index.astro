@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
 import { SITE_CONFIG } from "../config";
+import Layout from "../layouts/Layout.astro";
+import type { Post } from "../types";
 import { formatDate } from "../utils/dates";
 import { calculateReadingTime } from "../utils/misc";
-import type { Post } from "../types";
 
 const allPosts = await getCollection("posts");
 const publishedPosts = allPosts.filter((post: Post) => !post.data.draft);

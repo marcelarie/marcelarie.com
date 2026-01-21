@@ -5,7 +5,7 @@ export function getRepoLanguages(yamlText: string): Record<string, string> {
 
 	const filteredLines = lines.filter((line) => !line.startsWith("#"));
 
-	for (let line of filteredLines) {
+	for (const line of filteredLines) {
 		// Match the language name (e.g., "ABAP:")
 		const languageMatch = line.match(/^([A-Za-z0-9\-\s]+):$/);
 		if (languageMatch) {

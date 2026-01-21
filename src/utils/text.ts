@@ -5,7 +5,7 @@
 export function stripMarkdown(text: string): string {
 	return text
 		.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-		.replace(new RegExp("\\x60\\x60\\x60[\\s\\S]*?\\x60\\x60\\x60", "g"), "")
+		.replace(/\x60\x60\x60[\s\S]*?\x60\x60\x60/g, "")
 		.replace(/[#*_\x60]/g, "")
 		.replace(/\n+/g, " ")
 		.trim();

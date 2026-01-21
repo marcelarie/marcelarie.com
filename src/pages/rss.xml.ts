@@ -1,9 +1,10 @@
-import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import sanitizeHtml from "sanitize-html";
+import rss from "@astrojs/rss";
 import MarkdownIt from "markdown-it";
+import sanitizeHtml from "sanitize-html";
 import { SITE_CONFIG } from "../config";
 import type { Post } from "../types";
+
 const parser = new MarkdownIt();
 
 type Context = {

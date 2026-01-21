@@ -1,9 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import LangColorBar from "../components/LangColorBar.astro";
+import { SITE_CONFIG } from "../config";
+import Layout from "../layouts/Layout.astro";
 import { getMultipleRepos, type Language } from "../utils/github";
 import { normalizeCase } from "../utils/misc";
-import { SITE_CONFIG } from "../config";
 
 type Project = {
 	name: string;

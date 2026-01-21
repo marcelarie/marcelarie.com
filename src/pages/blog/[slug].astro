@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { formatDate } from "../../utils/dates";
-import type { Post } from "../../types";
-import { calculateReadingTime } from "../../utils/misc";
+import { getCollection } from "astro:content";
 import Comments from "../../components/Comments.vue";
+import Layout from "../../layouts/Layout.astro";
+import type { Post } from "../../types";
+import { formatDate } from "../../utils/dates";
+import { calculateReadingTime } from "../../utils/misc";
 
 interface Props {
 	post: CollectionEntry<"posts">;
