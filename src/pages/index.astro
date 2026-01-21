@@ -8,7 +8,9 @@ import type { Post } from "../types";
 
 const allPosts = await getCollection("posts");
 const publishedPosts = allPosts.filter((post: Post) => !post.data.draft);
-const allTags = [...new Set(publishedPosts.flatMap(post => post.data.tags))].sort();
+const allTags = [
+	...new Set(publishedPosts.flatMap((post) => post.data.tags)),
+].sort();
 ---
 
 <Layout title={SITE_CONFIG.title}>

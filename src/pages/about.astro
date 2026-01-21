@@ -5,12 +5,14 @@ import { calculateYearDifference } from "../utils/dates";
 import { SITE_CONFIG } from "../config";
 
 const aboutData = {
-  title: "Hi!",
-  image: "/images/work-pic.webp",
+	title: "Hi!",
+	image: "/images/work-pic.webp",
 };
 
 const myAge = calculateYearDifference(SITE_CONFIG.author.birthDate);
-const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingStartDate);
+const yearsProgramming = calculateYearDifference(
+	SITE_CONFIG.author.programmingStartDate,
+);
 ---
 
 <Layout title={aboutData.title}>
@@ -40,20 +42,16 @@ const yearsProgramming = calculateYearDifference(SITE_CONFIG.author.programmingS
         id="about-content"
         class="text-sm leading-relaxed text-gray-700 prose dark:text-white"
       >
-        <p>
-        I'm Marcel. I love coding, climbing and electronic music synthesizers.
-        </p>
-        <p>
-          With over {yearsProgramming} years of experience in tech industry, I
-          specialize in web development but my passion is Linux and building developer tools.
-        </p>
-        <p>
-          Currently, I'm working as a web developer at <a
-            href="https://www.worldsensing.com/"
-            target="_blank"
-            rel="noopener">Worldsensing</a
-          >. In my free time, I'm expanding my skills by contributing to multiple open source projects.
-        </p>
+      <p>I'm Marcel, welcome to my blog.</p>
+      <p>Here you will mainly see posts about software that is my job and one
+      of my biggest passions, but you will also see posts about other topics
+      like electronic music, hardware and book reviews once in a while.</p> 
+      <p>I have over {yearsProgramming} years of experience in tech,
+        specialized in web development and developer experience.
+        Currently I work at
+        <a href="https://www.worldsensing.com/" target="_blank" rel="noopener">Worldsensing</a>.
+        <p>In my free time I also contribute to multiple open source projects,
+        will have this info in the "Projects" section in the near future.</p>
       </div>
     </article>
   </main>

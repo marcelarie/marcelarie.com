@@ -1,9 +1,9 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "types": ["node"],
-    "esModuleInterop": true
-  },
-  "exclude": ["dist", "node_modules"]
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"jsx": "preserve",
+		"types": ["node"],
+		"esModuleInterop": true
+	},
+	"exclude": ["dist", "node_modules"]
 }

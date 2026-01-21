@@ -2,49 +2,49 @@
 
 /* CSS Variables - Will be overridden by theme-specific files */
 :root {
-  --giscus-bg: transparent;
-  --giscus-text-primary: #000000;
-  --giscus-text-secondary: #6b6b6b;
-  --giscus-text-tertiary: #888888;
-  --giscus-accent: #0000ee;
-  --giscus-accent-hover: #551a8b;
-  --giscus-accent-bg: rgba(0, 0, 238, 0.05);
-  --giscus-accent-bg-focus: rgba(0, 0, 238, 0.1);
-  --giscus-border: #000000;
-  --giscus-border-muted: #6b6b6b;
+	--giscus-bg: transparent;
+	--giscus-text-primary: #000000;
+	--giscus-text-secondary: #6b6b6b;
+	--giscus-text-tertiary: #888888;
+	--giscus-accent: #0000ee;
+	--giscus-accent-hover: #551a8b;
+	--giscus-accent-bg: rgba(0, 0, 238, 0.05);
+	--giscus-accent-bg-focus: rgba(0, 0, 238, 0.1);
+	--giscus-border: #000000;
+	--giscus-border-muted: #6b6b6b;
 }
 
 /* GitHub CSS Variables */
 :root {
-  --color-canvas-default: transparent;
-  --color-canvas-subtle: transparent;
-  --color-canvas-inset: transparent;
-  --color-bg-default: transparent;
-  --color-bg-primary: transparent;
-  --color-bg-secondary: transparent;
-  --color-bg-tertiary: transparent;
-  --color-border-default: transparent;
-  --color-border-primary: transparent;
-  --color-border-secondary: transparent;
-  --color-border-tertiary: transparent;
-  --color-border-muted: transparent;
-  --color-text-primary: var(--giscus-text-primary);
-  --color-text-secondary: var(--giscus-text-secondary);
-  --color-text-tertiary: var(--giscus-text-tertiary);
-  --color-accent-fg: var(--giscus-accent);
-  --color-accent-emphasis: var(--giscus-accent);
-  --color-btn-text: var(--giscus-text-primary);
-  --color-btn-bg: transparent;
-  --color-btn-border: transparent;
-  --color-btn-hover-bg: var(--giscus-accent-bg);
-  --color-btn-active-bg: var(--giscus-accent-bg-focus);
+	--color-canvas-default: transparent;
+	--color-canvas-subtle: transparent;
+	--color-canvas-inset: transparent;
+	--color-bg-default: transparent;
+	--color-bg-primary: transparent;
+	--color-bg-secondary: transparent;
+	--color-bg-tertiary: transparent;
+	--color-border-default: transparent;
+	--color-border-primary: transparent;
+	--color-border-secondary: transparent;
+	--color-border-tertiary: transparent;
+	--color-border-muted: transparent;
+	--color-text-primary: var(--giscus-text-primary);
+	--color-text-secondary: var(--giscus-text-secondary);
+	--color-text-tertiary: var(--giscus-text-tertiary);
+	--color-accent-fg: var(--giscus-accent);
+	--color-accent-emphasis: var(--giscus-accent);
+	--color-btn-text: var(--giscus-text-primary);
+	--color-btn-bg: transparent;
+	--color-btn-border: transparent;
+	--color-btn-hover-bg: var(--giscus-accent-bg);
+	--color-btn-active-bg: var(--giscus-accent-bg-focus);
 }
 
 /* Global Resets */
 * {
-  font-family: "IBM Plex Mono", monospace !important;
-  border-radius: 0 !important;
-  box-sizing: border-box !important;
+	font-family: "IBM Plex Mono", monospace !important;
+	border-radius: 0 !important;
+	box-sizing: border-box !important;
 }
 
 /* Main Containers */
@@ -52,168 +52,168 @@
 .gsc-main,
 .gsc-timeline,
 .gsc-comments-container {
-  background-color: transparent !important;
-  color: var(--giscus-text-primary) !important;
-  width: 100% !important;
-  max-width: none !important;
-  border: none !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	color: var(--giscus-text-primary) !important;
+	width: 100% !important;
+	max-width: none !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 /* Individual Comment */
 .gsc-comment {
-  margin-bottom: 32px !important;
-  padding: 0 !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+	margin-bottom: 32px !important;
+	padding: 0 !important;
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 .gsc-comment-header {
-  padding: 8px 0 !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+	padding: 8px 0 !important;
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 .gsc-comment-body {
-  padding: 16px 0 !important;
-  color: var(--giscus-text-primary) !important;
-  line-height: 1.6 !important;
-  border: none !important;
-  box-shadow: none !important;
+	padding: 16px 0 !important;
+	color: var(--giscus-text-primary) !important;
+	line-height: 1.6 !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 /* Comment Box / Form */
 .gsc-comment-box,
 .gsc-comment-box-main,
 .gsc-comment-form {
-  background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 .gsc-comment-box-bottom {
-  background-color: transparent !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	padding: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 /* Textarea */
 .gsc-comment-box-textarea,
 .gsc-comment-box-textarea:hover,
 .gsc-comment-box-textarea:active {
-  font-family: "IBM Plex Mono", monospace !important;
-  background-color: transparent !important;
-  color: var(--giscus-text-primary) !important;
-  padding: 12px 8px !important;
-  line-height: 1.5 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
+	font-family: "IBM Plex Mono", monospace !important;
+	background-color: transparent !important;
+	color: var(--giscus-text-primary) !important;
+	padding: 12px 8px !important;
+	line-height: 1.5 !important;
+	outline: none !important;
+	box-shadow: none !important;
+	border: none !important;
 }
 
 .gsc-comment-box-textarea:focus,
 .gsc-comment-box-textarea:focus-visible {
-  font-family: "IBM Plex Mono", monospace !important;
-  background-color: transparent !important;
-  color: var(--giscus-text-primary) !important;
-  padding: 12px 8px !important;
-  line-height: 1.5 !important;
-  outline: none !important;
-  box-shadow: 0 3px 0 0 var(--giscus-accent) !important;
-  border: none !important;
+	font-family: "IBM Plex Mono", monospace !important;
+	background-color: transparent !important;
+	color: var(--giscus-text-primary) !important;
+	padding: 12px 8px !important;
+	line-height: 1.5 !important;
+	outline: none !important;
+	box-shadow: 0 3px 0 0 var(--giscus-accent) !important;
+	border: none !important;
 }
 
 /* Tabs */
 .gsc-comment-box-tabs {
-  background-color: transparent !important;
-  gap: 0 !important;
-  column-gap: 0 !important;
+	background-color: transparent !important;
+	gap: 0 !important;
+	column-gap: 0 !important;
 }
 
 button.gsc-comment-box-tab,
 .gsc-comment-box-tab {
-  background-color: transparent !important;
-  color: var(--giscus-text-secondary) !important;
-  padding: 8px 16px !important;
-  margin: 0 !important;
-  margin-right: -2px !important;
-  border: 2px solid var(--giscus-border-muted) !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	color: var(--giscus-text-secondary) !important;
+	padding: 8px 16px !important;
+	margin: 0 !important;
+	margin-right: -2px !important;
+	border: 2px solid var(--giscus-border-muted) !important;
+	box-shadow: none !important;
 }
 
 button.gsc-comment-box-tab:hover,
 .gsc-comment-box-tab:hover {
-  background-color: transparent !important;
-  color: var(--giscus-accent) !important;
-  border: 2px solid var(--giscus-accent) !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	color: var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
+	box-shadow: none !important;
 }
 
 button.gsc-comment-box-tab-active,
 .gsc-comment-box-tab-active {
-  background-color: transparent !important;
-  color: var(--giscus-accent) !important;
-  border: 2px solid var(--giscus-accent) !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	color: var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
+	box-shadow: none !important;
 }
 
 /* Buttons */
 button[class*="gsc-"] {
-  background-color: transparent !important;
-  color: var(--giscus-text-primary) !important;
-  padding: 8px 16px !important;
-  font-weight: 400 !important;
-  border: 2px solid var(--giscus-border) !important;
-  box-shadow: none !important;
+	background-color: transparent !important;
+	color: var(--giscus-text-primary) !important;
+	padding: 8px 16px !important;
+	font-weight: 400 !important;
+	border: 2px solid var(--giscus-border) !important;
+	box-shadow: none !important;
 }
 
 button[class*="gsc-"]:hover {
-  background-color: var(--giscus-accent-bg) !important;
-  color: var(--giscus-accent) !important;
-  border: 2px solid var(--giscus-accent) !important;
-  box-shadow: none !important;
+	background-color: var(--giscus-accent-bg) !important;
+	color: var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
+	box-shadow: none !important;
 }
 
 button[class*="gsc-"]:focus {
-  background-color: var(--giscus-accent-bg-focus) !important;
-  color: var(--giscus-accent) !important;
-  border: 2px solid var(--giscus-accent) !important;
-  outline: none !important;
-  box-shadow: none !important;
+	background-color: var(--giscus-accent-bg-focus) !important;
+	color: var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 /* Ensure comment button has 2px border */
 button.gsc-comment-box-submit,
 button[type="submit"][class*="gsc-"],
 .gsc-comment-box-bottom button[type="submit"] {
-  border: 2px solid var(--giscus-border) !important;
+	border: 2px solid var(--giscus-border) !important;
 }
 
 button.gsc-comment-box-submit:hover,
 button[type="submit"][class*="gsc-"]:hover,
 .gsc-comment-box-bottom button[type="submit"]:hover {
-  border: 2px solid var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
 }
 
 button.gsc-comment-box-submit:focus,
 button[type="submit"][class*="gsc-"]:focus,
 .gsc-comment-box-bottom button[type="submit"]:focus {
-  border: 2px solid var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
 }
 
 /* Links */
 a {
-  color: var(--giscus-accent) !important;
-  text-decoration: none !important;
+	color: var(--giscus-accent) !important;
+	text-decoration: none !important;
 }
 
 a:hover {
-  color: var(--giscus-accent-hover) !important;
+	color: var(--giscus-accent-hover) !important;
 }
 
 /* Remove borders from elements that shouldn't have them */
@@ -239,8 +239,8 @@ button[aria-label*="sign out"],
 img,
 svg,
 span {
-  border: none !important;
-  box-shadow: none !important;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 /* Hide Reactions */
@@ -248,7 +248,7 @@ span {
 .gsc-comment-reactions,
 .gsc-social-reaction-summary-item,
 .gsc-reply-reactions {
-  display: none !important;
+	display: none !important;
 }
 
 /* Force tab borders - ultra high specificity */
@@ -257,9 +257,9 @@ span {
 button.gsc-comment-box-tab[role="tab"],
 .gsc-comment-box-tabs button,
 button[class*="comment-box-tab"] {
-  border: 2px solid var(--giscus-border-muted) !important;
-  border-radius: 0 !important;
-  margin-right: -2px !important;
+	border: 2px solid var(--giscus-border-muted) !important;
+	border-radius: 0 !important;
+	margin-right: -2px !important;
 }
 
 .giscus button.gsc-comment-box-tab:hover,
@@ -267,7 +267,7 @@ button[class*="comment-box-tab"] {
 button.gsc-comment-box-tab[role="tab"]:hover,
 .gsc-comment-box-tabs button:hover,
 button[class*="comment-box-tab"]:hover {
-  border: 2px solid var(--giscus-accent) !important;
+	border: 2px solid var(--giscus-accent) !important;
 }
 
 .giscus button.gsc-comment-box-tab-active,
@@ -278,7 +278,7 @@ button.gsc-comment-box-tab[aria-selected="true"],
 .gsc-comment-box-tabs button[aria-selected="true"],
 button[class*="comment-box-tab"][aria-selected="true"],
 .gsc-comment-box-tabs button.gsc-comment-box-tab-active {
-  border: 2px solid var(--giscus-accent) !important;
-  color: var(--giscus-accent) !important;
-  font-weight: 500 !important;
+	border: 2px solid var(--giscus-accent) !important;
+	color: var(--giscus-accent) !important;
+	font-weight: 500 !important;
 }

@@ -1,60 +1,56 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LangColorBar from "../components/LangColorBar.astro";
-import {
-  getMultipleRepos,
-  type Language,
-} from "../utils/github";
+import { getMultipleRepos, type Language } from "../utils/github";
 import { normalizeCase } from "../utils/misc";
 import { SITE_CONFIG } from "../config";
 
 type Project = {
-  name: string;
-  description: string;
-  url: string;
-  languages: Language[];
+	name: string;
+	description: string;
+	url: string;
+	languages: Language[];
 };
 
 const fetchProjects = async () => {
-  try {
-    // Fetch all repos in a single GraphQL query
-    const reposMap = await getMultipleRepos(
-      SITE_CONFIG.github.username,
-      SITE_CONFIG.projects,
-    );
+	try {
+		// Fetch all repos in a single GraphQL query
+		const reposMap = await getMultipleRepos(
+			SITE_CONFIG.github.username,
+			SITE_CONFIG.projects,
+		);
 
-    // Transform to project array, maintaining order
-    const projects = SITE_CONFIG.projects
-      .map((projectName) => {
-        const repoData = reposMap.get(projectName);
-        if (!repoData) return null;
+		// Transform to project array, maintaining order
+		const projects = SITE_CONFIG.projects
+			.map((projectName) => {
+				const repoData = reposMap.get(projectName);
+				if (!repoData) return null;
 
-        const { info: data, languages } = repoData;
-        const shouldNormalize = data.name && !data.name.includes(".com");
-        const name = shouldNormalize ? normalizeCase(data.name) : data.name;
+				const { info: data, languages } = repoData;
+				const shouldNormalize = data.name && !data.name.includes(".com");
+				const name = shouldNormalize ? normalizeCase(data.name) : data.name;
 
-        return {
-          name: name.toLowerCase(),
-          description: data.description,
-          url: data.html_url,
-          languages,
-        };
-      })
-      .filter((p): p is Project => p !== null);
+				return {
+					name: name.toLowerCase(),
+					description: data.description,
+					url: data.html_url,
+					languages,
+				};
+			})
+			.filter((p): p is Project => p !== null);
 
-    return projects;
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-    return [];
-  }
+		return projects;
+	} catch (error) {
+		console.error("Error fetching projects:", error);
+		return [];
+	}
 };
 
 const projects: Project[] = await fetchProjects();
 ---
 
 <Layout title="Projects">
-  <main class="mt-4 px-3 max-w-65ch sm:mt-8">
-    <h1 class="page-title mb-8">Projects</h1>
+  <main class="mt-4 px-3 max-w-65ch sm:mt-0">
   {
     projects.length > 0 ? (
       projects.map((project) => (
