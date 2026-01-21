@@ -5,12 +5,12 @@ const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares'
 ---
 
 <nav class="flex flex-col sm:flex-row sm:justify-between items-center sm:items-baseline mt-6 mb-6 sm:mt-10 sm:mb-14">
-	<a id="logo" href="/" class="mb-4 pb-2 sm:mb-0 sm:pb-8 text-center sm:text-left">
+	<a id="logo" href="/" class="mb-4 sm:mb-0 text-center sm:text-left pb-0">
 		{logoText}
 	</a>
 	<div id="right-navbar" class="flex space-x-4 items-center sm:self-end mb-[10px]">
-		<a href="/about" class={currentPath === '/about' ? 'active' : ''}>About</a>
-		<a href="/projects" class={currentPath === '/projects' ? 'active' : ''}>
+		<a href="/about" class={currentPath === '/about' ? 'active' : ''} pb-0>About</a>
+		<a href="/projects" class={currentPath === '/projects' ? 'active' : ''} pb-0>
 			Projects
 		</a>
 		<button id="theme-toggle" class="font-ibm-plex-mono text-sm" aria-label="Toggle theme">
@@ -68,12 +68,6 @@ const logoText = hostname.includes('marcelmanzanares.com') ? 'marcel manzanares'
 				padding-right: 0.25rem;
 				margin: 0 -0.25rem;
 				transition: none;
-			}
-
-			@media (max-width: 639px) {
-				nav #logo {
-					padding-bottom: 0.5rem;
-				}
 			}
 
 				:global(html:not(.dark)) nav #logo:hover,
