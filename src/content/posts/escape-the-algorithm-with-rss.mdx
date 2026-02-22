@@ -1,0 +1,149 @@
+---
+title: "Escape the algorithm with RSS"
+date: 2026-02-22
+excerpt: A bit of a rant about what social networks are nowadays and how much I love RSS.
+draft: true
+tags: [rant, rss]
+---
+
+## A world of illusion
+
+A couple of months ago I started my journey to get out of social media, at least
+as much as possible. I removed the *last standing* social apps that I had:
+Instagram, to "keep up" with my friends, and TikTok, to "keep up" with the news
+and kept some like YouTube, Reddit, etc.
+
+This seemed hard at the start, and I had recurring thoughts multiple times about
+how unconnected from my social circle and "THE NEWS" I was becoming. But surprisingly,
+it got easier quickly, and I think this is not because I am not interested in
+my friends or the accounts that I followed on TikTok, but because of how
+unpleasant I felt when using these apps.
+
+For me it is not only how the UI nowadays is at least 10 times more addictive
+than before, or how many more ads we now have everywhere. The main problem, and
+the reason that was making it unpleasant, is how little control I had over what 
+I was seeing while using the app.
+
+The apps got completely algorithm centric, and everything is made to take you away
+from the plan that you had when opening the app, to get you back into the algorithm.
+You already know what I am talking about.
+
+## Instagram
+
+Instagram was an easy one. I uninstalled the app and did not have any cravings again.
+I am already in contact with my close friends and family via messaging apps, and when I used it 
+the majority of the time I was simply doomscrolling accounts of other people that I
+do not care about as much. The only problem was when friends sent me some links, or
+I wanted to check the profile of some artist to look for tour dates or any other interesting topics.
+In those cases I used the browser version, and that sometimes got me back into Insta stories or doomscrolling.
+
+The solution that I found for that was to add a blocking rule in uBlock Origin
+for the web version, so every time I open a link from `instagram.com` I get a
+screen with the message "uBlock Origin has prevented the following page from loading"
+and a "Go back" and "Proceed" button. This way at least I get a big warning to
+remind me of the dangers of Instagram before diving in.
+
+{/* pics of instagram block in ublock origin here */}
+
+## TikTok and some alternatives
+
+**TikTok** was harder to get out of. My brain got too addicted to having small dopamine
+spikes during the day while feeling up to date with current geopolitical
+affairs and the tech news.
+
+"How am I supposed to live my life without knowing what crazy thing Donald Trump
+said 2 hours ago?!"
+
+So in the end, of course, the solution was simply not using the app.
+I uninstalled it and stuck with the demons I already knew: YouTube, Reddit and HN.
+
+The problem is that **YouTube** is falling into the same basket of addictive algorithmic
+apps. I want to keep it because I can still find high quality content there,
+but also a lot of content there now a days that is made to release quick dopamine hits.
+
+This was dangerous because I would use it in the same way that I was using TikTok.
+
+**Reddit** sometimes can have the same effect when doomscrolling comments, and some
+of the tech communities that I follow can get too dramatic/toxic sometimes, so
+I just use it to do some research about specific topics.
+
+The way I use [**Hacker News**](https://news.ycombinator.com/) its not that bad
+given that I just check the "Top Stories" page in search for some tech and
+software releated news and normally I don't get too interested in the comment
+section if its not something that I am specifically interested into. 
+
+So I decided to keep those three apps as "alternatives" to the addictive TikTok,
+but with some rueles.
+
+- **YouTube**: Love some content there but its getting more dangerous every day to 
+use their UI. I added a 1h a day time limit and deleted it from my home screen.
+- **Reddit**: Doomscrollable UI but in my case I just deleted it from my phone home 
+page and found that I do not use it as much anymore, just when doing web research 
+about topics. No needed for limitation rules.
+- **Hacker News**: This is still in my phone home screen, can easly check it for 30m 
+a day and forget about it. The UI is really simple and not addictive at all.
+
+But still I felt that I did not have as much control on the content that I 
+consume as I would like to, for sure there should be a better way.
+
+## The solution
+
+I used RSS in the past but it never stuck with me. I also did not love many of
+the big reader apps that people recommended online, like [Inoreader](https://www.inoreader.com/).
+
+This time I got interested in RSS again because I was searching for a way to
+subscribe to multiple sources in one feed and thought that I needed to create my
+own app because I did not find something similar.
+
+But, of course, I was reinventing the wheel, given that this already existed, it’s RSS! 
+As my mother-in-law would say, I had a Milky Way moment[^1].
+
+The only feature that I was missing was a way to sync all my RSS sources across
+different RSS reader apps, like for example [FeedFlow](https://www.feedflow.dev/)
+or [Newsboat](https://newsboat.org/).
+
+Of course this also already existed, and it’s one of the main reasons I got back
+into RSS. It is called [Miniflux](https://miniflux.app/). 
+
+Basically its a selfhosted server where you can create multiple accounts to
+store RSS feeds, and those feed sources can be consumed by multiple RSS reader
+apps via an integration.
+
+You can also be perfectly happy simply using the default Miniflux UI, as it is
+simple and performant.
+
+Miniflux is designed to use as few resources as possible. You can run an
+instance on a Pi Zero or a NAS with no down time at all. 
+
+For now, I decided to use a PikaPod instance for the small price of $10/year + 
+$5 for daily backups. In the near future I might get a NAS and run it there,
+with some other selfhosted solutions like [Immich](https://immich.app/), but
+this is for another day and it that case it will get free fast.
+
+## The difference
+
+The sensible thing to do now is to ask: what do I gain from running this Miniflux 
+instance or with any form of RSS in general? Yeah its techy and cool but why?
+
+And the response to that its simple: Control.
+
+Now when I see some blog post, podcast or YouTube channel that I like, I simply add 
+it to my Miniflux instance, so every time any of those sources adds new content 
+I will be update by in a minimal feed, of my choice, that only shows what I
+want it to show. And of course I would like to get once in a while lost in the 
+YouTube algorithm to find new interesting topics, but it will be willingly and 
+not when I just want to check an update of my favorite channel.
+
+And given that it is all on a Miniflux server I can have multiple devices, with 
+the apps that I like the most for each device, without having to export import and 
+share my data with any Venture Capital company like Feedly or Google with Google 
+Reader.
+
+You own your feed, you own what you consume and more importantly you control
+the way that you consume it. I hope it has been a useful quick read.
+
+[^1]: A Milcky Way moment is a term used by my girlfriend and my monther in law 
+to describe when you have a revelation about the meaning or the ethimology of some word 
+or phrase that you used for a while. Once you have the milcky way moment, it now makes 
+sense and you can't unsee it. A good example would be Rayban, its not the last name
+of the brand founder but just the wording use to describe glasses that *ban rays*.
