@@ -5,13 +5,13 @@ import Layout from "../layouts/Layout.astro";
 import { calculateYearDifference } from "../utils/dates";
 
 const aboutData = {
-	title: "Hi!",
-	image: "/images/work-pic.webp",
+  title: "Hi!",
+  image: "/images/work-pic.webp",
 };
 
 const myAge = calculateYearDifference(SITE_CONFIG.author.birthDate);
 const yearsProgramming = calculateYearDifference(
-	SITE_CONFIG.author.programmingStartDate,
+  SITE_CONFIG.author.programmingStartDate,
 );
 ---
 

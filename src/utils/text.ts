@@ -3,12 +3,12 @@
  * Removes links, code blocks, and markdown symbols
  */
 export function stripMarkdown(text: string): string {
-	return text
-		.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-		.replace(/\x60\x60\x60[\s\S]*?\x60\x60\x60/g, "")
-		.replace(/[#*_\x60]/g, "")
-		.replace(/\n+/g, " ")
-		.trim();
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\x60\x60\x60[\s\S]*?\x60\x60\x60/g, "")
+    .replace(/[#*_\x60]/g, "")
+    .replace(/\n+/g, " ")
+    .trim();
 }
 
 /**
@@ -18,13 +18,13 @@ export function stripMarkdown(text: string): string {
  * @returns Preview text with ellipsis if truncated
  */
 export function createPreview(text: string, maxLength: number): string {
-	const cleanText = stripMarkdown(text);
+  const cleanText = stripMarkdown(text);
 
-	if (cleanText.length <= maxLength) {
-		return cleanText;
-	}
+  if (cleanText.length <= maxLength) {
+    return cleanText;
+  }
 
-	return cleanText.substring(0, maxLength) + "...";
+  return cleanText.substring(0, maxLength) + "...";
 }
 
 /**
@@ -34,20 +34,20 @@ export function createPreview(text: string, maxLength: number): string {
  * @param desktopLength - Maximum length for desktop view
  */
 export function createResponsivePreview(
-	text: string,
-	mobileLength: number = 100,
-	desktopLength: number = 200,
+  text: string,
+  mobileLength: number = 100,
+  desktopLength: number = 200,
 ) {
-	const cleanText = stripMarkdown(text);
+  const cleanText = stripMarkdown(text);
 
-	return {
-		mobile:
-			cleanText.length > mobileLength
-				? cleanText.substring(0, mobileLength) + "..."
-				: cleanText,
-		desktop:
-			cleanText.length > desktopLength
-				? cleanText.substring(0, desktopLength) + "..."
-				: cleanText,
-	};
+  return {
+    mobile:
+      cleanText.length > mobileLength
+        ? cleanText.substring(0, mobileLength) + "..."
+        : cleanText,
+    desktop:
+      cleanText.length > desktopLength
+        ? cleanText.substring(0, desktopLength) + "..."
+        : cleanText,
+  };
 }

@@ -15,16 +15,16 @@
 
 <script setup lang="ts">
 interface Props {
-	author: string;
-	replies?: number;
-	type?: "urgent" | "info" | "warning";
-	time?: string;
+  author: string;
+  replies?: number;
+  type?: "urgent" | "info" | "warning";
+  time?: string;
 }
 
 withDefaults(defineProps<Props>(), {
-	replies: undefined,
-	type: undefined,
-	time: undefined,
+  replies: undefined,
+  type: undefined,
+  time: undefined,
 });
 </script>
 

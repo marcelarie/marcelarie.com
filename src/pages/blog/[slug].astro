@@ -9,15 +9,15 @@ import { formatDate } from "../../utils/dates";
 import { calculateReadingTime } from "../../utils/misc";
 
 interface Props {
-	post: CollectionEntry<"posts">;
+  post: CollectionEntry<"posts">;
 }
 
 export async function getStaticPaths() {
-	const blogPosts = await getCollection("posts");
-	return blogPosts.map((post: Post) => ({
-		params: { slug: post.id },
-		props: { post },
-	}));
+  const blogPosts = await getCollection("posts");
+  return blogPosts.map((post: Post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;

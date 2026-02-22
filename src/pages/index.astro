@@ -7,9 +7,12 @@ import { formatDate } from "../utils/dates";
 import { calculateReadingTime } from "../utils/misc";
 
 const allPosts = await getCollection("posts");
-const publishedPosts = allPosts.filter((post: Post) => !post.data.draft);
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const publishedPosts = sortedPosts.filter((post: Post) => !post.data.draft);
 const allTags = [
-	...new Set(publishedPosts.flatMap((post) => post.data.tags)),
+  ...new Set(publishedPosts.flatMap((post) => post.data.tags)),
 ].sort();
 ---
 
@@ -26,7 +29,7 @@ const allTags = [
 
     <section class="posts-list" aria-label="Blog posts">
       {
-        allPosts
+        sortedPosts
           .filter((post: Post) => !post.data.draft)
           .map((post: Post) => {
             const href = "/blog/" + post.id;

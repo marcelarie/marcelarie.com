@@ -8,24 +8,24 @@
  * @returns {string[]} An array of segmented words.
  */
 export function segmentWords(
-	text: string,
-	forceFallback: boolean = false,
+  text: string,
+  forceFallback: boolean = false,
 ): string[] {
-	if (Intl.Segmenter && !forceFallback) {
-		const Segmenter = new Intl.Segmenter("en", { granularity: "word" });
-		const segmentedText = Segmenter.segment(text);
+  if (Intl.Segmenter && !forceFallback) {
+    const Segmenter = new Intl.Segmenter("en", { granularity: "word" });
+    const segmentedText = Segmenter.segment(text);
 
-		const words = [];
-		for (const segment of segmentedText) {
-			if ("isWordLike" in segment && segment.isWordLike) {
-				words.push(segment.segment);
-			}
-		}
-		return words;
-	}
+    const words = [];
+    for (const segment of segmentedText) {
+      if ("isWordLike" in segment && segment.isWordLike) {
+        words.push(segment.segment);
+      }
+    }
+    return words;
+  }
 
-	// Fallback for browsers that don't support Intl.Segmenter
-	return text.match(/\b\w+\b/g) || [];
+  // Fallback for browsers that don't support Intl.Segmenter
+  return text.match(/\b\w+\b/g) || [];
 }
 
 /**
@@ -36,23 +36,23 @@ export function segmentWords(
  * @returns {number} The reading time in minutes.
  */
 export function calculateReadingTime(
-	body: string,
-	averageWordsPerMinute: number = 250, // 250 is the average reading speed of an adult
+  body: string,
+  averageWordsPerMinute: number = 250, // 250 is the average reading speed of an adult
 ): number {
-	const segmentedText = segmentWords(body);
-	const wordCount = segmentedText.length;
+  const segmentedText = segmentWords(body);
+  const wordCount = segmentedText.length;
 
-	return Math.ceil(wordCount / averageWordsPerMinute);
+  return Math.ceil(wordCount / averageWordsPerMinute);
 }
 
 /**
  * Converts the input string to Title Case.
  */
 export function normalizeCase(input: string): string {
-	return input
-		.replace(/[_-]/g, " ")
-		.replace(/\b\w/g, (char) => char.toUpperCase())
-		.replace(/([A-Z])/g, " $1")
-		.replace(/\s+/g, " ")
-		.trim();
+  return input
+    .replace(/[_-]/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+    .replace(/([A-Z])/g, " $1")
+    .replace(/\s+/g, " ")
+    .trim();
 }

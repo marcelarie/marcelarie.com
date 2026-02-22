@@ -2,14 +2,14 @@
 @import url("/giscus-base.css");
 
 :root {
-	--giscus-bg: transparent;
-	--giscus-text-primary: #000000;
-	--giscus-text-secondary: #6b6b6b;
-	--giscus-text-tertiary: #888888;
-	--giscus-accent: #0000ee;
-	--giscus-accent-hover: #551a8b;
-	--giscus-accent-bg: rgba(0, 0, 238, 0.03);
-	--giscus-accent-bg-focus: rgba(0, 0, 238, 0.1);
-	--giscus-border: #000000;
-	--giscus-border-muted: #6b6b6b;
+  --giscus-bg: transparent;
+  --giscus-text-primary: #000000;
+  --giscus-text-secondary: #6b6b6b;
+  --giscus-text-tertiary: #888888;
+  --giscus-accent: #0000ee;
+  --giscus-accent-hover: #551a8b;
+  --giscus-accent-bg: rgba(0, 0, 238, 0.03);
+  --giscus-accent-bg-focus: rgba(0, 0, 238, 0.1);
+  --giscus-border: #000000;
+  --giscus-border-muted: #6b6b6b;
 }
